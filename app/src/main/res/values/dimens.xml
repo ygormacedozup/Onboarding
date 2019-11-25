@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="text_main_onboarding">30sp</dimen>
+    <dimen name="text_login_onboarding">25sp</dimen>
+    <dimen name="text_dashboard">25sp</dimen>
+    <dimen name="margintop_default">16dp</dimen>
+    <dimen name="margin_default">16dp</dimen>
 </resources>

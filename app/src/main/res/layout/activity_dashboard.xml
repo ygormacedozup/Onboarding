@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".DashboardActivity"
+    android:background="@color/BlueZupColor"
+    >
+
+    <ImageView
+        android:id="@+id/db_logo_foguete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/startup_logo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="@dimen/margin_default"
+        android:contentDescription="@string/todo"
+        />
+
+    <TextView
+        android:id="@+id/db_txt_hi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_default"
+        android:text="@string/txt_hi"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_dashboard"
+        app:layout_constraintLeft_toRightOf="@id/db_logo_foguete"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/db_txt_receive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/db_txt_hi"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="@dimen/margin_default"
+        android:textSize="@dimen/text_dashboard"
+        android:hint="@string/name_txt"
+        android:textColorHint="@android:color/white"
+        />
+
+    <TextView
+        android:id="@+id/db_email_receive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="@string/db_email_receive"
+        android:textColorHint="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toRightOf="@id/db_logo_foguete"
+        app:layout_constraintTop_toBottomOf="@id/db_txt_hi"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        />
+
+    <TextView
+        android:id="@+id/db_text_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/db_text_progress"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@id/db_logo_foguete"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/db_logo_foguete"
+        />
+
+    <ImageView
+        android:id="@+id/db_rocket_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/db_text_progress"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/db_rocket_two"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/rocket_1"
+        />
+    <ImageView
+        android:id="@+id/db_rocket_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/db_rocket_one"
+        app:layout_constraintTop_toBottomOf="@id/db_text_progress"
+        android:src="@drawable/rocket_1"
+        android:layout_marginTop="50dp"
+        app:layout_constraintRight_toLeftOf="@id/db_rocket_three"
+
+        />
+    <ImageView
+        android:id="@+id/db_rocket_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintLeft_toRightOf="@id/db_rocket_two"
+        app:layout_constraintTop_toBottomOf="@id/db_text_progress"
+        android:src="@drawable/rocket_2"
+        app:layout_constraintRight_toRightOf="parent"
+
+        />
+
+    <ImageView
+        android:id="@+id/ball"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
