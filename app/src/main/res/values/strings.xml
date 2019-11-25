@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Onboarding</string>
+    <string name="logo_zup">logo</string>
+    <string name="ac_main_onboarding">Onbording</string>
 </resources>
