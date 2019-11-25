@@ -4,4 +4,5 @@
     <dimen name="text_dashboard">25sp</dimen>
     <dimen name="margintop_default">16dp</dimen>
     <dimen name="margin_default">16dp</dimen>
+    <dimen name="ball_default">8dp</dimen>
 </resources>
