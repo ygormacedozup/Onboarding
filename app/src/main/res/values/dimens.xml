@@ -5,4 +5,19 @@
     <dimen name="margintop_default">16dp</dimen>
     <dimen name="margin_default">16dp</dimen>
     <dimen name="ball_default">8dp</dimen>
+    <dimen name="question_margin_top">50dp</dimen>
+    <dimen name="btn_answer_width">250dp</dimen>
+    <dimen name="btn_answer_height">64dp</dimen>
+    <dimen name="topmost_answer_margin_top">70dp</dimen>
+    <dimen name="answer_margin_top">25dp</dimen>
+    <dimen name="question_text_size">20sp</dimen>
+    <dimen name="answer_text_size">20sp</dimen>
+    <dimen name="btn_answer_corner_radius">10dp</dimen>
+    <dimen name="result_label_margin_top">70dp</dimen>
+    <dimen name="result_number_text_size">80sp</dimen>
+    <dimen name="result_number_margin_top">50dp</dimen>
+    <dimen name="correct_answers_label_margin_top">50dp</dimen>
+    <dimen name="result_buttons_margin_top">70dp</dimen>
+    <dimen name="result_buttons_width">175dp</dimen>
+    <dimen name="result_buttons_height">60dp</dimen>
 </resources>
