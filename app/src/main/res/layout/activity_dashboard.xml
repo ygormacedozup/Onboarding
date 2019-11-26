@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".DashboardActivity"
-    android:background="@color/blueZupColor"
+    tools:context=".view.DashboardActivity"
+    android:background="@color/dark_blue"
     >
 
     <ImageView
@@ -202,12 +202,13 @@
 
     <Button
         android:id="@+id/db_continue_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_width="@dimen/result_buttons_width"
+        android:layout_height="@dimen/result_buttons_height"
+        android:layout_marginTop="@dimen/result_buttons_margin_top"
+        android:background="@drawable/btn_send_and_finalize_selector"
         app:layout_constraintTop_toBottomOf="@id/db_ball_two"
-        app:layout_constraintLeft_toRightOf="@id/db_text_progress"
-        android:background="@color/greenZupZolor"
+        app:layout_constraintLeft_toRightOf="@id/db_ball_one"
+        app:layout_constraintRight_toLeftOf="@+id/db_ball_three"
         android:textColor="@android:color/white"
         android:text="@string/db_text_confirm"
 

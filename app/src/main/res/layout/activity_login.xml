@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blueZupColor"
-    tools:context=".LoginActivity">
+    android:background="@color/dark_blue"
+    tools:context=".view.LoginActivity">
 
     <ImageView
         android:id="@+id/ac_login_zup_logo"
