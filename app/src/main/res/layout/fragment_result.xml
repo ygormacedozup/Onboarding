@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_blue"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/result_label_margin_top"
+        android:text="@string/result_label"
+        android:textColor="@color/white"
+        android:textSize="@dimen/question_text_size"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/result_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/result_number_margin_top"
+        android:text="2/3"
+        android:textColor="@color/white"
+        android:textSize="@dimen/result_number_text_size"
+        app:layout_constraintLeft_toLeftOf="@id/result"
+        app:layout_constraintRight_toRightOf="@id/result"
+        app:layout_constraintTop_toBottomOf="@id/result" />
+
+    <TextView
+        android:id="@+id/correct_answers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/correct_answers_label_margin_top"
+        android:text="@string/correct_answers_label"
+        android:textColor="@color/white"
+        android:textSize="@dimen/question_text_size"
+        app:layout_constraintLeft_toLeftOf="@id/result_number"
+        app:layout_constraintRight_toRightOf="@id/result_number"
+        app:layout_constraintTop_toBottomOf="@id/result_number" />
+
+    <Button
+        android:id="@+id/try_again"
+        android:layout_width="@dimen/result_buttons_width"
+        android:layout_height="@dimen/result_buttons_height"
+        android:layout_marginTop="@dimen/result_buttons_margin_top"
+        android:text="@string/try_again_label"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_try_again_selector"
+        app:layout_constraintLeft_toLeftOf="@id/correct_answers"
+        app:layout_constraintRight_toRightOf="@id/correct_answers"
+        app:layout_constraintTop_toTopOf="@id/correct_answers" />
+
+    <Button
+        android:id="@+id/send_and_finalize"
+        android:layout_width="@dimen/result_buttons_width"
+        android:layout_height="@dimen/result_buttons_height"
+        android:layout_marginTop="@dimen/result_buttons_margin_top"
+        android:text="@string/send_and_finalize_label"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_send_and_finalize_selector"
+        app:layout_constraintLeft_toLeftOf="@id/try_again"
+        app:layout_constraintRight_toRightOf="@id/try_again"
+        app:layout_constraintTop_toTopOf="@id/try_again" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

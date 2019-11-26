@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Onboarding</string>
+    <string name="result_label">Resultado:</string>
+    <string name="correct_answers_label">Respostas corretas!</string>
+    <string name="try_again_label">Tentar novamente</string>
+    <string name="send_and_finalize_label">Enviar e terminar</string>
 </resources>

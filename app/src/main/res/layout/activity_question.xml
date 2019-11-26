@@ -1,83 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/question_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
-    tools:context=".view.QuestionActivity">
-
-    <TextView
-        android:id="@+id/question"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/question_margin_top"
-        android:text="Question"
-        android:textColor="@color/white"
-        android:textSize="@dimen/question_text_size"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Question" />
-
-    <Button
-        android:id="@+id/btn_first_answer"
-        android:layout_width="@dimen/btn_answer_width"
-        android:layout_height="@dimen/btn_answer_height"
-        android:layout_marginTop="@dimen/topmost_answer_margin_top"
-        android:background="@drawable/btn_answer_selector"
-        android:text="First Answer"
-        android:textAllCaps="false"
-        android:textSize="@dimen/answer_text_size"
-        android:textColor="@android:color/black"
-        app:layout_constraintLeft_toLeftOf="@id/question"
-        app:layout_constraintRight_toRightOf="@id/question"
-        app:layout_constraintTop_toBottomOf="@id/question"
-        tools:text="First Answer" />
-
-    <Button
-        android:id="@+id/btn_second_answer"
-        android:layout_width="@dimen/btn_answer_width"
-        android:layout_height="@dimen/btn_answer_height"
-        android:layout_marginTop="@dimen/answer_margin_top"
-        android:background="@drawable/btn_answer_selector"
-        android:text="Second Answer"
-        android:textAllCaps="false"
-        android:textSize="@dimen/answer_text_size"
-        android:textColor="@android:color/black"
-        app:layout_constraintLeft_toLeftOf="@id/btn_first_answer"
-        app:layout_constraintRight_toRightOf="@id/btn_first_answer"
-        app:layout_constraintTop_toBottomOf="@id/btn_first_answer"
-        tools:text="Second Answer" />
-
-    <Button
-        android:id="@+id/btn_third_answer"
-        android:layout_width="@dimen/btn_answer_width"
-        android:layout_height="@dimen/btn_answer_height"
-        android:layout_marginTop="@dimen/answer_margin_top"
-        android:background="@drawable/btn_answer_selector"
-        android:text="Third Answer"
-        android:textAllCaps="false"
-        android:textSize="@dimen/answer_text_size"
-        android:textColor="@android:color/black"
-        app:layout_constraintLeft_toLeftOf="@id/btn_second_answer"
-        app:layout_constraintRight_toRightOf="@id/btn_second_answer"
-        app:layout_constraintTop_toBottomOf="@id/btn_second_answer"
-        tools:text="Third Answer" />
-
-    <Button
-        android:id="@+id/btn_fourth_answer"
-        android:layout_width="@dimen/btn_answer_width"
-        android:layout_height="@dimen/btn_answer_height"
-        android:layout_marginTop="@dimen/answer_margin_top"
-        android:background="@drawable/btn_answer_selector"
-        android:text="Fourth Answer"
-        android:textAllCaps="false"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/answer_text_size"
-        app:layout_constraintLeft_toLeftOf="@id/btn_third_answer"
-        app:layout_constraintRight_toRightOf="@id/btn_third_answer"
-        app:layout_constraintTop_toBottomOf="@id/btn_third_answer"
-        tools:text="Fourth Answer" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".view.QuestionActivity" />
