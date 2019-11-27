@@ -1,4 +1,4 @@
-package br.com.zup.onboarding.view;
+package br.com.zup.onboarding.view.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 

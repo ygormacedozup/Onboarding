@@ -10,16 +10,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.ContentActivity"></activity>
-        <activity android:name=".view.QuestionActivity">
+        <activity android:name=".view.activities.ContentActivity"></activity>
+        <activity android:name=".view.activities.QuestionActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.DashboardActivity"></activity>
-        <activity android:name=".view.LoginActivity">
+        <activity android:name=".view.activities.DashboardActivity"></activity>
+        <activity android:name=".view.activities.LoginActivity">
              <!-- <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

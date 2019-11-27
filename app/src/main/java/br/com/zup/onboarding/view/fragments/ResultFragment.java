@@ -1,4 +1,4 @@
-package br.com.zup.onboarding.view;
+package br.com.zup.onboarding.view.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
