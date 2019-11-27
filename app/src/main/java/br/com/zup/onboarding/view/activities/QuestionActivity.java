@@ -1,4 +1,4 @@
-package br.com.zup.onboarding.view;
+package br.com.zup.onboarding.view.activities;
 
 import android.os.Bundle;
 
@@ -12,6 +12,8 @@ import java.util.List;
 
 import br.com.zup.onboarding.R;
 import br.com.zup.onboarding.model.Question;
+import br.com.zup.onboarding.view.fragments.QuestionFragment;
+import br.com.zup.onboarding.view.fragments.ResultFragment;
 
 public class QuestionActivity extends AppCompatActivity implements QuestionFragment.ChangeFragmentListener {
     private FragmentManager fragmentManager;
