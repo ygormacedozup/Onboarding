@@ -34,8 +34,6 @@ public class QuestionActivity extends AppCompatActivity implements QuestionFragm
         questions = new ArrayList<>();
         fragments = new ArrayList<>();
 
-        /* fragments.add(new ResultFragment(3, 2)); */
-
         List<String> answers = new ArrayList<>();
         answers.add("Feijão");
         answers.add("Arroz");

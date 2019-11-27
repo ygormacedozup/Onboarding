@@ -10,25 +10,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.ContentActivity">
-            <!-- <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter> -->
-        </activity>
-        <activity android:name=".view.QuestionActivity"></activity>
-            <!-- <intent-filter>
-        android:theme="@style/Theme.AppCompat.NoActionBar"
-        tools:ignore="GoogleAppIndexingWarning"
-        > -->
-        <activity android:name=".view.DashboardActivity"></activity>
-        <activity android:name=".view.LoginActivity">
-             <intent-filter>
+        <activity android:name=".view.ContentActivity"></activity>
+        <activity android:name=".view.QuestionActivity">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".view.DashboardActivity"></activity>
+        <activity android:name=".view.LoginActivity">
+             <!-- <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter> -->
         </activity>
     </application>
 
