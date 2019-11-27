@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.DashboardActivity"
     android:background="@color/dark_blue"
+    tools:context=".view.DashboardActivity"
     >
 
     <ImageView
@@ -17,6 +17,8 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="@dimen/margin_default"
         android:contentDescription="@string/todo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         />
 
     <ImageButton
@@ -44,7 +46,7 @@
         />
 
     <TextView
-        android:id="@+id/db_txt_name_receive"
+        android:id="@+id/db_txt_receive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toRightOf="@id/db_txt_hi"
@@ -53,8 +55,12 @@
         android:textSize="@dimen/text_dashboard"
         android:hint="@string/name_txt"
         android:textColorHint="@android:color/white"
-        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_dashboard"
+        app:layout_constraintLeft_toRightOf="@id/db_txt_hi"
+        app:layout_constraintTop_toTopOf="parent"
         />
+    android:textColor="@android:color/white"
+    />
 
     <TextView
         android:id="@+id/db_email_receive"
@@ -95,6 +101,7 @@
         android:layout_marginTop="50dp"
         android:src="@drawable/rocket_1"
         />
+
     <ImageView
         android:id="@+id/db_rocket_two"
         android:layout_width="wrap_content"
@@ -106,6 +113,7 @@
         app:layout_constraintRight_toLeftOf="@id/db_rocket_three"
 
         />
+
     <ImageView
         android:id="@+id/db_rocket_three"
         android:layout_width="wrap_content"
@@ -202,7 +210,7 @@
 
         />
 
-        <TextView
+    <TextView
         android:id="@+id/stage_three"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -220,12 +228,10 @@
         android:layout_height="@dimen/result_buttons_height"
         android:layout_marginTop="@dimen/result_buttons_margin_top"
         android:background="@drawable/btn_send_and_finalize_selector"
-        app:layout_constraintTop_toBottomOf="@id/db_ball_two"
-        app:layout_constraintLeft_toRightOf="@id/db_ball_one"
-        app:layout_constraintRight_toLeftOf="@+id/db_ball_three"
-        android:textColor="@android:color/white"
         android:text="@string/db_text_confirm"
-
-        />
+        android:textColor="@android:color/white"
+        app:layout_constraintLeft_toLeftOf="@id/progress_container"
+        app:layout_constraintRight_toRightOf="@id/progress_container"
+        app:layout_constraintTop_toBottomOf="@id/progress_container" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

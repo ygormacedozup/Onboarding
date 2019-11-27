@@ -2,9 +2,9 @@
 <resources>
     <dimen name="text_login_onboarding">25sp</dimen>
     <dimen name="text_dashboard">25sp</dimen>
-    <dimen name="margintop_default">16dp</dimen>
+    <dimen name="margin_top_default">16dp</dimen>
     <dimen name="margin_default">16dp</dimen>
-    <dimen name="ball_default">8dp</dimen>
+    <dimen name="progress_container_items_margin_top">50dp</dimen>
     <dimen name="question_margin_top">50dp</dimen>
     <dimen name="subject_title_margin_top">125dp</dimen>
     <dimen name="btn_answer_width">250dp</dimen>
@@ -26,4 +26,9 @@
     <dimen name="answer_quiz_button_height">60dp</dimen>
     <dimen name="content_link_zupnet_margin_top">150dp</dimen>
     <dimen name="answer_quiz_button_margin_top">150dp</dimen>
+    <dimen name="progress_container_margin_top">50dp</dimen>
+    <dimen name="progress_container_width">350dp</dimen>
+    <dimen name="progress_container_height">250dp</dimen>
+    <dimen name="progress_bar_height">10dp</dimen>
+    <dimen name="progress_bar_side_margin">5dp</dimen>
 </resources>
