@@ -12,7 +12,7 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning"
         >
-        <activity android:name=".view.QuestionActivity">
+        <activity android:name=".view.ContentActivity">
         </activity>
         <activity android:name=".view.DashboardActivity"/>
         <activity android:name=".view.LoginActivity">

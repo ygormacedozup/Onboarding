@@ -20,5 +20,6 @@
     <string name="correct_answers_label">Respostas corretas!</string>
     <string name="try_again_label">Tentar novamente</string>
     <string name="send_and_finalize_label">Enviar e terminar</string>
+    <string name="answer_quiz_label">Responder Quiz</string>
     <string name="ball_one_green">TODO</string>
 </resources>
