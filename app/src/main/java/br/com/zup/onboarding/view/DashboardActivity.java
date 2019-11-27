@@ -19,7 +19,7 @@ public class DashboardActivity extends AppCompatActivity {
         startQuestions();
     }
 
-    private void startQuestions(){
+    private void startQuestions() {
         Button btnNext = findViewById(R.id.db_continue_button);
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
