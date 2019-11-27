@@ -13,7 +13,7 @@ import java.util.List;
 import br.com.zup.onboarding.R;
 import br.com.zup.onboarding.model.Question;
 
-public class QuestionActivity extends AppCompatActivity {
+public class QuestionActivity extends AppCompatActivity implements QuestionFragment.ChangeFragmentListener {
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
     private List<Question> questions;
@@ -27,37 +27,55 @@ public class QuestionActivity extends AppCompatActivity {
 
         setQuestions();
         addFragments();
-        showQuestion();
+        showQuestion(currentFragment);
     }
 
     private void setQuestions() {
         questions = new ArrayList<>();
         fragments = new ArrayList<>();
 
-        /////////////Test////////////
-        fragments.add(new ResultFragment(3, 2));
-        /////////////////////////////
+        /* fragments.add(new ResultFragment(3, 2)); */
 
         List<String> answers = new ArrayList<>();
-        answers.add("Resposta 1");
-        answers.add("Resposta 2");
-        answers.add("Resposta 3");
+        answers.add("Feijão");
+        answers.add("Arroz");
+        answers.add("Frango");
+        answers.add("Ovo");
 
-        questions.add(new Question("Questão 1", answers, 1));
-        questions.add(new Question("Questão 2", answers, 2));
-        questions.add(new Question("Questão 3", answers, 3));
+        questions.add(new Question("Qual time você torce?", answers, 1));
+        questions.add(new Question("Quem é Jesus?", answers, 2));
+        questions.add(new Question("Por que o céu é azul?", answers, 3));
     }
 
     private void addFragments() {
-        for (Question question : questions) {
-            fragments.add(new QuestionFragment(question));
+        for (int i = 0; i < questions.size(); i++) {
+            fragments.add(new QuestionFragment(i, questions.get(i), this));
         }
     }
 
-    private void showQuestion() {
+    private void showQuestion(int index) {
+        if (currentFragment < fragments.size()) {
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.question_container, fragments.get(index));
+            fragmentTransaction.commit();
+        } else {
+            showResult();
+        }
+    }
+
+    private void showResult() {
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.question_container, fragments.get(currentFragment));
+
+        // Test
+        fragmentTransaction.replace(R.id.question_container, new ResultFragment(3, 2));
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public void changeFragment() {
+        currentFragment++;
+        showQuestion(currentFragment);
     }
 }
