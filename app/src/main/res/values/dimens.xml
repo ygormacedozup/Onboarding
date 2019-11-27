@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="text_login_onboarding">25sp</dimen>
+    <dimen name="text_dashboard">25sp</dimen>
+    <dimen name="margintop_default">16dp</dimen>
+    <dimen name="margin_default">16dp</dimen>
+    <dimen name="ball_default">8dp</dimen>
     <dimen name="question_margin_top">50dp</dimen>
     <dimen name="subject_title_margin_top">125dp</dimen>
     <dimen name="btn_answer_width">250dp</dimen>
