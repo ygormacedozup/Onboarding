@@ -4,10 +4,10 @@
     <dimen name="text_dashboard">25sp</dimen>
     <dimen name="margin_top_default">16dp</dimen>
     <dimen name="margin_default">16dp</dimen>
-    <dimen name="progress_container_items_margin_top">50dp</dimen>
+    <dimen name="progress_container_items_margin_top">40dp</dimen>
     <dimen name="question_margin_top">50dp</dimen>
     <dimen name="subject_title_margin_top">125dp</dimen>
-    <dimen name="btn_answer_width">250dp</dimen>
+    <dimen name="btn_answer_width">275dp</dimen>
     <dimen name="btn_answer_height">64dp</dimen>
     <dimen name="topmost_answer_margin_top">70dp</dimen>
     <dimen name="answer_margin_top">25dp</dimen>

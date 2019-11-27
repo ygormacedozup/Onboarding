@@ -12,10 +12,6 @@
     <string name="db_text_stage_two">Fase 2</string>
     <string name="db_text_stage_three">Fase 3</string>
     <string name="db_text_confirm">Confirmar</string>
-
-    <style name="server_cliente_id">
-        782154055084-7l3dibdps2mbdbqog39tlhlqhamepkfe.apps.googleusercontent.com
-    </style>
     <string name="result_label">Resultado:</string>
     <string name="correct_answers_label">Respostas corretas!</string>
     <string name="try_again_label">Tentar novamente</string>

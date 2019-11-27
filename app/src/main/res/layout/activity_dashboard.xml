@@ -56,9 +56,6 @@
         android:hint="@string/name_txt"
         android:textColorHint="@android:color/white"
         android:textSize="@dimen/text_dashboard"
-        app:layout_constraintLeft_toRightOf="@id/db_txt_hi"
-        app:layout_constraintTop_toTopOf="parent"
-        />
     android:textColor="@android:color/white"
     />
 
