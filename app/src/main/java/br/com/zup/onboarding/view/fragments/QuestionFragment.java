@@ -56,7 +56,7 @@ public class QuestionFragment extends Fragment {
         btnThirdAnswer = rootView.findViewById(R.id.btn_third_answer);
         btnFourthAnswer = rootView.findViewById(R.id.btn_fourth_answer);
 
-        questionNumber.setText("Questão " + questionIndex + ":");
+        questionNumber.setText("Questão " + (questionIndex + 1) + ":");
         questionName.setText(question.getQuestion());
 
         btnFirstAnswer.setText(question.getAnswers().get(0));
