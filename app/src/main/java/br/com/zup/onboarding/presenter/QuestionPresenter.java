@@ -34,4 +34,9 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     public void changeQuestion() {
         view.showNextQuestion();
     }
+
+    @Override
+    public void resetQuestions() {
+        view.showResetQuestions();
+    }
 }
