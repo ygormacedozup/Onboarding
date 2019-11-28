@@ -11,11 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.zup.onboarding.R;
+import br.com.zup.onboarding.contract.QuestionContract;
 import br.com.zup.onboarding.model.Question;
+import br.com.zup.onboarding.presenter.QuestionPresenter;
 import br.com.zup.onboarding.view.fragments.QuestionFragment;
 import br.com.zup.onboarding.view.fragments.ResultFragment;
 
-public class QuestionActivity extends AppCompatActivity implements QuestionFragment.ChangeFragmentListener {
+public class QuestionActivity extends AppCompatActivity implements QuestionFragment.ChangeFragmentListener,
+        QuestionContract.View {
+    private QuestionContract.Presenter presenter;
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
     private List<Question> questions;
@@ -26,10 +30,23 @@ public class QuestionActivity extends AppCompatActivity implements QuestionFragm
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+        presenter = new QuestionPresenter();
 
         setQuestions();
-        addFragments();
-        showQuestion(currentFragment);
+        setFragments();
+        showFragment(currentFragment);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        presenter.start(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        presenter.stop();
     }
 
     private void setQuestions() {
@@ -47,13 +64,15 @@ public class QuestionActivity extends AppCompatActivity implements QuestionFragm
         questions.add(new Question("Por que o céu é azul?", answers, 3));
     }
 
-    private void addFragments() {
+    @Override
+    public void setFragments() {
         for (int i = 0; i < questions.size(); i++) {
             fragments.add(new QuestionFragment(i, questions.get(i), this));
         }
     }
 
-    private void showQuestion(int index) {
+    @Override
+    public void showFragment(int index) {
         if (currentFragment < fragments.size()) {
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
@@ -64,7 +83,8 @@ public class QuestionActivity extends AppCompatActivity implements QuestionFragm
         }
     }
 
-    private void showResult() {
+    @Override
+    public void showResult() {
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
 
@@ -76,6 +96,6 @@ public class QuestionActivity extends AppCompatActivity implements QuestionFragm
     @Override
     public void changeFragment() {
         currentFragment++;
-        showQuestion(currentFragment);
+        showFragment(currentFragment);
     }
 }
