@@ -25,6 +25,7 @@ public class QuestionActivity extends AppCompatActivity implements QuestionFragm
     private List<Question> questions;
     private List<Fragment> fragments = new ArrayList<>();
     private int currentFragment = 0;
+    private int correctAnswers = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,18 +80,24 @@ public class QuestionActivity extends AppCompatActivity implements QuestionFragm
         fragmentTransaction = fragmentManager.beginTransaction();
 
         // Test
-        fragmentTransaction.replace(R.id.question_container, new ResultFragment(3, 2, this));
+        fragmentTransaction.replace(R.id.question_container, new ResultFragment(questions.size(), correctAnswers, this));
         fragmentTransaction.commit();
     }
 
     @Override
     public void showResetQuestions() {
+        correctAnswers = 0;
         currentFragment = 0;
+
         showFragment();
     }
 
     @Override
-    public void changeFragment() {
+    public void changeFragment(boolean isCorrectAnswer) {
+        if (isCorrectAnswer) {
+            correctAnswers++;
+        }
+
         presenter.changeQuestion();
     }
 

@@ -43,7 +43,7 @@ public class QuestionFragment extends Fragment {
         setCorrectAnswerTag();
         setAnswerBackground();
 
-        setCorrectAnswerClickListener();
+        setAnswersClickListeners();
 
         return view;
     }
@@ -112,16 +112,80 @@ public class QuestionFragment extends Fragment {
         btnFourthAnswer.setBackgroundResource(btnFourthAnswerBackground);
     }
 
+    private void setAnswersClickListeners() {
+        setCorrectAnswerClickListener();
+
+        setFirstAnswerClickListener();
+        setSecondAnswerClickListener();
+        setThirdAnswerClickListener();
+        setFourthAnswerClickListener();
+    }
+
     private void setCorrectAnswerClickListener() {
-        rootView.findViewWithTag(CORRECT_ANSWER_TAG).setOnClickListener(new View.OnClickListener() {
+        View correctAnswerView = rootView.findViewWithTag(CORRECT_ANSWER_TAG);
+
+        removeAnswerDefaultClickListener(correctAnswerView);
+
+        correctAnswerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.changeFragment();
+                listener.changeFragment(true);
             }
         });
     }
 
+    private void setFirstAnswerClickListener() {
+        if (!btnFirstAnswer.hasOnClickListeners()) {
+            btnFirstAnswer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.changeFragment(false);
+                }
+            });
+        }
+    }
+
+    private void setSecondAnswerClickListener() {
+        if (!btnSecondAnswer.hasOnClickListeners()) {
+            btnSecondAnswer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.changeFragment(false);
+                }
+            });
+        }
+    }
+
+    private void setThirdAnswerClickListener() {
+        if (!btnThirdAnswer.hasOnClickListeners()) {
+            btnThirdAnswer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.changeFragment(false);
+                }
+            });
+        }
+    }
+
+    private void setFourthAnswerClickListener() {
+        if (!btnFourthAnswer.hasOnClickListeners()) {
+            btnFourthAnswer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.changeFragment(false);
+                }
+            });
+        }
+    }
+
+    private void removeAnswerDefaultClickListener(View correctAnswerView) {
+        // Remove default click listener
+        if (correctAnswerView.hasOnClickListeners()) {
+            correctAnswerView.setOnClickListener(null);
+        }
+    }
+
     public interface ChangeFragmentListener {
-        void changeFragment();
+        void changeFragment(boolean isCorrectAnswer);
     }
 }
