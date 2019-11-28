@@ -23,45 +23,29 @@ public class QuestionActivity extends AppCompatActivity implements QuestionFragm
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
     private List<Question> questions;
-    private List<Fragment> fragments;
+    private List<Fragment> fragments = new ArrayList<>();
     private int currentFragment = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
-        presenter = new QuestionPresenter();
 
-        setQuestions();
-        setFragments();
-        showFragment(currentFragment);
+        presenter = new QuestionPresenter();
+        questions = presenter.loadQuestions();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         presenter.start(this);
+        questions = presenter.loadQuestions();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         presenter.stop();
-    }
-
-    private void setQuestions() {
-        questions = new ArrayList<>();
-        fragments = new ArrayList<>();
-
-        List<String> answers = new ArrayList<>();
-        answers.add("Feijão");
-        answers.add("Arroz");
-        answers.add("Frango");
-        answers.add("Ovo");
-
-        questions.add(new Question("Qual time você torce?", answers, 1));
-        questions.add(new Question("Quem é Jesus?", answers, 2));
-        questions.add(new Question("Por que o céu é azul?", answers, 3));
     }
 
     @Override
@@ -72,15 +56,21 @@ public class QuestionActivity extends AppCompatActivity implements QuestionFragm
     }
 
     @Override
-    public void showFragment(int index) {
+    public void showFragment() {
         if (currentFragment < fragments.size()) {
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.question_container, fragments.get(index));
+            fragmentTransaction.replace(R.id.question_container, fragments.get(currentFragment));
             fragmentTransaction.commit();
         } else {
             showResult();
         }
+    }
+
+    @Override
+    public void showNextQuestion() {
+        currentFragment++;
+        showFragment();
     }
 
     @Override
@@ -95,7 +85,6 @@ public class QuestionActivity extends AppCompatActivity implements QuestionFragm
 
     @Override
     public void changeFragment() {
-        currentFragment++;
-        showFragment(currentFragment);
+        presenter.changeQuestion();
     }
 }
