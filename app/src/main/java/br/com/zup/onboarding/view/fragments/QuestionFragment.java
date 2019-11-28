@@ -20,12 +20,12 @@ public class QuestionFragment extends Fragment {
     private final String CORRECT_ANSWER_TAG = "CORRECT";
     private View rootView;
     private ChangeFragmentListener listener;
-    TextView questionNumber;
-    TextView questionName;
-    Button btnFirstAnswer;
-    Button btnSecondAnswer;
-    Button btnThirdAnswer;
-    Button btnFourthAnswer;
+    private TextView questionNumber;
+    private TextView questionName;
+    private Button btnFirstAnswer;
+    private Button btnSecondAnswer;
+    private Button btnThirdAnswer;
+    private Button btnFourthAnswer;
 
     public QuestionFragment(int questionIndex, Question question, ChangeFragmentListener listener) {
         this.questionIndex = questionIndex;
@@ -42,27 +42,41 @@ public class QuestionFragment extends Fragment {
         setLayout();
         setCorrectAnswerTag();
         setAnswerBackground();
+
         setCorrectAnswerClickListener();
 
         return view;
     }
 
-    private void setLayout() {
+    private void initializeTextViews() {
         questionNumber = rootView.findViewById(R.id.question_number);
         questionName = rootView.findViewById(R.id.question_name);
+    }
 
+    private void initializeButtons() {
         btnFirstAnswer = rootView.findViewById(R.id.btn_first_answer);
         btnSecondAnswer = rootView.findViewById(R.id.btn_second_answer);
         btnThirdAnswer = rootView.findViewById(R.id.btn_third_answer);
         btnFourthAnswer = rootView.findViewById(R.id.btn_fourth_answer);
+    }
 
+    private void setTextViews() {
         questionNumber.setText("Questão " + (questionIndex + 1) + ":");
         questionName.setText(question.getQuestion());
+    }
 
+    private void setButtons() {
         btnFirstAnswer.setText(question.getAnswers().get(0));
         btnSecondAnswer.setText(question.getAnswers().get(1));
         btnThirdAnswer.setText(question.getAnswers().get(2));
         btnFourthAnswer.setText(question.getAnswers().get(3));
+    }
+
+    private void setLayout() {
+        initializeTextViews();
+        initializeButtons();
+        setTextViews();
+        setButtons();
     }
 
     private void setCorrectAnswerTag() {

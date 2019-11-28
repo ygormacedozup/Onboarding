@@ -10,6 +10,7 @@ public interface QuestionContract {
         void showFragment();
         void showNextQuestion();
         void showResult();
+        void showResetQuestions();
     }
 
     interface Presenter {
@@ -17,6 +18,7 @@ public interface QuestionContract {
         void stop();
         List<Question> loadQuestions();
         void changeQuestion();
+        void resetQuestions();
     }
 
     interface Repository {
