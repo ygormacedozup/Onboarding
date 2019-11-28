@@ -20,12 +20,12 @@ public class QuestionFragment extends Fragment {
     private final String CORRECT_ANSWER_TAG = "CORRECT";
     private View rootView;
     private ChangeFragmentListener listener;
-    TextView questionNumber;
-    TextView questionName;
-    Button btnFirstAnswer;
-    Button btnSecondAnswer;
-    Button btnThirdAnswer;
-    Button btnFourthAnswer;
+    private TextView questionNumber;
+    private TextView questionName;
+    private Button btnFirstAnswer;
+    private Button btnSecondAnswer;
+    private Button btnThirdAnswer;
+    private Button btnFourthAnswer;
 
     public QuestionFragment(int questionIndex, Question question, ChangeFragmentListener listener) {
         this.questionIndex = questionIndex;
@@ -42,27 +42,41 @@ public class QuestionFragment extends Fragment {
         setLayout();
         setCorrectAnswerTag();
         setAnswerBackground();
-        setCorrectAnswerClickListener();
+
+        setAnswersClickListeners();
 
         return view;
     }
 
-    private void setLayout() {
+    private void initializeTextViews() {
         questionNumber = rootView.findViewById(R.id.question_number);
         questionName = rootView.findViewById(R.id.question_name);
+    }
 
+    private void initializeButtons() {
         btnFirstAnswer = rootView.findViewById(R.id.btn_first_answer);
         btnSecondAnswer = rootView.findViewById(R.id.btn_second_answer);
         btnThirdAnswer = rootView.findViewById(R.id.btn_third_answer);
         btnFourthAnswer = rootView.findViewById(R.id.btn_fourth_answer);
+    }
 
-        questionNumber.setText("Questão " + questionIndex + ":");
+    private void setTextViews() {
+        questionNumber.setText("Questão " + (questionIndex + 1) + ":");
         questionName.setText(question.getQuestion());
+    }
 
+    private void setButtons() {
         btnFirstAnswer.setText(question.getAnswers().get(0));
         btnSecondAnswer.setText(question.getAnswers().get(1));
         btnThirdAnswer.setText(question.getAnswers().get(2));
         btnFourthAnswer.setText(question.getAnswers().get(3));
+    }
+
+    private void setLayout() {
+        initializeTextViews();
+        initializeButtons();
+        setTextViews();
+        setButtons();
     }
 
     private void setCorrectAnswerTag() {
@@ -98,16 +112,80 @@ public class QuestionFragment extends Fragment {
         btnFourthAnswer.setBackgroundResource(btnFourthAnswerBackground);
     }
 
+    private void setAnswersClickListeners() {
+        setCorrectAnswerClickListener();
+
+        setFirstAnswerClickListener();
+        setSecondAnswerClickListener();
+        setThirdAnswerClickListener();
+        setFourthAnswerClickListener();
+    }
+
     private void setCorrectAnswerClickListener() {
-        rootView.findViewWithTag(CORRECT_ANSWER_TAG).setOnClickListener(new View.OnClickListener() {
+        View correctAnswerView = rootView.findViewWithTag(CORRECT_ANSWER_TAG);
+
+        removeAnswerDefaultClickListener(correctAnswerView);
+
+        correctAnswerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.changeFragment();
+                listener.changeFragment(true);
             }
         });
     }
 
+    private void setFirstAnswerClickListener() {
+        if (!btnFirstAnswer.hasOnClickListeners()) {
+            btnFirstAnswer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.changeFragment(false);
+                }
+            });
+        }
+    }
+
+    private void setSecondAnswerClickListener() {
+        if (!btnSecondAnswer.hasOnClickListeners()) {
+            btnSecondAnswer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.changeFragment(false);
+                }
+            });
+        }
+    }
+
+    private void setThirdAnswerClickListener() {
+        if (!btnThirdAnswer.hasOnClickListeners()) {
+            btnThirdAnswer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.changeFragment(false);
+                }
+            });
+        }
+    }
+
+    private void setFourthAnswerClickListener() {
+        if (!btnFourthAnswer.hasOnClickListeners()) {
+            btnFourthAnswer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.changeFragment(false);
+                }
+            });
+        }
+    }
+
+    private void removeAnswerDefaultClickListener(View correctAnswerView) {
+        // Remove default click listener
+        if (correctAnswerView.hasOnClickListeners()) {
+            correctAnswerView.setOnClickListener(null);
+        }
+    }
+
     public interface ChangeFragmentListener {
-        void changeFragment();
+        void changeFragment(boolean isCorrectAnswer);
     }
 }

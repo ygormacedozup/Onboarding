@@ -11,71 +11,98 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.zup.onboarding.R;
+import br.com.zup.onboarding.contract.QuestionContract;
 import br.com.zup.onboarding.model.Question;
+import br.com.zup.onboarding.presenter.QuestionPresenter;
 import br.com.zup.onboarding.view.fragments.QuestionFragment;
 import br.com.zup.onboarding.view.fragments.ResultFragment;
 
-public class QuestionActivity extends AppCompatActivity implements QuestionFragment.ChangeFragmentListener {
+public class QuestionActivity extends AppCompatActivity implements QuestionFragment.ChangeFragmentListener,
+        ResultFragment.TryAgainListener, QuestionContract.View {
+    private QuestionContract.Presenter presenter;
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
     private List<Question> questions;
-    private List<Fragment> fragments;
+    private List<Fragment> fragments = new ArrayList<>();
     private int currentFragment = 0;
+    private int correctAnswers = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
 
-        setQuestions();
-        addFragments();
-        showQuestion(currentFragment);
+        presenter = new QuestionPresenter();
+        questions = presenter.loadQuestions();
     }
 
-    private void setQuestions() {
-        questions = new ArrayList<>();
-        fragments = new ArrayList<>();
-
-        List<String> answers = new ArrayList<>();
-        answers.add("Feijão");
-        answers.add("Arroz");
-        answers.add("Frango");
-        answers.add("Ovo");
-
-        questions.add(new Question("Qual time você torce?", answers, 1));
-        questions.add(new Question("Quem é Jesus?", answers, 2));
-        questions.add(new Question("Por que o céu é azul?", answers, 3));
+    @Override
+    protected void onStart() {
+        super.onStart();
+        presenter.start(this);
+        questions = presenter.loadQuestions();
     }
 
-    private void addFragments() {
+    @Override
+    protected void onPause() {
+        super.onPause();
+        presenter.stop();
+    }
+
+    @Override
+    public void setFragments() {
         for (int i = 0; i < questions.size(); i++) {
             fragments.add(new QuestionFragment(i, questions.get(i), this));
         }
     }
 
-    private void showQuestion(int index) {
+    @Override
+    public void showFragment() {
         if (currentFragment < fragments.size()) {
             fragmentManager = getSupportFragmentManager();
             fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.question_container, fragments.get(index));
+            fragmentTransaction.replace(R.id.question_container, fragments.get(currentFragment));
             fragmentTransaction.commit();
         } else {
             showResult();
         }
     }
 
-    private void showResult() {
+    @Override
+    public void showNextQuestion() {
+        currentFragment++;
+        showFragment();
+    }
+
+    @Override
+    public void showResult() {
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
 
         // Test
-        fragmentTransaction.replace(R.id.question_container, new ResultFragment(3, 2));
+        fragmentTransaction.replace(R.id.question_container, new ResultFragment(questions.size(), correctAnswers, this));
         fragmentTransaction.commit();
     }
 
     @Override
-    public void changeFragment() {
-        currentFragment++;
-        showQuestion(currentFragment);
+    public void showResetQuestions() {
+        correctAnswers = 0;
+        currentFragment = 0;
+
+        showFragment();
+    }
+
+    @Override
+    public void changeFragment(boolean isCorrectAnswer) {
+        if (isCorrectAnswer) {
+            correctAnswers++;
+        }
+
+        presenter.changeQuestion();
+    }
+
+    @Override
+    public void resetQuestions() {
+        presenter.resetQuestions();
     }
 }
