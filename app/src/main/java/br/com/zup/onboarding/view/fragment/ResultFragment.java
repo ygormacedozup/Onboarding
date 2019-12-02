@@ -1,4 +1,4 @@
-package br.com.zup.onboarding.view.fragments;
+package br.com.zup.onboarding.view.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,13 +18,16 @@ public class ResultFragment extends Fragment {
     private final String RESULT_NUMBER_SEPARATOR = "/";
     private int numberOfQuestions;
     private int correctAnswers;
-    private TryAgainListener listener;
+    private TryAgainListener tryAgainListener;
+    private SendAndFinalizeListener sendAndFinalizeListener;
     private Button btnTryAgain;
+    private Button btnSendAndFinalize;
 
-    public ResultFragment(int numberOfQuestions, int correctAnswers, TryAgainListener listener) {
+    public ResultFragment(int numberOfQuestions, int correctAnswers, TryAgainListener tryAgainListener, SendAndFinalizeListener sendAndFinalizeListener) {
         this.numberOfQuestions = numberOfQuestions;
         this.correctAnswers = correctAnswers;
-        this.listener = listener;
+        this.tryAgainListener = tryAgainListener;
+        this.sendAndFinalizeListener = sendAndFinalizeListener;
     }
 
     @Nullable
@@ -37,6 +40,7 @@ public class ResultFragment extends Fragment {
         resultNumber.setText(correctAnswers + RESULT_NUMBER_SEPARATOR + numberOfQuestions);
 
         setTryAgainButton();
+        setSendAndFinalizeButton();
 
         return view;
     }
@@ -46,16 +50,34 @@ public class ResultFragment extends Fragment {
         setTryAgainClickListener();
     }
 
+    private void setSendAndFinalizeButton() {
+        btnSendAndFinalize = view.findViewById(R.id.send_and_finalize);
+        setSendAndFinalizeClickListener();
+    }
+
     private void setTryAgainClickListener() {
         btnTryAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.resetQuestions();
+                tryAgainListener.resetQuestions();
+            }
+        });
+    }
+
+    private void setSendAndFinalizeClickListener() {
+        btnSendAndFinalize.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendAndFinalizeListener.sendQuestionResult();
             }
         });
     }
 
     public interface TryAgainListener {
         void resetQuestions();
+    }
+
+    public interface SendAndFinalizeListener {
+        void sendQuestionResult();
     }
 }
