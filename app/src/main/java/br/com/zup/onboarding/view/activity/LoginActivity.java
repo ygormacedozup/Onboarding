@@ -1,4 +1,4 @@
-package br.com.zup.onboarding.view.activities;
+package br.com.zup.onboarding.view.activity;
 
 import android.content.Intent;
 import android.nfc.Tag;

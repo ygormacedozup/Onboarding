@@ -1,4 +1,4 @@
-package br.com.zup.onboarding.view.fragments;
+package br.com.zup.onboarding.view.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,11 +12,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import br.com.zup.onboarding.R;
-import br.com.zup.onboarding.model.Question;
+import br.com.zup.onboarding.model.entity.Alternative;
+import br.com.zup.onboarding.model.entity.Question;
 
 public class QuestionFragment extends Fragment {
     private int questionIndex;
     private Question question;
+    private int correctAnswer;
     private final String CORRECT_ANSWER_TAG = "CORRECT";
     private View rootView;
     private ChangeFragmentListener listener;
@@ -62,14 +64,14 @@ public class QuestionFragment extends Fragment {
 
     private void setTextViews() {
         questionNumber.setText("Questão " + (questionIndex + 1) + ":");
-        questionName.setText(question.getQuestion());
+        questionName.setText(question.getDescription());
     }
 
     private void setButtons() {
-        btnFirstAnswer.setText(question.getAnswers().get(0));
-        btnSecondAnswer.setText(question.getAnswers().get(1));
-        btnThirdAnswer.setText(question.getAnswers().get(2));
-        btnFourthAnswer.setText(question.getAnswers().get(3));
+        btnFirstAnswer.setText(question.getAlternatives().get(0).getDescription());
+        btnSecondAnswer.setText(question.getAlternatives().get(1).getDescription());
+        btnThirdAnswer.setText(question.getAlternatives().get(2).getDescription());
+        btnFourthAnswer.setText(question.getAlternatives().get(3).getDescription());
     }
 
     private void setLayout() {
@@ -80,17 +82,23 @@ public class QuestionFragment extends Fragment {
     }
 
     private void setCorrectAnswerTag() {
-        switch (question.getCorrectAnswer()) {
-            case 1:
+        for(Alternative alternative : question.getAlternatives()) {
+            if (alternative.isCorrect()) {
+                correctAnswer = question.getAlternatives().indexOf(alternative);
+            }
+        }
+
+        switch (correctAnswer) {
+            case 0:
                 btnFirstAnswer.setTag(CORRECT_ANSWER_TAG);
                 break;
-            case 2:
+            case 1:
                 btnSecondAnswer.setTag(CORRECT_ANSWER_TAG);
                 break;
-            case 3:
+            case 2:
                 btnThirdAnswer.setTag(CORRECT_ANSWER_TAG);
                 break;
-            case 4:
+            case 3:
                 btnFourthAnswer.setTag(CORRECT_ANSWER_TAG);
                 break;
             default:

@@ -1,6 +1,8 @@
-package br.com.zup.onboarding.view.activities;
+package br.com.zup.onboarding.view.activity;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -12,13 +14,13 @@ import java.util.List;
 
 import br.com.zup.onboarding.R;
 import br.com.zup.onboarding.contract.QuestionContract;
-import br.com.zup.onboarding.model.Question;
+import br.com.zup.onboarding.model.entity.Question;
 import br.com.zup.onboarding.presenter.QuestionPresenter;
-import br.com.zup.onboarding.view.fragments.QuestionFragment;
-import br.com.zup.onboarding.view.fragments.ResultFragment;
+import br.com.zup.onboarding.view.fragment.QuestionFragment;
+import br.com.zup.onboarding.view.fragment.ResultFragment;
 
 public class QuestionActivity extends AppCompatActivity implements QuestionFragment.ChangeFragmentListener,
-        ResultFragment.TryAgainListener, QuestionContract.View {
+        ResultFragment.TryAgainListener, ResultFragment.SendAndFinalizeListener, QuestionContract.View {
     private QuestionContract.Presenter presenter;
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
@@ -33,20 +35,26 @@ public class QuestionActivity extends AppCompatActivity implements QuestionFragm
         setContentView(R.layout.activity_question);
 
         presenter = new QuestionPresenter();
-        questions = presenter.loadQuestions();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         presenter.start(this);
-        questions = presenter.loadQuestions();
+        presenter.loadQuestions();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         presenter.stop();
+    }
+
+    @Override
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+        Log.e("Question Activity", questions.toString());
+        presenter.onQuestionsLoaded();
     }
 
     @Override
@@ -80,7 +88,7 @@ public class QuestionActivity extends AppCompatActivity implements QuestionFragm
         fragmentTransaction = fragmentManager.beginTransaction();
 
         // Test
-        fragmentTransaction.replace(R.id.question_container, new ResultFragment(questions.size(), correctAnswers, this));
+        fragmentTransaction.replace(R.id.question_container, new ResultFragment(questions.size(), correctAnswers, this, this));
         fragmentTransaction.commit();
     }
 
@@ -104,5 +112,10 @@ public class QuestionActivity extends AppCompatActivity implements QuestionFragm
     @Override
     public void resetQuestions() {
         presenter.resetQuestions();
+    }
+
+    @Override
+    public void sendQuestionResult() {
+        // Send result
     }
 }
