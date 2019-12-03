@@ -1,8 +1,6 @@
 package br.com.zup.onboarding.view.activity;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -53,7 +51,6 @@ public class QuestionActivity extends AppCompatActivity implements QuestionFragm
     @Override
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
-        Log.e("Question Activity", questions.toString());
         presenter.onQuestionsLoaded();
     }
 
