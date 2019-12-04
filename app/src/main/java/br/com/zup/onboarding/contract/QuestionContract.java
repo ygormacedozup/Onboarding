@@ -2,10 +2,11 @@ package br.com.zup.onboarding.contract;
 
 import java.util.List;
 
-import br.com.zup.onboarding.model.Question;
+import br.com.zup.onboarding.model.entity.Question;
 
 public interface QuestionContract {
     interface View {
+        void setQuestions(List<Question> questions);
         void setFragments();
         void showFragment();
         void showNextQuestion();
@@ -16,12 +17,9 @@ public interface QuestionContract {
     interface Presenter {
         void start(View view);
         void stop();
-        List<Question> loadQuestions();
+        void loadQuestions();
+        void onQuestionsLoaded();
         void changeQuestion();
         void resetQuestions();
-    }
-
-    interface Repository {
-        List<Question> getQuestions();
     }
 }
