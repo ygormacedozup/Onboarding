@@ -22,4 +22,13 @@ public interface QuestionContract {
         void changeQuestion();
         void resetQuestions();
     }
+
+    interface Repository {
+        void getQuestions(OnRequestFinishedListener listener);
+    }
+
+    interface OnRequestFinishedListener {
+        void onRequestFinished(List<Question> questions);
+        void onRequestFailed(Throwable throwable);
+    }
 }

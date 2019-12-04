@@ -4,10 +4,11 @@ import java.util.List;
 
 import br.com.zup.onboarding.contract.QuestionContract;
 import br.com.zup.onboarding.model.entity.Question;
+import br.com.zup.onboarding.model.repository.QuestionRepository;
 
-public class QuestionPresenter implements QuestionContract.Presenter, QuestionRepository.OnFinishedListener {
+public class QuestionPresenter implements QuestionContract.Presenter, QuestionContract.OnRequestFinishedListener {
     private QuestionContract.View view;
-    private QuestionRepository repository;
+    private QuestionContract.Repository repository;
 
     public QuestionPresenter() {
         repository = new QuestionRepository();
@@ -29,12 +30,12 @@ public class QuestionPresenter implements QuestionContract.Presenter, QuestionRe
     }
 
     @Override
-    public void onFinished(List<Question> questions) {
+    public void onRequestFinished(List<Question> questions) {
         view.setQuestions(questions);
     }
 
     @Override
-    public void onFailure(Throwable throwable) {
+    public void onRequestFailed(Throwable throwable) {
         throwable.printStackTrace();
     }
 

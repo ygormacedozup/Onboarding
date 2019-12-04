@@ -1,42 +1,39 @@
-package br.com.zup.onboarding.presenter;
+package br.com.zup.onboarding.model.repository;
 
 import java.util.List;
 
 import br.com.zup.onboarding.QuestionService;
 import br.com.zup.onboarding.RetrofitInitializer;
+import br.com.zup.onboarding.contract.QuestionContract;
 import br.com.zup.onboarding.model.entity.Question;
 import br.com.zup.onboarding.model.entity.StepSet;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class QuestionRepository {
+public class QuestionRepository implements QuestionContract.Repository {
     private QuestionService questionService;
 
     public QuestionRepository() {
         questionService = new RetrofitInitializer().getQuestionService();
     }
 
-    public void getQuestions(final OnFinishedListener listener) {
+    @Override
+    public void getQuestions(final QuestionContract.OnRequestFinishedListener listener) {
         Call<StepSet> call = questionService.getStepSet();
         call.enqueue(new Callback<StepSet>() {
             @Override
             public void onResponse(Call<StepSet> call, Response<StepSet> response) {
                 if (response.isSuccessful()) {
                     List<Question> questions = response.body().getSteps().get(0).getQuestions();
-                    listener.onFinished(questions);
+                    listener.onRequestFinished(questions);
                 }
             }
 
             @Override
             public void onFailure(Call<StepSet> call, Throwable t) {
-                listener.onFailure(t);
+                listener.onRequestFailed(t);
             }
         });
-    }
-
-    interface OnFinishedListener {
-        void onFinished(List<Question> questions);
-        void onFailure(Throwable throwable);
     }
 }
