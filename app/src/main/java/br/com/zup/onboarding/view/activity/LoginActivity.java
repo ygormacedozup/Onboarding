@@ -17,11 +17,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         nextView();
-
-
     }
 
-    private void nextView(){
+    private void nextView() {
 
         ImageButton imgBtn = findViewById(R.id.ac_login_gmail);
         imgBtn.setOnClickListener(new View.OnClickListener() {

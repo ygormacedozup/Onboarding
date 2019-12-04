@@ -1,5 +1,7 @@
 package br.com.zup.onboarding.model.entity;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -26,5 +28,11 @@ public class Alternative {
 
     public Boolean isCorrect() {
         return isCorrect;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "\ndescription=" + description + "\n" + "isCorrect=" + isCorrect;
     }
 }

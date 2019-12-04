@@ -38,7 +38,7 @@ public class QuestionFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.from(getContext()).inflate(R.layout.fragment_question, container, false);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_question, container, false);
         rootView = view;
 
         setLayout();

@@ -1,5 +1,7 @@
 package br.com.zup.onboarding.model.entity;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -44,5 +46,11 @@ public class Step {
 
     public List<Question> getQuestions() {
         return questions;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "questions=\n" + questions;
     }
 }
