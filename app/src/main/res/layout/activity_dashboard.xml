@@ -12,11 +12,23 @@
         android:id="@+id/db_logo_foguete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/startup_logo"
+        android:background="@drawable/startup_logo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="@dimen/margin_default"
         android:contentDescription="@string/todo"
+        />
+
+    <ImageButton
+        android:id="@+id/back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rocket_1"
+        app:layout_constraintTop_toBottomOf="@id/db_email_receive"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="@dimen/margintop_default"
+
         />
 
     <TextView
@@ -32,7 +44,7 @@
         />
 
     <TextView
-        android:id="@+id/db_txt_receive"
+        android:id="@+id/db_txt_name_receive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toRightOf="@id/db_txt_hi"
@@ -41,20 +53,22 @@
         android:textSize="@dimen/text_dashboard"
         android:hint="@string/name_txt"
         android:textColorHint="@android:color/white"
+        android:textColor="@android:color/white"
         />
 
     <TextView
         android:id="@+id/db_email_receive"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:hint="@string/db_email_receive"
         android:textColorHint="@android:color/white"
         android:textSize="18sp"
-        app:layout_constraintLeft_toRightOf="@id/db_logo_foguete"
+        app:layout_constraintLeft_toLeftOf="@id/db_txt_hi"
         app:layout_constraintTop_toBottomOf="@id/db_txt_hi"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:textColor="@android:color/white"
         />
 
     <TextView
