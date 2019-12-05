@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="br.com.zup.onboarding"
     >
     <uses-permission android:name="android.permission.INTERNET" />
@@ -18,12 +17,11 @@
         </activity>
         <activity android:name=".view.DashboardActivity"/>
         <activity android:name=".view.LoginActivity">
-             <!-- <intent-filter>
+             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter> -->
         </activity>
     </application>
-
 </manifest>

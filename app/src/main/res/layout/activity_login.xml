@@ -32,6 +32,7 @@
         android:textColor="@android:color/white"
         android:textSize="@dimen/text_login_onboarding"
         />
+  
     <com.google.android.gms.common.SignInButton
         android:id="@+id/ac_login_gmail"
         android:layout_width="wrap_content"
