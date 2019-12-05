@@ -1,5 +1,7 @@
 package br.com.zup.onboarding.model.entity;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -26,5 +28,11 @@ public class Question {
 
     public List<Alternative> getAlternatives() {
         return alternatives;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "description=" + description + "\n" + "alternatives=" + alternatives;
     }
 }

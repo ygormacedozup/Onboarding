@@ -27,6 +27,12 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+<<<<<<< HEAD
+        nextView();
+    }
+
+    private void nextView() {
+=======
 
         SignInButton signInButton = findViewById(R.id.ac_login_gmail);
         signInButton.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
+>>>>>>> 8b32a60ed848c3e008b2b904bb070fcd70a62fc3
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
