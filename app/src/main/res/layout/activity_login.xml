@@ -32,8 +32,8 @@
         android:textColor="@android:color/white"
         android:textSize="@dimen/text_login_onboarding"
         />
-
-    <ImageButton
+  
+    <com.google.android.gms.common.SignInButton
         android:id="@+id/ac_login_gmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,7 +41,6 @@
         app:layout_constraintTop_toBottomOf="@id/ac_text_login"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:background="@drawable/image_gmail"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
