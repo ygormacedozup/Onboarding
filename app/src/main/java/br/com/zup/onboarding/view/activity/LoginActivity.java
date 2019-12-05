@@ -70,4 +70,6 @@ public class LoginActivity extends AppCompatActivity {
             Log.w("Erro", "Ao tentar logar, tente novamente." + e.getStatusCode());
         }
     }
+
+    // for up
 }
