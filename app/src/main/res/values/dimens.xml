@@ -31,4 +31,6 @@
     <dimen name="progress_container_height">250dp</dimen>
     <dimen name="progress_bar_height">10dp</dimen>
     <dimen name="progress_bar_side_margin">5dp</dimen>
+    <dimen name="ball_default">50dp</dimen>
+    <dimen name="frame_default_top">62dp</dimen>
 </resources>
