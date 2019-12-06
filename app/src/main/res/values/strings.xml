@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Onboarding</string>
     <string name="logo_zup">logo</string>
-    <string name="ac_main_onboarding">Onbording</string>
+    <string name="ac_main_onboarding">Onboarding</string>
     <string name="txt_hi">Olá,</string>
     <string name="txt_default">Zezinho das Bolacha</string>
     <string name="name_txt">\"Nome\"</string>
@@ -17,4 +17,5 @@
     <string name="try_again_label">Tentar novamente</string>
     <string name="send_and_finalize_label">Enviar e terminar</string>
     <string name="answer_quiz_label">Responder Quiz</string>
+    <string name="signOut">Saindo do App</string>
 </resources>

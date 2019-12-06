@@ -33,4 +33,5 @@
     <dimen name="progress_bar_side_margin">5dp</dimen>
     <dimen name="ball_default">50dp</dimen>
     <dimen name="frame_default_top">62dp</dimen>
+    <dimen name="ac_top_margintop">150dp</dimen>
 </resources>

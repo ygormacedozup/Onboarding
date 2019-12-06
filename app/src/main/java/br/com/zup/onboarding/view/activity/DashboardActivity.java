@@ -73,7 +73,7 @@ public class DashboardActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         Intent newIntent = new Intent(DashboardActivity.this, LoginActivity.class);
                         startActivity(newIntent);
-                        Toast.makeText(DashboardActivity.this, "Saindo do App", Toast.LENGTH_LONG).show();
+                        Toast.makeText(DashboardActivity.this, R.string.signOut, Toast.LENGTH_LONG).show();
                     }
                 });
     }
