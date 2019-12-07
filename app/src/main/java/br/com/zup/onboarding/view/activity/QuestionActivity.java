@@ -18,7 +18,7 @@ import br.com.zup.onboarding.view.fragment.QuestionFragment;
 import br.com.zup.onboarding.view.fragment.ResultFragment;
 
 public class QuestionActivity extends AppCompatActivity implements QuestionFragment.ChangeFragmentListener,
-        ResultFragment.TryAgainListener, ResultFragment.SendAndFinalizeListener, QuestionContract.View {
+        ResultFragment.SendAndFinalizeListener, QuestionContract.View {
     private QuestionContract.Presenter presenter;
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
@@ -85,16 +85,9 @@ public class QuestionActivity extends AppCompatActivity implements QuestionFragm
         fragmentTransaction = fragmentManager.beginTransaction();
 
         // Test
-        fragmentTransaction.replace(R.id.question_container, new ResultFragment(questions.size(), correctAnswers, this, this));
+        fragmentTransaction.replace(R.id.question_container, new ResultFragment(questions.size(),
+                correctAnswers, this));
         fragmentTransaction.commit();
-    }
-
-    @Override
-    public void showResetQuestions() {
-        correctAnswers = 0;
-        currentFragment = 0;
-
-        showFragment();
     }
 
     @Override
@@ -104,11 +97,6 @@ public class QuestionActivity extends AppCompatActivity implements QuestionFragm
         }
 
         presenter.changeQuestion();
-    }
-
-    @Override
-    public void resetQuestions() {
-        presenter.resetQuestions();
     }
 
     @Override
