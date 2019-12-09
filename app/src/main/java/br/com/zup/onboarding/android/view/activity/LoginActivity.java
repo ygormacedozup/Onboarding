@@ -1,7 +1,6 @@
-package br.com.zup.onboarding.view.activity;
+package br.com.zup.onboarding.android.view.activity;
 
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,7 +15,7 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
-import br.com.zup.onboarding.R;
+import br.com.zup.onboarding.android.R;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -67,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            Intent intent = new Intent(LoginActivity.this,DashboardActivity.class);
+            Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
             startActivity(intent);
 
         } catch (ApiException e) {

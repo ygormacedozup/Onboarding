@@ -1,12 +1,12 @@
-package br.com.zup.onboarding.model.repository;
+package br.com.zup.onboarding.android.model.repository;
 
 import java.util.List;
 
-import br.com.zup.onboarding.QuestionService;
-import br.com.zup.onboarding.RetrofitInitializer;
-import br.com.zup.onboarding.contract.QuestionContract;
-import br.com.zup.onboarding.model.entity.Question;
-import br.com.zup.onboarding.model.entity.StepSet;
+import br.com.zup.onboarding.android.QuestionService;
+import br.com.zup.onboarding.android.RetrofitInitializer;
+import br.com.zup.onboarding.android.contract.QuestionContract;
+import br.com.zup.onboarding.android.model.entity.Question;
+import br.com.zup.onboarding.android.model.entity.StepSet;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

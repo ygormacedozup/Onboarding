@@ -1,8 +1,8 @@
-package br.com.zup.onboarding.contract;
+package br.com.zup.onboarding.android.contract;
 
 import java.util.List;
 
-import br.com.zup.onboarding.model.entity.Question;
+import br.com.zup.onboarding.android.model.entity.Question;
 
 public interface QuestionContract {
     interface View {

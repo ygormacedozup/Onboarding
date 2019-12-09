@@ -1,4 +1,4 @@
-package br.com.zup.onboarding.view.fragment;
+package br.com.zup.onboarding.android.view.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,8 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import br.com.zup.onboarding.R;
+import br.com.zup.onboarding.android.R;
 
 public class ResultFragment extends Fragment {
     private View view;

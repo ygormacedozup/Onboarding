@@ -1,4 +1,4 @@
-package br.com.zup.onboarding.model.entity;
+package br.com.zup.onboarding.android.model.entity;
 
 import androidx.annotation.NonNull;
 

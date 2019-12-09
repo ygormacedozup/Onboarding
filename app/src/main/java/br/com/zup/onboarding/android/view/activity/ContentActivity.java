@@ -1,13 +1,14 @@
-package br.com.zup.onboarding.view.activity;
-
-import androidx.appcompat.app.AppCompatActivity;
+package br.com.zup.onboarding.android.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import br.com.zup.onboarding.R;
+import androidx.appcompat.app.AppCompatActivity;
+
+import br.com.zup.onboarding.android.R;
+
 
 public class ContentActivity extends AppCompatActivity {
     private Button btnAnswerQuestions;

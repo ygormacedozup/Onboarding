@@ -1,10 +1,10 @@
-package br.com.zup.onboarding.presenter;
+package br.com.zup.onboarding.android.presenter;
 
 import java.util.List;
 
-import br.com.zup.onboarding.contract.QuestionContract;
-import br.com.zup.onboarding.model.entity.Question;
-import br.com.zup.onboarding.model.repository.QuestionRepository;
+import br.com.zup.onboarding.android.contract.QuestionContract;
+import br.com.zup.onboarding.android.model.entity.Question;
+import br.com.zup.onboarding.android.model.repository.QuestionRepository;
 
 public class QuestionPresenter implements QuestionContract.Presenter, QuestionContract.OnRequestFinishedListener {
     private QuestionContract.View view;
