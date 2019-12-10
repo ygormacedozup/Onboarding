@@ -17,50 +17,32 @@ public class ResultFragment extends Fragment {
     private final String RESULT_NUMBER_SEPARATOR = "/";
     private int numberOfQuestions;
     private int correctAnswers;
-    private TryAgainListener tryAgainListener;
     private SendAndFinalizeListener sendAndFinalizeListener;
-    private Button btnTryAgain;
     private Button btnSendAndFinalize;
 
-    public ResultFragment(int numberOfQuestions, int correctAnswers, TryAgainListener tryAgainListener, SendAndFinalizeListener sendAndFinalizeListener) {
+    public ResultFragment(int numberOfQuestions, int correctAnswers, SendAndFinalizeListener sendAndFinalizeListener) {
         this.numberOfQuestions = numberOfQuestions;
         this.correctAnswers = correctAnswers;
-        this.tryAgainListener = tryAgainListener;
         this.sendAndFinalizeListener = sendAndFinalizeListener;
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_result, null, false);
+        View view = inflater.from(getContext()).inflate(R.layout.fragment_result, container, false);
         this.view = view;
 
         TextView resultNumber = view.findViewById(R.id.result_number);
         resultNumber.setText(correctAnswers + RESULT_NUMBER_SEPARATOR + numberOfQuestions);
 
-        setTryAgainButton();
         setSendAndFinalizeButton();
 
         return view;
     }
 
-    private void setTryAgainButton() {
-        btnTryAgain = view.findViewById(R.id.try_again);
-        setTryAgainClickListener();
-    }
-
     private void setSendAndFinalizeButton() {
         btnSendAndFinalize = view.findViewById(R.id.send_and_finalize);
         setSendAndFinalizeClickListener();
-    }
-
-    private void setTryAgainClickListener() {
-        btnTryAgain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tryAgainListener.resetQuestions();
-            }
-        });
     }
 
     private void setSendAndFinalizeClickListener() {
@@ -70,10 +52,6 @@ public class ResultFragment extends Fragment {
                 sendAndFinalizeListener.sendQuestionResult();
             }
         });
-    }
-
-    public interface TryAgainListener {
-        void resetQuestions();
     }
 
     public interface SendAndFinalizeListener {

@@ -11,7 +11,6 @@ public interface QuestionContract {
         void showFragment();
         void showNextQuestion();
         void showResult();
-        void showResetQuestions();
     }
 
     interface Presenter {
@@ -20,7 +19,6 @@ public interface QuestionContract {
         void loadQuestions();
         void onQuestionsLoaded();
         void changeQuestion();
-        void resetQuestions();
     }
 
     interface Repository {

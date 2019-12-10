@@ -43,28 +43,16 @@
         app:layout_constraintTop_toBottomOf="@id/result_number" />
 
     <Button
-        android:id="@+id/try_again"
-        android:layout_width="@dimen/result_buttons_width"
-        android:layout_height="@dimen/result_buttons_height"
-        android:layout_marginTop="@dimen/result_buttons_margin_top"
-        android:text="@string/try_again_label"
-        android:textColor="@color/white"
-        android:background="@drawable/btn_try_again_selector"
-        app:layout_constraintLeft_toLeftOf="@id/correct_answers"
-        app:layout_constraintRight_toRightOf="@id/correct_answers"
-        app:layout_constraintTop_toTopOf="@id/correct_answers" />
-
-    <Button
         android:id="@+id/send_and_finalize"
         android:layout_width="@dimen/result_buttons_width"
         android:layout_height="@dimen/result_buttons_height"
         android:layout_marginTop="@dimen/result_buttons_margin_top"
+        android:background="@drawable/btn_send_and_finalize_selector"
         android:text="@string/send_and_finalize_label"
         android:textColor="@color/white"
-        android:background="@drawable/btn_send_and_finalize_selector"
-        app:layout_constraintLeft_toLeftOf="@id/try_again"
-        app:layout_constraintRight_toRightOf="@id/try_again"
-        app:layout_constraintTop_toTopOf="@id/try_again" />
+        app:layout_constraintLeft_toLeftOf="@id/correct_answers"
+        app:layout_constraintRight_toRightOf="@id/correct_answers"
+        app:layout_constraintTop_toTopOf="@id/correct_answers" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
