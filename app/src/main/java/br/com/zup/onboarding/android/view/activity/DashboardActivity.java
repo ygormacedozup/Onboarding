@@ -82,7 +82,7 @@ public class DashboardActivity extends AppCompatActivity {
         seeLater.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DashboardActivity.this, ContentActivity.class);
+                Intent intent = new Intent(DashboardActivity.this, QuestionActivity.class);
                 startActivity(intent);
             }
         });
