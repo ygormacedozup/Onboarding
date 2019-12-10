@@ -1,4 +1,4 @@
-package br.com.zup.onboarding.view.activity;
+package br.com.zup.onboarding.android.view.activity;
 
 import android.os.Bundle;
 
@@ -10,12 +10,12 @@ import androidx.fragment.app.FragmentTransaction;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.zup.onboarding.R;
-import br.com.zup.onboarding.contract.QuestionContract;
-import br.com.zup.onboarding.model.entity.Question;
-import br.com.zup.onboarding.presenter.QuestionPresenter;
-import br.com.zup.onboarding.view.fragment.QuestionFragment;
-import br.com.zup.onboarding.view.fragment.ResultFragment;
+import br.com.zup.onboarding.android.contract.QuestionContract;
+import br.com.zup.onboarding.android.model.entity.Question;
+import br.com.zup.onboarding.android.presenter.QuestionPresenter;
+import br.com.zup.onboarding.android.view.fragment.QuestionFragment;
+import br.com.zup.onboarding.android.view.fragment.ResultFragment;
+import br.com.zup.onboarding.android.R;
 
 public class QuestionActivity extends AppCompatActivity implements QuestionFragment.ChangeFragmentListener,
         ResultFragment.SendAndFinalizeListener, QuestionContract.View {

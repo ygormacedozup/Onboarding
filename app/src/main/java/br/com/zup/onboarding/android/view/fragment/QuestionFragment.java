@@ -1,4 +1,4 @@
-package br.com.zup.onboarding.view.fragment;
+package br.com.zup.onboarding.android.view.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,9 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import br.com.zup.onboarding.R;
-import br.com.zup.onboarding.model.entity.Alternative;
-import br.com.zup.onboarding.model.entity.Question;
+import br.com.zup.onboarding.android.model.entity.Alternative;
+import br.com.zup.onboarding.android.model.entity.Question;
+import br.com.zup.onboarding.android.R;
 
 public class QuestionFragment extends Fragment {
     private int questionIndex;

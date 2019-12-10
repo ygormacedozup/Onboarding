@@ -1,4 +1,4 @@
-package br.com.zup.onboarding.view.activity;
+package br.com.zup.onboarding.android.view.activity;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -12,7 +12,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -21,7 +20,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
-import br.com.zup.onboarding.R;
+import br.com.zup.onboarding.android.R;
 
 public class DashboardActivity extends AppCompatActivity {
 
