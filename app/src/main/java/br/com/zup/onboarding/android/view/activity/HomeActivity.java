@@ -22,7 +22,7 @@ import com.google.android.gms.tasks.Task;
 
 import br.com.zup.onboarding.android.R;
 
-public class DashboardActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
     GoogleSignInClient mGoogleSignInClient;
 
@@ -70,9 +70,9 @@ public class DashboardActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Intent newIntent = new Intent(DashboardActivity.this, LoginActivity.class);
+                        Intent newIntent = new Intent(HomeActivity.this, LoginActivity.class);
                         startActivity(newIntent);
-                        Toast.makeText(DashboardActivity.this, R.string.signOut, Toast.LENGTH_LONG).show();
+                        Toast.makeText(HomeActivity.this, R.string.signOut, Toast.LENGTH_LONG).show();
                     }
                 });
     }
@@ -82,7 +82,7 @@ public class DashboardActivity extends AppCompatActivity {
         seeLater.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DashboardActivity.this, QuestionActivity.class);
+                Intent intent = new Intent(HomeActivity.this, QuestionActivity.class);
                 startActivity(intent);
             }
         });

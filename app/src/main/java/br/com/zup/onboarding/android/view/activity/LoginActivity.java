@@ -65,13 +65,11 @@ public class LoginActivity extends AppCompatActivity {
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
+            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
             startActivity(intent);
-
         } catch (ApiException e) {
-            Log.w("Erro", "Ao tentar logar, tente novamente." + e.getStatusCode());
+            Log.w("Erro", "Ao tentar logar, tente novamente " + e.getStatusCode());
         }
     }
-
     // for up
 }
