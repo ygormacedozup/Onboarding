@@ -21,6 +21,8 @@
         android:layout_marginTop="@dimen/welcome_size"
         />
 
+
+<!--    AAA-->
     <TextView
         android:id="@+id/ac_cnt_pod_project"
         android:layout_width="wrap_content"
