@@ -2,7 +2,14 @@ package br.com.zup.onboarding.android.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
 import br.com.zup.onboarding.android.R;
 
@@ -12,5 +19,25 @@ public class ContentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content);
+
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+        if (acct != null) {
+
+            TextView nameZuuper = findViewById(R.id.name_zuper_cnt);
+            String personName = acct.getDisplayName();
+            nameZuuper.setText(personName);
+
+            nextQuestions();
+        }
     }
+        private void nextQuestions() {
+            Button seeLater = findViewById(R.id.btn_content);
+            seeLater.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(ContentActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
 }

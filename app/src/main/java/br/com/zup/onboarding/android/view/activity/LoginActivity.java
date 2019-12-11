@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -65,9 +66,10 @@ public class LoginActivity extends AppCompatActivity {
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            Intent intent = new Intent(LoginActivity.this, ContentActivity.class);
             startActivity(intent);
         } catch (ApiException e) {
+            Toast.makeText(LoginActivity.this,"Por favor, faça o login com o e-mail da Zup", Toast.LENGTH_LONG).show();
             Log.w("Erro", "Ao tentar logar, tente novamente " + e.getStatusCode());
         }
     }
