@@ -46,7 +46,7 @@ public class QuestionPresenter implements QuestionContract.Presenter, QuestionCo
     }
 
     @Override
-    public void changeQuestion() {
-        view.showNextQuestion();
+    public void onQuestionsFinalized(int correctAnswers) {
+        view.showResult(correctAnswers);
     }
 }

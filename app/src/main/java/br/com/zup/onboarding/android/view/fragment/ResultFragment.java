@@ -29,7 +29,7 @@ public class ResultFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.from(getContext()).inflate(R.layout.fragment_result, container, false);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_result, container, false);
         this.view = view;
 
         TextView resultNumber = view.findViewById(R.id.result_number);

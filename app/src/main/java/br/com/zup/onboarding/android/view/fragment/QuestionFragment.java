@@ -11,28 +11,28 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.zup.onboarding.android.R;
 import br.com.zup.onboarding.android.model.entity.Alternative;
 import br.com.zup.onboarding.android.model.entity.Question;
-import br.com.zup.onboarding.android.R;
 
 public class QuestionFragment extends Fragment {
-    private int questionIndex;
-    private Question question;
-    private int correctAnswer;
     private final String CORRECT_ANSWER_TAG = "CORRECT";
     private View rootView;
-    private ChangeFragmentListener listener;
     private TextView questionNumber;
     private TextView questionName;
-    private Button btnFirstAnswer;
-    private Button btnSecondAnswer;
-    private Button btnThirdAnswer;
-    private Button btnFourthAnswer;
+    private List<Button> answerButtons;
+    private List<Question> questions;
+    private OnQuestionsFinalizedListener finalizedListener;
+    private int currentQuestion = 0;
+    private int correctAnswers = 0;
 
-    public QuestionFragment(int questionIndex, Question question, ChangeFragmentListener listener) {
-        this.questionIndex = questionIndex;
-        this.question = question;
-        this.listener = listener;
+    public QuestionFragment(List<Question> questions, OnQuestionsFinalizedListener finalizedListener) {
+        this.questions = questions;
+        this.finalizedListener = finalizedListener;
+        answerButtons = new ArrayList<>();
     }
 
     @Nullable
@@ -41,11 +41,9 @@ public class QuestionFragment extends Fragment {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_question, container, false);
         rootView = view;
 
-        setLayout();
-        setCorrectAnswerTag();
-        setAnswerBackground();
-
-        setAnswersClickListeners();
+        initializeTextViews();
+        initializeButtons();
+        showCurrentQuestion();
 
         return view;
     }
@@ -56,144 +54,86 @@ public class QuestionFragment extends Fragment {
     }
 
     private void initializeButtons() {
-        btnFirstAnswer = rootView.findViewById(R.id.btn_first_answer);
-        btnSecondAnswer = rootView.findViewById(R.id.btn_second_answer);
-        btnThirdAnswer = rootView.findViewById(R.id.btn_third_answer);
-        btnFourthAnswer = rootView.findViewById(R.id.btn_fourth_answer);
+        answerButtons.add((Button) rootView.findViewById(R.id.btn_first_answer));
+        answerButtons.add((Button) rootView.findViewById(R.id.btn_second_answer));
+        answerButtons.add((Button) rootView.findViewById(R.id.btn_third_answer));
+        answerButtons.add((Button) rootView.findViewById(R.id.btn_fourth_answer));
     }
 
-    private void setTextViews() {
-        questionNumber.setText("Questão " + (questionIndex + 1) + ":");
+    private void setTextViews(Question question) {
+        questionNumber.setText("Questão " + (currentQuestion + 1) + ":");
         questionName.setText(question.getDescription());
     }
 
-    private void setButtons() {
-        btnFirstAnswer.setText(question.getAlternatives().get(0).getDescription());
-        btnSecondAnswer.setText(question.getAlternatives().get(1).getDescription());
-        btnThirdAnswer.setText(question.getAlternatives().get(2).getDescription());
-        btnFourthAnswer.setText(question.getAlternatives().get(3).getDescription());
+    private void setButtons(Question question) {
+        for (int i = 0; i < answerButtons.size(); i++) {
+            answerButtons.get(i).setText(question.getAlternatives().get(i).getDescription());
+        }
     }
 
-    private void setLayout() {
-        initializeTextViews();
-        initializeButtons();
-        setTextViews();
-        setButtons();
-    }
+    private void setAnswersClickListeners() {
+        Question question = questions.get(currentQuestion);
 
-    private void setCorrectAnswerTag() {
-        for(Alternative alternative : question.getAlternatives()) {
+        for (Alternative alternative : question.getAlternatives()) {
             if (alternative.isCorrect()) {
-                correctAnswer = question.getAlternatives().indexOf(alternative);
+                int correctAnswer = question.getAlternatives().indexOf(alternative);
+                answerButtons.get(correctAnswer).setTag(CORRECT_ANSWER_TAG);
             }
         }
 
-        switch (correctAnswer) {
-            case 0:
-                btnFirstAnswer.setTag(CORRECT_ANSWER_TAG);
-                break;
-            case 1:
-                btnSecondAnswer.setTag(CORRECT_ANSWER_TAG);
-                break;
-            case 2:
-                btnThirdAnswer.setTag(CORRECT_ANSWER_TAG);
-                break;
-            case 3:
-                btnFourthAnswer.setTag(CORRECT_ANSWER_TAG);
-                break;
-            default:
-                break;
+        for (int i = 0; i < answerButtons.size(); i++) {
+            answerButtons.get(i).setOnClickListener(getAnswerClickListener());
+        }
+    }
+
+    private void removePreviousCorrectAnswer() {
+        for (int i = 0; i < answerButtons.size(); i++) {
+            answerButtons.get(i).setTag(null);
+            answerButtons.get(i).setOnClickListener(null);
         }
     }
 
     private void setAnswerBackground() {
-        int btnFirstAnswerBackground = (btnFirstAnswer.getTag() != null) ? R.drawable.btn_correct_answer_selector : R.drawable.btn_incorrect_answer_selector;
-        btnFirstAnswer.setBackgroundResource(btnFirstAnswerBackground);
-
-        int btnSecondAnswerBackground = (btnSecondAnswer.getTag() != null) ? R.drawable.btn_correct_answer_selector : R.drawable.btn_incorrect_answer_selector;
-        btnSecondAnswer.setBackgroundResource(btnSecondAnswerBackground);
-
-        int btnThirdAnswerBackground = (btnThirdAnswer.getTag() != null) ? R.drawable.btn_correct_answer_selector : R.drawable.btn_incorrect_answer_selector;
-        btnThirdAnswer.setBackgroundResource(btnThirdAnswerBackground);
-
-        int btnFourthAnswerBackground = (btnFourthAnswer.getTag() != null) ? R.drawable.btn_correct_answer_selector : R.drawable.btn_incorrect_answer_selector;
-        btnFourthAnswer.setBackgroundResource(btnFourthAnswerBackground);
+        for (Button button : answerButtons) {
+            int background = (button.getTag() != null) ? R.drawable.btn_correct_answer_selector
+                    : R.drawable.btn_incorrect_answer_selector;
+            button.setBackgroundResource(background);
+        }
     }
 
-    private void setAnswersClickListeners() {
-        setCorrectAnswerClickListener();
-
-        setFirstAnswerClickListener();
-        setSecondAnswerClickListener();
-        setThirdAnswerClickListener();
-        setFourthAnswerClickListener();
-    }
-
-    private void setCorrectAnswerClickListener() {
-        View correctAnswerView = rootView.findViewWithTag(CORRECT_ANSWER_TAG);
-
-        removeAnswerDefaultClickListener(correctAnswerView);
-
-        correctAnswerView.setOnClickListener(new View.OnClickListener() {
+    private View.OnClickListener getAnswerClickListener() {
+        return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.changeFragment(true);
+                if (v == rootView.findViewWithTag(CORRECT_ANSWER_TAG)) {
+                    correctAnswers++;
+                }
+
+                if (isFinalized()) {
+                    finalizedListener.onFinalized(correctAnswers);
+                } else {
+                    currentQuestion++;
+                    showCurrentQuestion();
+                }
             }
-        });
+        };
     }
 
-    private void setFirstAnswerClickListener() {
-        if (!btnFirstAnswer.hasOnClickListeners()) {
-            btnFirstAnswer.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.changeFragment(false);
-                }
-            });
-        }
+    private void showCurrentQuestion() {
+        Question question = questions.get(currentQuestion);
+        setTextViews(question);
+        setButtons(question);
+
+        removePreviousCorrectAnswer();
+        setAnswersClickListeners();
+        setAnswerBackground();
     }
 
-    private void setSecondAnswerClickListener() {
-        if (!btnSecondAnswer.hasOnClickListeners()) {
-            btnSecondAnswer.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.changeFragment(false);
-                }
-            });
-        }
+    private boolean isFinalized() {
+        return currentQuestion == (questions.size() - 1);
     }
 
-    private void setThirdAnswerClickListener() {
-        if (!btnThirdAnswer.hasOnClickListeners()) {
-            btnThirdAnswer.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.changeFragment(false);
-                }
-            });
-        }
-    }
-
-    private void setFourthAnswerClickListener() {
-        if (!btnFourthAnswer.hasOnClickListeners()) {
-            btnFourthAnswer.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.changeFragment(false);
-                }
-            });
-        }
-    }
-
-    private void removeAnswerDefaultClickListener(View correctAnswerView) {
-        // Remove default click listener
-        if (correctAnswerView.hasOnClickListeners()) {
-            correctAnswerView.setOnClickListener(null);
-        }
-    }
-
-    public interface ChangeFragmentListener {
-        void changeFragment(boolean isCorrectAnswer);
+    public interface OnQuestionsFinalizedListener {
+        void onFinalized(int correctAnswers);
     }
 }

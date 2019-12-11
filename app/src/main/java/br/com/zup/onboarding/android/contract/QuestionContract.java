@@ -9,8 +9,7 @@ public interface QuestionContract {
         void setQuestions(List<Question> questions);
         void setFragments();
         void showFragment();
-        void showNextQuestion();
-        void showResult();
+        void showResult(int correctAnswers);
     }
 
     interface Presenter {
@@ -18,7 +17,7 @@ public interface QuestionContract {
         void stop();
         void loadQuestions();
         void onQuestionsLoaded();
-        void changeQuestion();
+        void onQuestionsFinalized(int correctAnswers);
     }
 
     interface Repository {
