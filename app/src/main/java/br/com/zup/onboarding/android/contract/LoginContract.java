@@ -9,6 +9,7 @@ public interface LoginContract {
         void setLoginButtonClickListener();
         void startSignInIntent();
         void navigateToHome(GoogleSignInAccount account);
+        void showErrorMessage(String errorMessage);
     }
 
     interface Presenter {
