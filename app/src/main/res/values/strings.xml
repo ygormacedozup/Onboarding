@@ -26,6 +26,8 @@
     <string name="pod_txt">POD</string>
     <string name="say_pod_text">Digite...</string>
     <string name="name_zuper_cnt">nome zupper</string>
+    <string name="say_here_cnt">digite...</string>
+    <string name="continue_home_txt">Bora continuar seu onboarding?</string>
 
 
 </resources>
