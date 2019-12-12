@@ -25,41 +25,69 @@ import br.com.zup.onboarding.android.Utils;
 
 public class HomeActivity extends AppCompatActivity {
 
-    GoogleSignInClient mGoogleSignInClient;
+    private GoogleSignInClient mGoogleSignInClient;
+    private ImageView photoZupper;
+    private TextView nameZupper;
+    private ImageView btnBack;
+    private TextView textOnboarding;
+    private TextView textHello;
+    private String personName;
+    private Uri personPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        setGso();
+        nextQuestions();
+        setViews();
+        setUserPhoto();
+        setBackButtonClickListenner();
+        setText();
+    }
+
+    private void setGso() {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
-        mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
-        ImageView photoZupper = findViewById(R.id.db_logo_foguete);
-        TextView nameZuuper = findViewById(R.id.db_txt_receive);
-        nameZuuper.setTypeface(Utils.getFont(this));
-        ImageView btnBack = findViewById(R.id.back_btn);
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+        if (acct != null) {
+            personName = acct.getDisplayName();
+            personPhoto = acct.getPhotoUrl();
+        }
+    }
+
+    private void setUserPhoto() {
+        Glide.with(this).load(String.valueOf(personPhoto)).circleCrop().into(photoZupper);
+    }
+
+    private void setBackButtonClickListenner() {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (v.getId() == R.id.back_btn) {
+                if (v.getId() == R.id.home_back_btn) {
                     signOut();
                 }
             }
         });
+    }
 
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-        if (acct != null) {
-            String personName = acct.getDisplayName();
-            Uri personPhoto = acct.getPhotoUrl();
+    private void setViews() {
+        photoZupper = findViewById(R.id.home_logo_rocket);
+        nameZupper = findViewById(R.id.home_txt_receive);
+        btnBack = findViewById(R.id.home_back_btn);
+        textOnboarding = findViewById(R.id.home_text_onboarding);
+        textHello = findViewById(R.id.home_txt_hello);
+    }
 
-            nameZuuper.setText(personName);
-
-            Glide.with(this).load(String.valueOf(personPhoto)).circleCrop().into(photoZupper);
-
-            nextQuestions();
-        }
+    private void setText() {
+        nameZupper.setTypeface(Utils.getFont(this));
+        textOnboarding.setTypeface(Utils.getFont(this));
+        textHello.setTypeface(Utils.getFont(this));
+        nameZupper.setText(personName);
     }
 
     private void signOut() {
