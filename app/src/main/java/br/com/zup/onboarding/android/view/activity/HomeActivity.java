@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import br.com.zup.onboarding.android.R;
+import br.com.zup.onboarding.android.Utils;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -32,6 +33,7 @@ public class HomeActivity extends AppCompatActivity {
 
         ImageView photoZupper = findViewById(R.id.db_logo_foguete);
         TextView nameZuuper = findViewById(R.id.db_txt_receive);
+        nameZuuper.setTypeface(Utils.getFont(this));
 //        ImageView btnBack = findViewById(R.id.back_btn);
 //        btnBack.setOnClickListener(new View.OnClickListener() {
 //            @Override

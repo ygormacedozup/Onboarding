@@ -28,6 +28,9 @@
     <string name="name_zuper_cnt">nome zupper</string>
     <string name="say_here_cnt">digite...</string>
     <string name="continue_home_txt">Bora continuar seu onboarding?</string>
+    <string name="cultura_txt">Cultura</string>
+    <string name="tecnologia_txt">Tecnologia</string>
+    <string name="estrutura_txt">Estrutura</string>
 
 
 </resources>
