@@ -16,7 +16,6 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
@@ -31,33 +30,24 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
         ImageView photoZupper = findViewById(R.id.db_logo_foguete);
         TextView nameZuuper = findViewById(R.id.db_txt_receive);
-        TextView emailZuuper = findViewById(R.id.db_email_receive);
-        ImageView btnBack = findViewById(R.id.back_btn);
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (v.getId() == R.id.back_btn) {
-                    signOut();
-                }
-            }
-        });
+//        ImageView btnBack = findViewById(R.id.back_btn);
+//        btnBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (v.getId() == R.id.back_btn) {
+//                    signOut();
+//                }
+//            }
+//        });
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         if (acct != null) {
             String personName = acct.getDisplayName();
-            String personEmail = acct.getEmail();
             Uri personPhoto = acct.getPhotoUrl();
 
             nameZuuper.setText(personName);
-            emailZuuper.setText(personEmail);
 
             Glide.with(this).load(String.valueOf(personPhoto)).circleCrop().into(photoZupper);
 
@@ -65,17 +55,17 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-    private void signOut() {
-        mGoogleSignInClient.signOut()
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Intent newIntent = new Intent(HomeActivity.this, LoginActivity.class);
-                        startActivity(newIntent);
-                        Toast.makeText(HomeActivity.this, R.string.signOut, Toast.LENGTH_LONG).show();
-                    }
-                });
-    }
+//    private void signOut() {
+//        mGoogleSignInClient.signOut()
+//                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        Intent newIntent = new Intent(HomeActivity.this, LoginActivity.class);
+//                        startActivity(newIntent);
+//                        Toast.makeText(HomeActivity.this, R.string.signOut, Toast.LENGTH_LONG).show();
+//                    }
+//                });
+//    }
 
     private void nextQuestions() {
         Button seeLater = findViewById(R.id.db_continue_button);

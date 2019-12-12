@@ -18,11 +18,16 @@
     <string name="send_and_finalize_label">Enviar e terminar</string>
     <string name="answer_quiz_label">Responder Quiz</string>
     <string name="signOut">Saindo do App</string>
-    <string name="zup_email">569880816128-440ie7lg523ngphpa2g7rmaosnh7t1sa.apps.googleusercontent.com</string>
     <string name="welcome_txt">Seja bem vindo !</string>
-    <string name="welcome_project_txt">Insira aqui os dados do seu                  projeto e P.O.D</string>
+    <string name="welcome_project_txt">Antes de iniciarmos, pode me informar seu projeto e POD?</string>
     <string name="cadastro_content">Cadastrar</string>
-    <string name="project_cnt">Projeto:</string>
+    <string name="project_cnt">Projeto</string>
+    <string name="project_hint">Cliente/Projeto</string>
+    <string name="pod_txt">POD</string>
+    <string name="say_pod_text">Digite...</string>
+    <string name="name_zuper_cnt">nome zupper</string>
+    <string name="say_here_cnt">digite...</string>
+    <string name="continue_home_txt">Bora continuar seu onboarding?</string>
 
 
 </resources>
