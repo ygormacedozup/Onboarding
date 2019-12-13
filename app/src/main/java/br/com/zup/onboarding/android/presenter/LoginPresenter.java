@@ -14,7 +14,6 @@ import br.com.zup.onboarding.android.contract.LoginContract;
 public class LoginPresenter implements LoginContract.Presenter {
     private LoginContract.View view;
     private GoogleAuthentication authentication;
-    private final String ERROR_MESSAGE = "Por favor, faça o login com email zup!";
 
     public LoginPresenter(Activity activity) {
         authentication = new GoogleAuthentication(activity);
@@ -49,6 +48,7 @@ public class LoginPresenter implements LoginContract.Presenter {
             GoogleSignInAccount account = task.getResult(ApiException.class);
             view.navigateToHome(account);
         } catch (ApiException e) {
+            String ERROR_MESSAGE = "Por favor, faça o login com email zup!";
             view.showErrorMessage(ERROR_MESSAGE);
         }
     }
