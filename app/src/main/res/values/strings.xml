@@ -31,6 +31,17 @@
     <string name="cultura_txt">Cultura</string>
     <string name="tecnologia_txt">Tecnologia</string>
     <string name="estrutura_txt">Estrutura</string>
+    <string name="localizao_txt">Localização:</string>
 
+
+    <string-array name="offices_zup">
+        <item> DF: Brasília </item>
+        <item> MG: Uberlândia</item>
+        <item> MG: Belo Horizonte</item>
+        <item> SP: Campinas</item>
+        <item> SP: São José do Rio Preto </item>
+        <item> SP: São Paulo </item>
+        <item> SC: Joinville </item>
+    </string-array>
 
 </resources>
