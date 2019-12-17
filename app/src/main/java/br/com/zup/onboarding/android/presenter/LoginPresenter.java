@@ -10,14 +10,19 @@ import com.google.android.gms.tasks.Task;
 
 import br.com.zup.onboarding.android.GoogleAuthentication;
 import br.com.zup.onboarding.android.contract.LoginContract;
+import br.com.zup.onboarding.android.model.entity.User;
+import br.com.zup.onboarding.android.model.UserRepository;
 
 public class LoginPresenter implements LoginContract.Presenter {
     private LoginContract.View view;
     private GoogleAuthentication authentication;
     private final String ERROR_MESSAGE = "Por favor, faça o login com email zup!";
 
+    private UserRepository repository;
+
     public LoginPresenter(Activity activity) {
         authentication = new GoogleAuthentication(activity);
+        repository = new UserRepository();
     }
 
     @Override
@@ -47,6 +52,17 @@ public class LoginPresenter implements LoginContract.Presenter {
 
         try {
             GoogleSignInAccount account = task.getResult(ApiException.class);
+
+            User user = new User();
+
+            user.setId(1);
+            user.setName(account.getDisplayName());
+            user.setEmail(account.getEmail());
+
+
+            //repository.saveUser(user);
+
+
             view.navigateToHome(account);
         } catch (ApiException e) {
             view.showErrorMessage(ERROR_MESSAGE);

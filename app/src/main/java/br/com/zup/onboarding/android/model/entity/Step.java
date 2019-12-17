@@ -5,9 +5,10 @@ import androidx.annotation.NonNull;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Step {
+public class Step implements Serializable {
     @SerializedName("id")
     @Expose
     private int id;
@@ -24,7 +25,10 @@ public class Step {
     @Expose
     private String duration;
 
-    @SerializedName("questions")
+    /*@SerializedName("questions")
+    @Expose
+    private List<Question> questions;*/
+    @SerializedName("question")
     @Expose
     private List<Question> questions;
 

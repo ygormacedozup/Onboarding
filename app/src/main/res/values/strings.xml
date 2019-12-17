@@ -15,7 +15,7 @@
     <string name="result_label">Resultado:</string>
     <string name="correct_answers_label">Respostas corretas!</string>
     <string name="try_again_label">Tentar novamente</string>
-    <string name="send_and_finalize_label">Enviar e terminar</string>
+    <string name="send_and_finalize_label">Terminar</string>
     <string name="answer_quiz_label">Responder Quiz</string>
     <string name="signOut">Saindo do App</string>
     <string name="welcome_txt">Seja bem vindo !</string>

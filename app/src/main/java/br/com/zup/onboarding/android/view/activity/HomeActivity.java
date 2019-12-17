@@ -7,51 +7,52 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
+
 import com.bumptech.glide.Glide;
+
+import br.com.zup.onboarding.android.GoogleAuthentication;
 import br.com.zup.onboarding.android.R;
-import br.com.zup.onboarding.android.Utils;
-import br.com.zup.onboarding.android.contract.HomeContract;
-import br.com.zup.onboarding.android.presenter.HomePresenter;
+import br.com.zup.onboarding.android.model.entity.User;
+import br.com.zup.onboarding.android.presenter.HomeViewModel;
 
-public class HomeActivity extends AppCompatActivity implements HomeContract.View {
-
+public class HomeActivity extends AppCompatActivity {
     private ImageView photoZupper;
     private TextView nameZupper;
     private ImageView btnBack;
     private TextView textOnboarding;
     private TextView textHello;
-    private HomeContract.Presenter presenter;
+
+    private User user;
+    private GoogleAuthentication authentication;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        presenter = new HomePresenter();
-        presenter.start(this);
-        presenter.setGso(this);
-    }
+        authentication = new GoogleAuthentication(this);
 
-    @Override
-    public void setUserPhoto(Uri userPhoto) {
-        Glide.with(this).load(String.valueOf(userPhoto)).circleCrop().into(photoZupper);
-    }
-
-    @Override
-    public void setBackButtonClickListener() {
-        btnBack.setOnClickListener(new android.view.View.OnClickListener() {
-            @Override
-            public void onClick(android.view.View v) {
-                if (v.getId() == R.id.home_back_btn) {
-                    presenter.onBackButtonClicked();
-                }
-            }
+        HomeViewModel viewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
+        viewModel.getUserLiveData().observe(this, userResponse -> {
+            user = userResponse;
+            //setUserName(user.getName());
         });
+
+        setLayout();
     }
 
-    @Override
-    public void setViews() {
+    private void setLayout() {
+        setViews();
+        setBackButtonClickListener();
+        setContinueButtonClickListener();
+        setUserPhoto(authentication.getUserPhoto());
+        setUserName(authentication.getUserName());
+    }
+
+    private void setViews() {
         photoZupper = findViewById(R.id.home_logo_rocket);
         nameZupper = findViewById(R.id.home_txt_receive);
         btnBack = findViewById(R.id.home_back_btn);
@@ -59,35 +60,36 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         textHello = findViewById(R.id.home_txt_hello);
     }
 
-    @Override
-    public void setText(String personName) {
-        nameZupper.setTypeface(Utils.getFont(this));
-        textOnboarding.setTypeface(Utils.getFont(this));
-        textHello.setTypeface(Utils.getFont(this));
+    private void setBackButtonClickListener() {
+        btnBack.setOnClickListener(v -> {
+            if (v.getId() == R.id.home_back_btn) {
+                authentication.signOut().addOnCompleteListener(this, task -> navigateToLogin());
+            }
+        });
+    }
+
+    private void setContinueButtonClickListener() {
+        Button continueQuestions = findViewById(R.id.db_confirm_button);
+        continueQuestions.setOnClickListener(v -> navigateToQuestions(user));
+    }
+
+    private void setUserPhoto(Uri userPhoto) {
+        Glide.with(this).load(String.valueOf(userPhoto)).circleCrop().into(photoZupper);
+    }
+
+    private void setUserName(String personName) {
         nameZupper.setText(personName);
     }
 
-    @Override
-    public void navigateToLogin() {
+    private void navigateToLogin() {
         Intent newIntent = new Intent(HomeActivity.this, LoginActivity.class);
         startActivity(newIntent);
         Toast.makeText(HomeActivity.this, R.string.signOut, Toast.LENGTH_LONG).show();
     }
 
-    @Override
-    public void setContinueButtonClickListener() {
-        Button continueQuestions = findViewById(R.id.db_continue_button);
-        continueQuestions.setOnClickListener(new android.view.View.OnClickListener() {
-            @Override
-            public void onClick(android.view.View v) {
-                presenter.onContinueButtonClicked();
-            }
-        });
-    }
-
-    @Override
-    public void navigateToQuestions() {
+    private void navigateToQuestions(User user) {
         Intent intent = new Intent(HomeActivity.this, QuestionActivity.class);
+        intent.putExtra("question", user);
         startActivity(intent);
     }
 }

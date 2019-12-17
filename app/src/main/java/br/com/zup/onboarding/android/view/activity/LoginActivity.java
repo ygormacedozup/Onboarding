@@ -42,12 +42,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void setLoginButtonClickListener() {
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                presenter.onSignInClicked();
-            }
-        });
+        signInButton.setOnClickListener(view -> presenter.onSignInClicked());
     }
 
     @Override

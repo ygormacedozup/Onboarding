@@ -20,12 +20,12 @@ public interface QuestionContract {
         void onQuestionsFinalized(int correctAnswers);
     }
 
-    interface Repository {
+    /*interface Repository {
         void getQuestions(OnRequestFinishedListener listener);
-    }
+    }*/
 
-    interface OnRequestFinishedListener {
+    /*interface OnRequestFinishedListener {
         void onRequestFinished(List<Question> questions);
         void onRequestFailed(Throwable throwable);
-    }
+    }*/
 }

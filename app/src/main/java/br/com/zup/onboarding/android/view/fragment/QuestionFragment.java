@@ -45,6 +45,8 @@ public class QuestionFragment extends Fragment {
         initializeButtons();
         showCurrentQuestion();
 
+        setAnswersClickListeners();
+
         return view;
     }
 
@@ -72,7 +74,7 @@ public class QuestionFragment extends Fragment {
     }
 
     private void setAnswersClickListeners() {
-        Question question = questions.get(currentQuestion);
+        /*Question question = questions.get(currentQuestion);
 
         for (Alternative alternative : question.getAlternatives()) {
             if (alternative.isCorrect()) {
@@ -83,25 +85,33 @@ public class QuestionFragment extends Fragment {
 
         for (int i = 0; i < answerButtons.size(); i++) {
             answerButtons.get(i).setOnClickListener(getAnswerClickListener());
+        }*/
+
+        for (Button button : answerButtons) {
+            button.setOnClickListener(getAnswerClickListener());
         }
     }
 
     private void removePreviousCorrectAnswer() {
-        for (int i = 0; i < answerButtons.size(); i++) {
+        /*for (int i = 0; i < answerButtons.size(); i++) {
             answerButtons.get(i).setTag(null);
             answerButtons.get(i).setOnClickListener(null);
-        }
+        }*/
     }
 
     private void setAnswerBackground() {
-        for (Button button : answerButtons) {
+        /*for (Button button : answerButtons) {
             int background = (button.getTag() != null) ? R.drawable.btn_correct_answer_selector
                     : R.drawable.btn_incorrect_answer_selector;
             button.setBackgroundResource(background);
+        }*/
+
+        for (Button button : answerButtons) {
+            button.setBackgroundResource(R.drawable.btn_answer_selector);
         }
     }
 
-    private View.OnClickListener getAnswerClickListener() {
+    /*private View.OnClickListener getAnswerClickListener() {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,6 +127,20 @@ public class QuestionFragment extends Fragment {
                 }
             }
         };
+    }*/
+
+    private View.OnClickListener getAnswerClickListener() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isFinalized()) {
+                    finalizedListener.onFinalized(correctAnswers);
+                } else {
+                    currentQuestion++;
+                    showCurrentQuestion();
+                }
+            }
+        };
     }
 
     private void showCurrentQuestion() {
@@ -124,9 +148,9 @@ public class QuestionFragment extends Fragment {
         setTextViews(question);
         setButtons(question);
 
-        removePreviousCorrectAnswer();
+        /*removePreviousCorrectAnswer();
         setAnswersClickListeners();
-        setAnswerBackground();
+        setAnswerBackground();*/
     }
 
     private boolean isFinalized() {

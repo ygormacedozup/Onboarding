@@ -24,6 +24,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/question_margin_top"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:gravity="center"
         android:text="Qual é a melhor batata?"
         android:textColor="@color/white"
         android:textSize="@dimen/question_text_size"
@@ -36,28 +39,30 @@
         android:id="@+id/btn_first_answer"
         android:layout_width="@dimen/btn_answer_width"
         android:layout_height="@dimen/btn_answer_height"
-        android:layout_marginTop="@dimen/topmost_answer_margin_top"
+        android:layout_marginBottom="@dimen/answer_margin_bottom"
         android:text="Doce"
         android:textAllCaps="false"
+        android:background="@drawable/btn_answer_selector"
         android:textColor="@android:color/black"
         android:textSize="@dimen/answer_text_size"
-        app:layout_constraintLeft_toLeftOf="@id/question_name"
-        app:layout_constraintRight_toRightOf="@id/question_name"
-        app:layout_constraintTop_toBottomOf="@id/question_name"
+        app:layout_constraintLeft_toLeftOf="@id/btn_second_answer"
+        app:layout_constraintRight_toRightOf="@id/btn_second_answer"
+        app:layout_constraintBottom_toTopOf="@id/btn_second_answer"
         tools:text="First Answer" />
 
     <Button
         android:id="@+id/btn_second_answer"
         android:layout_width="@dimen/btn_answer_width"
         android:layout_height="@dimen/btn_answer_height"
-        android:layout_marginTop="@dimen/answer_margin_top"
         android:text="Recheada"
+        android:layout_marginBottom="@dimen/answer_margin_bottom"
         android:textAllCaps="false"
+        android:background="@drawable/btn_answer_selector"
         android:textColor="@android:color/black"
         android:textSize="@dimen/answer_text_size"
-        app:layout_constraintLeft_toLeftOf="@id/btn_first_answer"
-        app:layout_constraintRight_toRightOf="@id/btn_first_answer"
-        app:layout_constraintTop_toBottomOf="@id/btn_first_answer"
+        app:layout_constraintLeft_toLeftOf="@id/btn_third_answer"
+        app:layout_constraintRight_toRightOf="@id/btn_third_answer"
+        app:layout_constraintBottom_toTopOf="@id/btn_third_answer"
         tools:text="Second Answer" />
 
     <Button
@@ -67,11 +72,13 @@
         android:layout_marginTop="@dimen/answer_margin_top"
         android:text="Frita"
         android:textAllCaps="false"
+        android:layout_marginBottom="@dimen/answer_margin_bottom"
+        android:background="@drawable/btn_answer_selector"
         android:textColor="@android:color/black"
         android:textSize="@dimen/answer_text_size"
-        app:layout_constraintLeft_toLeftOf="@id/btn_second_answer"
-        app:layout_constraintRight_toRightOf="@id/btn_second_answer"
-        app:layout_constraintTop_toBottomOf="@id/btn_second_answer"
+        app:layout_constraintLeft_toLeftOf="@id/btn_fourth_answer"
+        app:layout_constraintRight_toRightOf="@id/btn_fourth_answer"
+        app:layout_constraintBottom_toTopOf="@id/btn_fourth_answer"
         tools:text="Third Answer" />
 
     <Button
@@ -81,11 +88,13 @@
         android:layout_marginTop="@dimen/answer_margin_top"
         android:text="Cozida"
         android:textAllCaps="false"
+        android:layout_marginBottom="@dimen/last_answer_margin_bottom"
+        android:background="@drawable/btn_answer_selector"
         android:textColor="@android:color/black"
         android:textSize="@dimen/answer_text_size"
-        app:layout_constraintLeft_toLeftOf="@id/btn_third_answer"
-        app:layout_constraintRight_toRightOf="@id/btn_third_answer"
-        app:layout_constraintTop_toBottomOf="@id/btn_third_answer"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:text="Fourth Answer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

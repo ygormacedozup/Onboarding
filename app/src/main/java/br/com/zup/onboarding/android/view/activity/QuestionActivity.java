@@ -1,19 +1,19 @@
 package br.com.zup.onboarding.android.view.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.zup.onboarding.android.R;
 import br.com.zup.onboarding.android.contract.QuestionContract;
 import br.com.zup.onboarding.android.model.entity.Question;
+import br.com.zup.onboarding.android.model.entity.User;
 import br.com.zup.onboarding.android.presenter.QuestionPresenter;
 import br.com.zup.onboarding.android.view.fragment.QuestionFragment;
 import br.com.zup.onboarding.android.view.fragment.ResultFragment;
@@ -30,6 +30,11 @@ public class QuestionActivity extends AppCompatActivity implements ResultFragmen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+
+        /*Intent intent = getIntent();
+        questions = ((User) intent.getSerializableExtra("question")).getStep().getQuestions();*/
+
+        //presenter = new QuestionPresenter(questions);
 
         presenter = new QuestionPresenter();
     }
@@ -60,7 +65,6 @@ public class QuestionActivity extends AppCompatActivity implements ResultFragmen
 
     @Override
     public void showFragment() {
-
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.question_container, questionFragment);
@@ -71,8 +75,7 @@ public class QuestionActivity extends AppCompatActivity implements ResultFragmen
     public void showResult(int correctAnswers) {
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.question_container, new ResultFragment(questions.size(),
-                correctAnswers, this));
+        fragmentTransaction.replace(R.id.question_container, new ResultFragment(this));
         fragmentTransaction.commit();
     }
 
