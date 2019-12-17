@@ -1,16 +1,15 @@
 package br.com.zup.onboarding.android.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
-
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-
 import br.com.zup.onboarding.android.R;
 
 public class ContentActivity extends AppCompatActivity {
@@ -28,6 +27,8 @@ public class ContentActivity extends AppCompatActivity {
             nameZuuper.setText(personName);
 
             nextQuestions();
+            customSpinner();
+
         }
     }
         private void nextQuestions() {
@@ -39,5 +40,14 @@ public class ContentActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+        }
+
+        private void customSpinner(){
+
+        Spinner spinner = findViewById(R.id.spin_located);
+
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.offices_zup, android.R.layout.simple_list_item_1 );
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+        spinner.setAdapter(adapter);
         }
 }
