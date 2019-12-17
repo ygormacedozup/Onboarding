@@ -15,11 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.zup.onboarding.android.R;
-import br.com.zup.onboarding.android.model.entity.Alternative;
 import br.com.zup.onboarding.android.model.entity.Question;
 
 public class QuestionFragment extends Fragment {
-    private final String CORRECT_ANSWER_TAG = "CORRECT";
     private View rootView;
     private TextView questionNumber;
     private TextView questionName;

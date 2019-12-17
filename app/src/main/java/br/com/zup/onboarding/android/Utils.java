@@ -8,7 +8,7 @@ public class Utils {
 
     public static Typeface getFont(Context context) {
         if (font == null) {
-            font = Typeface.createFromAsset(context.getAssets(),"fonts/Nunito-Regular.ttf");
+            font = Typeface.createFromAsset(context.getAssets(),Constants.FONT_PATH);
         }
 
         return font;

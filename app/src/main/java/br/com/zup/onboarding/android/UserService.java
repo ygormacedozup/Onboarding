@@ -8,10 +8,10 @@ import retrofit2.http.GET;
 
 public interface UserService {
     /*@GET("/zupper/thalles.freitas@zup.com.br")
-    Call<User> getUser();*/
+    Call<User> getUserLiveData();*/
 
     /*@GET("/zupper/thalles.freitas@zup.com.br")
-    Flowable<User> getUser();*/
+    Flowable<User> getUserLiveData();*/
 
     @GET("/zupper/thalles.freitas@zup.com.br")
     Observable<User> getUser();

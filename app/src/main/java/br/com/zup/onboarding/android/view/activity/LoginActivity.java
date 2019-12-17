@@ -53,7 +53,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void navigateToHome(GoogleSignInAccount account) {
-        Intent intent = new Intent(LoginActivity.this, ContentActivity.class);
+        //Intent intent = new Intent(LoginActivity.this, ContentActivity.class);
+        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
         intent.putExtra("account", account);
         startActivity(intent);
     }

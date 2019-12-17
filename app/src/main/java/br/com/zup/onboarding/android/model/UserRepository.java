@@ -1,5 +1,7 @@
 package br.com.zup.onboarding.android.model;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -16,6 +18,7 @@ import io.reactivex.schedulers.Schedulers;
 public class UserRepository {
     private UserService service;
     private MutableLiveData<User> userLiveData = new MutableLiveData<>();
+    private MutableLiveData<List<Question>> questionsLiveData = new MutableLiveData<>();
 
     public UserRepository() {
         service = new RetrofitInitializer().getUserService();
@@ -31,6 +34,7 @@ public class UserRepository {
 
     private void onResponse(User response) {
         userLiveData.setValue(response);
+        questionsLiveData.setValue(response.getStep().getQuestions());
     }
 
     private void onError(Throwable throwable) {
@@ -38,11 +42,11 @@ public class UserRepository {
     }
 
 
-    public LiveData<User> getUser() {
+    public LiveData<User> getUserLiveData() {
         return userLiveData;
     }
 
-    public List<Question> getQuestions() {
-        return userLiveData.getValue().getStep().getQuestions();
+    public LiveData<List<Question>> getQuestionsLiveData() {
+        return questionsLiveData;
     }
 }
