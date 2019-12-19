@@ -15,6 +15,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
+        <activity android:name=".view.activity.ResultActivity"></activity>
         <activity android:name=".view.activity.ContentActivity" />
         <activity android:name=".view.activity.QuestionActivity" />
         <activity android:name=".view.activity.HomeActivity" />

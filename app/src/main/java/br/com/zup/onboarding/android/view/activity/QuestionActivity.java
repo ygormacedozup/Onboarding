@@ -1,68 +1,88 @@
 package br.com.zup.onboarding.android.view.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.zup.onboarding.android.R;
 import br.com.zup.onboarding.android.model.entity.Question;
-import br.com.zup.onboarding.android.presenter.QuestionViewModel;
-import br.com.zup.onboarding.android.view.fragment.QuestionFragment;
-import br.com.zup.onboarding.android.view.fragment.ResultFragment;
+import br.com.zup.onboarding.android.viewmodel.QuestionViewModel;
 
-public class QuestionActivity extends AppCompatActivity implements ResultFragment.SendAndFinalizeListener,
-        QuestionFragment.OnQuestionsFinalizedListener {
-    private FragmentManager fragmentManager;
-    private FragmentTransaction fragmentTransaction;
-    private Fragment questionFragment;
-    private Fragment resultFragment;
+public class QuestionActivity extends AppCompatActivity {
+    private QuestionViewModel viewModel;
+    private TextView questionNumber;
+    private TextView questionName;
+    private List<Button> answerButtons = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
 
-        QuestionViewModel viewModel = ViewModelProviders.of(this).get(QuestionViewModel.class);
-        viewModel.getQuestionLiveData().observe(this, questions -> {
-            setFragments(questions);
-            showQuestions();
-        });
+        viewModel = ViewModelProviders.of(this).get(QuestionViewModel.class);
+
+        initializeTextViews();
+        initializeButtons();
+        setViewModel();
+        setClickListeners();
     }
 
-    private void setFragments(List<Question> questions) {
-        questionFragment = new QuestionFragment(questions, this);
-        resultFragment = new ResultFragment(this);
+    private void initializeTextViews() {
+        questionNumber = findViewById(R.id.question_number);
+        questionName = findViewById(R.id.question_name);
     }
 
-    private void showQuestions() {
-        fragmentManager = getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.question_container, questionFragment);
-        fragmentTransaction.commit();
+    private void initializeButtons() {
+        answerButtons.add(findViewById(R.id.btn_first_answer));
+        answerButtons.add(findViewById(R.id.btn_second_answer));
+        answerButtons.add(findViewById(R.id.btn_third_answer));
+        answerButtons.add(findViewById(R.id.btn_fourth_answer));
     }
 
-    private void showResult() {
-        fragmentManager = getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.question_container, resultFragment);
-        fragmentTransaction.commit();
+    private void setClickListeners() {
+        for (Button button : answerButtons) {
+            button.setOnClickListener(v -> {
+                if (viewModel.isFinalized()) {
+                    navigateToResult();
+                } else {
+                    viewModel.updateQuestion();
+                    viewModel.getQuestionLiveData().removeObservers(this);
+                    setViewModel();
+                }
+            });
+        }
     }
 
-    @Override
-    public void sendQuestionResult() {
-        // Send result
-        Toast.makeText(this, "Resultado enviado!", Toast.LENGTH_LONG).show();
+    private void setViewModel() {
+        viewModel.getQuestionLiveData().observe(this, this::showQuestion);
+        viewModel.getQuestionNumberLiveData().observe(this, this::showQuestionNumber);
+
+
+        viewModel.getMaxQuestionsLiveData().observe(this, integer -> viewModel.setMaxQuestions(integer));
     }
 
-    @Override
-    public void onFinalized(int correctAnswers) {
-        showResult();
+    private void showQuestionNumber(int number) {
+        String template = "Questão " + number + ":";
+        questionNumber.setText(template);
+    }
+
+    private void showQuestion(Question question) {
+        questionName.setText(question.getDescription());
+
+        for (int i = 0; i < answerButtons.size(); i++) {
+            answerButtons.get(i).setText(question.getAlternatives().get(i).getDescription());
+        }
+    }
+
+    private void navigateToResult() {
+        Intent intent = new Intent(QuestionActivity.this, ResultActivity.class);
+        startActivity(intent);
     }
 }

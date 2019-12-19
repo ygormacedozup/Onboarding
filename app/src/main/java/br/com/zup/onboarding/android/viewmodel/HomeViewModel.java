@@ -1,4 +1,4 @@
-package br.com.zup.onboarding.android.presenter;
+package br.com.zup.onboarding.android.viewmodel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;

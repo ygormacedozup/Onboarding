@@ -15,8 +15,7 @@ import com.bumptech.glide.Glide;
 
 import br.com.zup.onboarding.android.GoogleAuthentication;
 import br.com.zup.onboarding.android.R;
-import br.com.zup.onboarding.android.model.entity.User;
-import br.com.zup.onboarding.android.presenter.HomeViewModel;
+import br.com.zup.onboarding.android.viewmodel.HomeViewModel;
 
 public class HomeActivity extends AppCompatActivity {
     private ImageView photoZupper;
@@ -25,7 +24,7 @@ public class HomeActivity extends AppCompatActivity {
     private TextView textOnboarding;
     private TextView textHello;
 
-    private User user;
+    //private User user;
     private GoogleAuthentication authentication;
 
     @Override
@@ -35,13 +34,16 @@ public class HomeActivity extends AppCompatActivity {
 
         authentication = new GoogleAuthentication(this);
 
+        setViewModel();
+        setLayout();
+    }
+
+    private void setViewModel() {
         HomeViewModel viewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         viewModel.getUserLiveData().observe(this, userResponse -> {
-            user = userResponse;
+            //user = userResponse;
             //setUserName(user.getName());
         });
-
-        setLayout();
     }
 
     private void setLayout() {
@@ -70,7 +72,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void setContinueButtonClickListener() {
         Button continueQuestions = findViewById(R.id.db_confirm_button);
-        continueQuestions.setOnClickListener(v -> navigateToQuestions(user));
+        continueQuestions.setOnClickListener(v -> navigateToQuestions());
     }
 
     private void setUserPhoto(Uri userPhoto) {
@@ -87,9 +89,8 @@ public class HomeActivity extends AppCompatActivity {
         Toast.makeText(HomeActivity.this, R.string.signOut, Toast.LENGTH_LONG).show();
     }
 
-    private void navigateToQuestions(User user) {
+    private void navigateToQuestions() {
         Intent intent = new Intent(HomeActivity.this, QuestionActivity.class);
-        intent.putExtra("question", user);
         startActivity(intent);
     }
 }

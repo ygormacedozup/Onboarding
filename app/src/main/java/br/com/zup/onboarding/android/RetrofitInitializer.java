@@ -19,10 +19,6 @@ public class RetrofitInitializer {
                 .build();
     }
 
-    /*public QuestionService getQuestionService() {
-        return retrofit.create(QuestionService.class);
-    }*/
-
     public UserService getUserService() {
         return retrofit.create(UserService.class);
     }
