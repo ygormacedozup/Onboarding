@@ -7,23 +7,19 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
-
 import com.bumptech.glide.Glide;
-
 import br.com.zup.onboarding.android.GoogleAuthentication;
 import br.com.zup.onboarding.android.R;
+import br.com.zup.onboarding.android.Utils;
 import br.com.zup.onboarding.android.model.entity.User;
 import br.com.zup.onboarding.android.presenter.HomeViewModel;
 
 public class HomeActivity extends AppCompatActivity {
     private ImageView photoZupper;
-    private TextView nameZupper;
-    private ImageView btnBack;
-    private TextView textOnboarding;
-    private TextView textHello;
+    private Button btnBack;
+    private TextView textOnboarding, nameZupper, hiZupper, structureZup, cultureZup, technologyZup ;
 
     private User user;
     private GoogleAuthentication authentication;
@@ -57,7 +53,10 @@ public class HomeActivity extends AppCompatActivity {
         nameZupper = findViewById(R.id.home_txt_receive);
         btnBack = findViewById(R.id.home_back_btn);
         textOnboarding = findViewById(R.id.home_text_onboarding);
-        textHello = findViewById(R.id.home_txt_hello);
+        hiZupper = findViewById(R.id.home_txt_hello);
+        structureZup = findViewById(R.id.home_structure_txt);
+        cultureZup = findViewById(R.id.home_culture_txt);
+        technologyZup = findViewById(R.id.home_technology_txt);
     }
 
     private void setBackButtonClickListener() {
@@ -79,6 +78,13 @@ public class HomeActivity extends AppCompatActivity {
 
     private void setUserName(String personName) {
         nameZupper.setText(personName);
+        nameZupper.setTypeface(Utils.getFont(this));
+        hiZupper.setTypeface(Utils.getFont(this));
+        textOnboarding.setTypeface(Utils.getFont(this));
+        btnBack.setTypeface(Utils.getFont(this));
+        structureZup.setTypeface(Utils.getFont(this));
+        cultureZup.setTypeface(Utils.getFont(this));
+        technologyZup.setTypeface(Utils.getFont(this));
     }
 
     private void navigateToLogin() {

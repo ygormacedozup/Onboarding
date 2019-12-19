@@ -15,4 +15,7 @@ public interface UserService {
 
     @GET("/zupper/thalles.freitas@zup.com.br")
     Observable<User> getUser();
+
+//    @GET("/podandproject")
+//    Observable<> getUserPodProject();
 }
