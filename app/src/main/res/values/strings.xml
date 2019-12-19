@@ -24,9 +24,9 @@
     <string name="project_cnt">Projeto</string>
     <string name="project_hint">Cliente/Projeto</string>
     <string name="pod_txt">POD</string>
-    <string name="say_pod_text">Digite...</string>
+    <string name="say_pod_text">Digite…</string>
     <string name="name_zuper_cnt">nome zupper</string>
-    <string name="say_here_cnt">digite...</string>
+    <string name="say_here_cnt">digite…</string>
     <string name="continue_home_txt">Bora continuar seu onboarding?</string>
     <string name="cultura_txt">Cultura</string>
     <string name="tecnologia_txt">Tecnologia</string>
@@ -42,6 +42,30 @@
         <item> SP: São José do Rio Preto </item>
         <item> SP: São Paulo </item>
         <item> SC: Joinville </item>
+    </string-array>
+    <string-array name="pod_zup">
+        <item>Acelera</item>
+        <item>Alpha</item>
+        <item>Customer Flow</item>
+        <item>Extreme</item>
+        <item>GoBiz</item>
+        <item>High Potential</item>
+        <item>Integra</item>
+        <item>MetaPod</item>
+        <item>MSI</item>
+        <item>MVPod</item>
+        <item>Next</item>
+        <item>No Limit</item>
+        <item>RedRocket</item>
+        <item>Uai Pod</item>
+        <item>Zup Experience</item>
+    </string-array>
+    <string-array name="project_zup">
+        <item> JOSE</item>
+        <item> MARIA</item>
+        <item> ROBERTO</item>
+        <item> ROBERVAL</item>
+        <item> GERISCLEITON</item>
     </string-array>
 
 </resources>

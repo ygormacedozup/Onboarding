@@ -2,14 +2,10 @@ package br.com.zup.onboarding.android.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.SignInButton;
-
 import br.com.zup.onboarding.android.R;
 import br.com.zup.onboarding.android.contract.LoginContract;
 import br.com.zup.onboarding.android.presenter.LoginPresenter;

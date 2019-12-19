@@ -6,9 +6,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitInitializer {
     private Retrofit retrofit;
+//    private Retrofit testRetrofitContent;
 
     public RetrofitInitializer() {
         initialize();
+//        projectAndPod();
     }
 
     private void initialize() {
@@ -19,6 +21,14 @@ public class RetrofitInitializer {
                 .build();
     }
 
+
+//    private void projectAndPod() {
+//        testRetrofitContent = new Retrofit.Builder()
+//                .baseUrl(Constants.BASE_URL_TEST)
+//                .addCallAdapterFactory(GsonConverterFactory.create())
+//                .addCallAdapterFactory(RxJava2CallAdapterFactory)
+//                .build();
+//    }
     /*public QuestionService getQuestionService() {
         return retrofit.create(QuestionService.class);
     }*/
@@ -26,4 +36,8 @@ public class RetrofitInitializer {
     public UserService getUserService() {
         return retrofit.create(UserService.class);
     }
+//
+//    public UserService getUserContants() {
+//        return testRetrofitContent.callAdapter(UserService.class);
+//    }
 }
