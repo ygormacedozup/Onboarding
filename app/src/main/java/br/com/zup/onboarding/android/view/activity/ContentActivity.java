@@ -1,14 +1,17 @@
-package br.com.zup.onboarding.android.view.activity;
+package br.com.zup.onboarding.android.view;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+
 import br.com.zup.onboarding.android.R;
 import br.com.zup.onboarding.android.Utils;
 
@@ -81,6 +84,5 @@ public class ContentActivity extends AppCompatActivity {
         ArrayAdapter projectAdapter = ArrayAdapter.createFromResource(this,R.array.project_zup, android.R.layout.simple_list_item_checked);
         projectAdapter.setDropDownViewResource(android.R.layout.simple_list_item_checked);
         projectSpinner.setAdapter(projectAdapter);
-
+        }
     }
-}
