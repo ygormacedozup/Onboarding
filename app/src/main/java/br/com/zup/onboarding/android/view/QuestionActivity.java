@@ -2,7 +2,9 @@ package br.com.zup.onboarding.android.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +19,7 @@ import br.com.zup.onboarding.android.viewmodel.QuestionViewModel;
 
 public class QuestionActivity extends AppCompatActivity {
     private QuestionViewModel viewModel;
+    private ProgressBar loadingBar;
     private TextView questionNumber;
     private TextView questionName;
     private List<Button> answerButtons = new ArrayList<>();
@@ -28,15 +31,16 @@ public class QuestionActivity extends AppCompatActivity {
 
         viewModel = ViewModelProviders.of(this).get(QuestionViewModel.class);
 
-        initializeTextViews();
+        initializeViews();
         initializeButtons();
         setViewModel();
         setClickListeners();
     }
 
-    private void initializeTextViews() {
+    private void initializeViews() {
         questionNumber = findViewById(R.id.question_number);
         questionName = findViewById(R.id.question_name);
+        loadingBar = findViewById(R.id.loading_progress_bar);
     }
 
     private void initializeButtons() {
@@ -44,6 +48,17 @@ public class QuestionActivity extends AppCompatActivity {
         answerButtons.add(findViewById(R.id.btn_second_answer));
         answerButtons.add(findViewById(R.id.btn_third_answer));
         answerButtons.add(findViewById(R.id.btn_fourth_answer));
+    }
+
+    private void setLoading(boolean isLoading) {
+        int loadingBarVisibility = isLoading ? View.VISIBLE : View.INVISIBLE;
+        int informationVisibility = isLoading ? View.INVISIBLE : View.VISIBLE;
+
+        loadingBar.setVisibility(loadingBarVisibility);
+
+        questionNumber.setVisibility(informationVisibility);
+        questionName.setVisibility(informationVisibility);
+        for (Button button : answerButtons) button.setVisibility(informationVisibility);
     }
 
     private void setClickListeners() {
@@ -61,11 +76,10 @@ public class QuestionActivity extends AppCompatActivity {
     }
 
     private void setViewModel() {
+        viewModel.getMaxQuestionsLiveData().observe(this, max -> viewModel.setMaxQuestions(max));
         viewModel.getQuestionLiveData().observe(this, this::showQuestion);
         viewModel.getQuestionNumberLiveData().observe(this, this::showQuestionNumber);
-
-
-        viewModel.getMaxQuestionsLiveData().observe(this, integer -> viewModel.setMaxQuestions(integer));
+        viewModel.getIsLoadingLiveData().observe(this, this::setLoading);
     }
 
     private void showQuestionNumber(int number) {
@@ -74,10 +88,13 @@ public class QuestionActivity extends AppCompatActivity {
     }
 
     private void showQuestion(Question question) {
-        questionName.setText(question.getDescription());
+        if (question != null) {
+            viewModel.stopLoading();
+            questionName.setText(question.getDescription());
 
-        for (int i = 0; i < answerButtons.size(); i++) {
-            answerButtons.get(i).setText(question.getAlternatives().get(i).getDescription());
+            for (int i = 0; i < answerButtons.size(); i++) {
+                answerButtons.get(i).setText(question.getAlternatives().get(i).getDescription());
+            }
         }
     }
 

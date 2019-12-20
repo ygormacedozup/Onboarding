@@ -13,13 +13,22 @@ public class QuestionViewModel extends ViewModel {
     private MutableLiveData<Integer> questionNumberLiveData = new MutableLiveData<>();
     private int currentQuestion = 0;
     private int maxQuesitons = 0;
-
     private LiveData<Integer> maxQuestionsLiveData;
+    private MutableLiveData<Boolean> isLoadingLiveData = new MutableLiveData<>();
 
     public QuestionViewModel() {
+        isLoadingLiveData.setValue(true);
         repository = new UserRepository();
         questionNumberLiveData.setValue(currentQuestion + 1);
         maxQuestionsLiveData = repository.getMaxQuestionsLiveData();
+    }
+
+    public MutableLiveData<Boolean> getIsLoadingLiveData() {
+        return isLoadingLiveData;
+    }
+
+    public void stopLoading() {
+        isLoadingLiveData.setValue(false);
     }
 
     public LiveData<Integer> getMaxQuestionsLiveData() {
@@ -52,4 +61,6 @@ public class QuestionViewModel extends ViewModel {
     public boolean isFinalized() {
         return currentQuestion == maxQuesitons - 1;
     }
-;}
+
+    ;
+}

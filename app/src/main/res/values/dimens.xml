@@ -43,4 +43,5 @@
     <dimen name="keep_studying_text_size">20sp</dimen>
     <dimen name="result_gif_margin_side">30dp</dimen>
     <dimen name="result_gif_margin_top">50dp</dimen>
+    <dimen name="loading_progress_bar_elevation">3dp</dimen>
 </resources>
