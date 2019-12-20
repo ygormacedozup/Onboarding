@@ -1,4 +1,4 @@
-package br.com.zup.onboarding.android.view.activity;
+package br.com.zup.onboarding.android.view;
 
 import android.content.Intent;
 import android.os.Bundle;

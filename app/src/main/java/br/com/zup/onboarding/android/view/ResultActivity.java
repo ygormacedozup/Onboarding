@@ -1,4 +1,4 @@
-package br.com.zup.onboarding.android.view.activity;
+package br.com.zup.onboarding.android.view;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;

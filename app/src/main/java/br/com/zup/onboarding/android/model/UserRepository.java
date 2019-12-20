@@ -51,5 +51,4 @@ public class UserRepository {
     public LiveData<Integer> getMaxQuestionsLiveData() {
         return Transformations.map(questionListLiveData, List::size);
     }
-
 }
