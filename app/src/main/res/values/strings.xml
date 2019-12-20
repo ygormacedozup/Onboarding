@@ -32,6 +32,14 @@
     <string name="tecnologia_txt">Tecnologia</string>
     <string name="estrutura_txt">Estrutura</string>
     <string name="localizao_txt">Localização:</string>
+    <string name="msg_txt_result">Veja mais conteúdos pra ser mestre na nossa cultura Zup!</string>
+    <string name="txt_tks_results">Obrigado por responder, Gessica!</string>
+    <string name="txt_quest">Questão 1:</string>
+    <string name="txt_quest_main">Qual é a melhor batata?</string>
+    <string name="txt_receive_one">Doce</string>
+    <string name="txt_receive_two">Recheada</string>
+    <string name="txt_receive_three">Frita</string>
+    <string name="txt_receive_four">Cozida</string>
 
 
     <string-array name="offices_zup">
