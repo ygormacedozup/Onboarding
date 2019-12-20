@@ -20,7 +20,6 @@ public class HomeActivity extends AppCompatActivity {
     private ImageView photoZupper;
     private Button btnBack;
     private TextView textOnboarding, nameZupper, hiZupper, structureZup, cultureZup, technologyZup ;
-
     private User user;
     private GoogleAuthentication authentication;
 
