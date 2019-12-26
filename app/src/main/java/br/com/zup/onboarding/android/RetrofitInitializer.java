@@ -12,20 +12,8 @@ public class RetrofitInitializer {
     private final int TIMEOUT_IN_SECONDS = 60;
 
     public RetrofitInitializer() {
-        initialize();
-    }
-
-    private void initialize() {
-        if (retrofit == null) {
-            OkHttpClient client = getClient();
-
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(Constants.BASE_URL)
-                    .client(client)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .build();
-        }
+        OkHttpClient client = getClient();
+        retrofit = getRetrofit(client);
     }
 
     private OkHttpClient getClient() {
@@ -35,9 +23,15 @@ public class RetrofitInitializer {
                 .readTimeout(TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
                 .build();
     }
-    /*public QuestionService getQuestionService() {
-        return retrofit.create(QuestionService.class);
-    }*/
+
+    private Retrofit getRetrofit(OkHttpClient client) {
+        return new Retrofit.Builder()
+                .baseUrl(Constants.BASE_URL)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+    }
 
     public UserService getUserService() {
         return retrofit.create(UserService.class);

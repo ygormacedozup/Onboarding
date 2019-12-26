@@ -5,22 +5,20 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.Task;
 
 import br.com.zup.onboarding.android.GoogleAuthentication;
 import br.com.zup.onboarding.android.R;
-import br.com.zup.onboarding.android.model.entity.User;
+import br.com.zup.onboarding.android.viewmodel.login.LoginResultEvent;
+import br.com.zup.onboarding.android.viewmodel.login.LoginState;
+import br.com.zup.onboarding.android.viewmodel.login.LoginViewModel;
 
 public class LoginActivity extends AppCompatActivity {
-    private int RC_SIGN_IN = 0;
+    private final int RC_SIGN_IN = 0;
+    private LoginViewModel viewModel;
     private SignInButton signInButton;
-
-    private GoogleAuthentication authentication;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,39 +26,31 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         signInButton = findViewById(R.id.ac_login_gmail);
-        authentication = new GoogleAuthentication(this);
 
+        setViewModel();
+        observeViewModel();
         setLoginButtonClickListener();
     }
 
+    private void setViewModel() {
+        viewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
+
+        GoogleAuthentication authentication = new GoogleAuthentication(this);
+        viewModel.setAuthentication(authentication);
+
+        LoginResultEvent loginResultEvent = this::startActivityForResult;
+        viewModel.setLoginResultEvent(loginResultEvent);
+    }
+
+    private void observeViewModel() {
+        viewModel.getStateLiveData().observe(this, state -> {
+            if (state == LoginState.SUCCESS) navigateToHome();
+            if (state == LoginState.ERROR) showErrorMessage();
+        });
+    }
+
     private void setLoginButtonClickListener() {
-        signInButton.setOnClickListener(v -> startSignInIntent());
-    }
-
-    private void startSignInIntent() {
-        Intent intent = authentication.getSignInIntent();
-        startActivityForResult(intent, RC_SIGN_IN);
-    }
-
-    private void onSignInResultReceived(Intent data) {
-        Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-
-        try {
-            GoogleSignInAccount account = task.getResult(ApiException.class);
-
-            User user = new User();
-
-            user.setId(1);
-            user.setName(account.getDisplayName());
-            user.setEmail(account.getEmail());
-
-            // Save user
-
-            navigateToHome();
-        } catch (ApiException e) {
-            String errorMessage = "Por favor, faça o login com email zup!";
-            showErrorMessage(errorMessage);
-        }
+        signInButton.setOnClickListener(v -> viewModel.startSignInIntent());
     }
 
     private void navigateToHome() {
@@ -68,8 +58,9 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void showErrorMessage(String errorMessage) {
-        Toast.makeText(this,errorMessage,Toast.LENGTH_LONG).show();
+    private void showErrorMessage() {
+        String errorMessage = "Por favor, faça o login com email zup!";
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -77,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == RC_SIGN_IN) {
-            onSignInResultReceived(data);
+            viewModel.onSignInResultReceived(data);
         }
     }
 }

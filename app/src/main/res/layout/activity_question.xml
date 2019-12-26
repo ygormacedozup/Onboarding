@@ -10,7 +10,7 @@
         android:id="@+id/loading_progress_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="100dp"/>
+        android:layout_margin="@dimen/progressbar_margin" />
 
     <TextView
         android:id="@+id/question_number"
