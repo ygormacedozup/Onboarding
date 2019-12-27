@@ -38,11 +38,13 @@
     <dimen name="last_answer_margin_bottom">210dp</dimen>
     <dimen name="answer_margin_bottom">20dp</dimen>
     <dimen name="send_and_finalize_button_margin_top">25dp</dimen>
-    <dimen name="keep_studying_margin_top">50dp</dimen>
+    <dimen name="keep_studying_margin_top">25dp</dimen>
     <dimen name="keep_studying_margin_side">40dp</dimen>
     <dimen name="keep_studying_text_size">20sp</dimen>
     <dimen name="result_gif_margin_side">30dp</dimen>
-    <dimen name="result_gif_margin_top">50dp</dimen>
+    <dimen name="result_gif_margin_top">25dp</dimen>
     <dimen name="loading_progress_bar_elevation">3dp</dimen>
     <dimen name="progressbar_margin">100dp</dimen>
+    <dimen name="login_logo_width">300dp</dimen>
+    <dimen name="login_logo_height">150dp</dimen>
 </resources>

@@ -194,7 +194,7 @@
         />
 
     <Button
-        android:id="@+id/db_confirm_button"
+        android:id="@+id/home_confirm_button"
         android:layout_width="@dimen/result_buttons_width"
         android:layout_height="@dimen/result_buttons_height"
         android:layout_marginTop="@dimen/result_buttons_margin_top"
@@ -207,14 +207,15 @@
         />
 
     <Button
-        android:id="@+id/home_back_btn"
+        android:id="@+id/home_button_exit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/ic_check_circle_outline_24px"
-        app:layout_constraintTop_toBottomOf="@id/db_confirm_button"
-        app:layout_constraintLeft_toLeftOf="@id/db_confirm_button"
-        app:layout_constraintRight_toRightOf="@id/db_confirm_button"
+        android:background="@drawable/btn_send_and_finalize_selector"
+        app:layout_constraintTop_toBottomOf="@id/home_confirm_button"
+        app:layout_constraintLeft_toRightOf="@id/db_ball_one"
+        app:layout_constraintRight_toLeftOf="@+id/db_ball_three"
         android:layout_marginTop="@dimen/margin_default"
+        android:text="@string/exit_app_home"
 
         />
 

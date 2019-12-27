@@ -20,7 +20,7 @@ import br.com.zup.onboarding.android.viewmodel.HomeViewModel;
 
 public class HomeActivity extends AppCompatActivity {
     private ImageView photoZupper;
-    private Button btnBack;
+    private Button btnBack, btnConfirm ;
     private TextView textOnboarding, nameZupper, hiZupper, structureZup, cultureZup, technologyZup ;
     //private User user;
     private GoogleAuthentication authentication;
@@ -55,24 +55,25 @@ public class HomeActivity extends AppCompatActivity {
     private void setViews() {
         photoZupper = findViewById(R.id.home_logo_rocket);
         nameZupper = findViewById(R.id.home_txt_receive);
-        btnBack = findViewById(R.id.home_back_btn);
+        btnBack = findViewById(R.id.home_button_exit);
         textOnboarding = findViewById(R.id.home_text_onboarding);
         hiZupper = findViewById(R.id.home_txt_hello);
         structureZup = findViewById(R.id.home_structure_txt);
         cultureZup = findViewById(R.id.home_culture_txt);
         technologyZup = findViewById(R.id.home_technology_txt);
+        btnConfirm = findViewById(R.id.home_confirm_button);
     }
 
     private void setBackButtonClickListener() {
         btnBack.setOnClickListener(v -> {
-            if (v.getId() == R.id.home_back_btn) {
+            if (v.getId() == R.id.home_button_exit) {
                 authentication.signOut().addOnCompleteListener(this, task -> navigateToLogin());
             }
         });
     }
 
     private void setContinueButtonClickListener() {
-        Button continueQuestions = findViewById(R.id.db_confirm_button);
+        Button continueQuestions = findViewById(R.id.home_confirm_button);
         continueQuestions.setOnClickListener(v -> navigateToQuestions());
     }
 
@@ -89,6 +90,7 @@ public class HomeActivity extends AppCompatActivity {
         structureZup.setTypeface(Utils.getFont(this));
         cultureZup.setTypeface(Utils.getFont(this));
         technologyZup.setTypeface(Utils.getFont(this));
+        btnConfirm.setTypeface(Utils.getFont(this));
     }
 
     private void navigateToLogin() {

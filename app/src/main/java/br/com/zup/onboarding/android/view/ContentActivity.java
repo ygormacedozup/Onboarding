@@ -17,7 +17,7 @@ import br.com.zup.onboarding.android.Utils;
 
 public class ContentActivity extends AppCompatActivity {
 
-    private TextView nameZupper, continueTxt,podZup, projectZup,locatedZup,hiTxt;
+    private TextView nameZupper, continueTxt,podZup, locatedZup,hiTxt;
     private Button confirmBtn;
 
     @Override
@@ -44,19 +44,16 @@ public class ContentActivity extends AppCompatActivity {
         nameZupper.setTypeface(Utils.getFont(this));
         continueTxt.setTypeface(Utils.getFont(this));
         podZup.setTypeface(Utils.getFont(this));
-        projectZup.setTypeface(Utils.getFont(this));
         locatedZup.setTypeface(Utils.getFont(this));
         hiTxt.setTypeface(Utils.getFont(this));
         confirmBtn.setTypeface(Utils.getFont(this));
     }
 
     private void setViews() {
-
         hiTxt = findViewById(R.id.ctn_hi_txt);
         nameZupper = findViewById(R.id.name_zuper_cnt);
         continueTxt = findViewById(R.id.continues_txt_cnt);
         podZup = findViewById(R.id.pod_txt_view);
-        projectZup = findViewById(R.id.project_txt_view);
         locatedZup = findViewById(R.id.located_edit_txt);
         confirmBtn = findViewById(R.id.btn_content);
     }
@@ -69,7 +66,6 @@ public class ContentActivity extends AppCompatActivity {
     }
 
     private void customSpinner() {
-
         Spinner locatedSpinner = findViewById(R.id.located_spi);
         ArrayAdapter locatedAdapter = ArrayAdapter.createFromResource(this, R.array.offices_zup, android.R.layout.simple_list_item_checked);
         locatedAdapter.setDropDownViewResource(android.R.layout.simple_list_item_checked);
@@ -80,9 +76,5 @@ public class ContentActivity extends AppCompatActivity {
         podAdapter.setDropDownViewResource(android.R.layout.simple_list_item_checked);
         podSpinner.setAdapter(podAdapter);
 
-        Spinner projectSpinner = findViewById(R.id.project_spi);
-        ArrayAdapter projectAdapter = ArrayAdapter.createFromResource(this,R.array.project_zup, android.R.layout.simple_list_item_checked);
-        projectAdapter.setDropDownViewResource(android.R.layout.simple_list_item_checked);
-        projectSpinner.setAdapter(projectAdapter);
         }
     }

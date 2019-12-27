@@ -40,6 +40,7 @@
     <string name="txt_receive_two">Recheada</string>
     <string name="txt_receive_three">Frita</string>
     <string name="txt_receive_four">Cozida</string>
+    <string name="exit_app_home">sair</string>
 
 
     <string-array name="offices_zup">
