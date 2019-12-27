@@ -6,22 +6,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import br.com.zup.onboarding.android.R;
+import br.com.zup.onboarding.android.Utils;
 import br.com.zup.onboarding.android.model.entity.Question;
 import br.com.zup.onboarding.android.viewmodel.QuestionViewModel;
 
 public class QuestionActivity extends AppCompatActivity {
     private QuestionViewModel viewModel;
     private ProgressBar loadingBar;
-    private TextView questionNumber;
-    private TextView questionName;
+    private TextView questionNumber, questionName;
     private List<Button> answerButtons = new ArrayList<>();
 
     @Override
@@ -35,6 +32,15 @@ public class QuestionActivity extends AppCompatActivity {
         initializeButtons();
         setViewModel();
         setClickListeners();
+        setFonts();
+    }
+
+    private void setFonts() {
+        questionName.setTypeface(Utils.getFont(this));
+        questionNumber.setTypeface(Utils.getFont(this));
+        for (Button button : answerButtons) {
+            button.setTypeface(Utils.getFont(this));
+        }
     }
 
     private void initializeViews() {

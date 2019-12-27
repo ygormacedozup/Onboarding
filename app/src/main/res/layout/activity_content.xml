@@ -79,42 +79,42 @@
         android:layout_marginEnd="51dp"
         />
 
-    <TextView
-        android:id="@+id/project_txt_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/pod_spi"
-        app:layout_constraintLeft_toLeftOf="@+id/continues_txt_cnt"
-        android:text="@string/project_cnt"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="35dp"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:textSize="@dimen/content_text"
-        />
+<!--    <TextView-->
+<!--        android:id="@+id/project_txt_view"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/pod_spi"-->
+<!--        app:layout_constraintLeft_toLeftOf="@+id/continues_txt_cnt"-->
+<!--        android:text="@string/project_cnt"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:layout_marginStart="35dp"-->
+<!--        android:layout_marginEnd="35dp"-->
+<!--        android:textColor="@android:color/white"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textSize="@dimen/content_text"-->
+<!--        />-->
 
-    <Spinner
-        android:id="@+id/project_spi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@+id/project_txt_view"
-        app:layout_constraintLeft_toLeftOf="@id/pod_txt_view"
-        app:layout_constraintLeft_toRightOf="@id/continues_txt_cnt"
-        android:textSize="23sp"
-        android:hint="@string/say_here_cnt"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="51dp"
-        android:layout_marginEnd="51dp"
-        />
+<!--    <Spinner-->
+<!--        android:id="@+id/project_spi"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@android:color/white"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/project_txt_view"-->
+<!--        app:layout_constraintLeft_toLeftOf="@id/pod_txt_view"-->
+<!--        app:layout_constraintLeft_toRightOf="@id/continues_txt_cnt"-->
+<!--        android:textSize="23sp"-->
+<!--        android:hint="@string/say_here_cnt"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:layout_marginStart="51dp"-->
+<!--        android:layout_marginEnd="51dp"-->
+<!--        />-->
 
     <TextView
         android:id="@+id/located_edit_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/project_spi"
-        app:layout_constraintLeft_toLeftOf="@+id/project_spi"
+        app:layout_constraintTop_toBottomOf="@+id/pod_txt_view"
+        app:layout_constraintLeft_toLeftOf="@+id/pod_spi"
         android:text="@string/localizao_txt"
         android:layout_marginTop="16dp"
         android:textColor="@android:color/white"
@@ -128,8 +128,8 @@
         android:id="@+id/located_spi"
         app:layout_constraintTop_toBottomOf="@id/located_edit_txt"
         android:background="@android:color/white"
-        app:layout_constraintLeft_toLeftOf="@id/project_spi"
-        app:layout_constraintRight_toRightOf="@id/project_spi"
+        app:layout_constraintLeft_toLeftOf="@id/pod_spi"
+        app:layout_constraintRight_toRightOf="@id/pod_spi"
         app:layout_constraintLeft_toRightOf="@id/continues_txt_cnt"
         android:layout_marginTop="16dp"
         android:layout_marginStart="51dp"

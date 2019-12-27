@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/result"
+        android:id="@+id/thanks_for_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/result_label_margin_top"
@@ -27,12 +27,12 @@
         android:adjustViewBounds="true"
         android:layout_marginTop="@dimen/result_gif_margin_top"
         android:scaleType="fitCenter"
-        app:layout_constraintLeft_toLeftOf="@id/result"
-        app:layout_constraintRight_toRightOf="@id/result"
-        app:layout_constraintTop_toBottomOf="@id/result" />
+        app:layout_constraintLeft_toLeftOf="@id/thanks_for_result"
+        app:layout_constraintRight_toRightOf="@id/thanks_for_result"
+        app:layout_constraintTop_toBottomOf="@id/thanks_for_result" />
 
     <TextView
-        android:id="@+id/keep_studying"
+        android:id="@+id/more_info_results"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/msg_txt_result"
@@ -42,21 +42,21 @@
         android:paddingLeft="@dimen/keep_studying_margin_side"
         android:paddingRight="@dimen/keep_studying_margin_side"
         android:layout_marginTop="@dimen/keep_studying_margin_top"
-        app:layout_constraintLeft_toLeftOf="@id/result"
-        app:layout_constraintRight_toRightOf="@id/result"
+        app:layout_constraintLeft_toLeftOf="@id/thanks_for_result"
+        app:layout_constraintRight_toRightOf="@id/thanks_for_result"
         app:layout_constraintTop_toBottomOf="@id/result_gif" />
 
     <Button
-        android:id="@+id/send_and_finalize"
+        android:id="@+id/button_send_finalle_results"
         android:layout_width="@dimen/result_buttons_width"
         android:layout_height="@dimen/result_buttons_height"
         android:background="@drawable/btn_send_and_finalize_selector"
         android:text="@string/send_and_finalize_label"
         android:textColor="@color/white"
         android:layout_marginTop="@dimen/send_and_finalize_button_margin_top"
-        app:layout_constraintLeft_toLeftOf="@id/keep_studying"
-        app:layout_constraintRight_toRightOf="@id/keep_studying"
-        app:layout_constraintTop_toBottomOf="@id/keep_studying" />
+        app:layout_constraintLeft_toLeftOf="@id/more_info_results"
+        app:layout_constraintRight_toRightOf="@id/more_info_results"
+        app:layout_constraintTop_toBottomOf="@id/more_info_results" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
