@@ -28,10 +28,10 @@ public class UserRepository {
         Disposable disposable = service.getUser()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::onResponse, this::onError);
+                .subscribe(this::onLoadResponse, this::onError);
     }
 
-    private void onResponse(User response) {
+    private void onLoadResponse(User response) {
         userLiveData.setValue(response);
         questionListLiveData.setValue(response.getStep().getQuestions());
     }
