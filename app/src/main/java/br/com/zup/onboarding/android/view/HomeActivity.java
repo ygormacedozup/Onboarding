@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import br.com.zup.onboarding.android.GoogleAuthentication;
 import br.com.zup.onboarding.android.R;
 import br.com.zup.onboarding.android.Utils;
+import br.com.zup.onboarding.android.view.register.RegisterActivity;
 import br.com.zup.onboarding.android.viewmodel.HomeViewModel;
 
 public class HomeActivity extends AppCompatActivity {
@@ -94,7 +95,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void navigateToLogin() {
-        Intent newIntent = new Intent(HomeActivity.this, LoginActivity.class);
+        Intent newIntent = new Intent(HomeActivity.this, RegisterActivity.class);
         startActivity(newIntent);
         Toast.makeText(HomeActivity.this, R.string.signOut, Toast.LENGTH_LONG).show();
     }

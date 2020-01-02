@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_blue"
+    tools:context=".view.register.fragments.PodLocationFragment">
+
+
+    <TextView
+        android:id="@+id/hi_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/hi_text_margin_top"
+        android:text="@string/hi_text"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/hi_text_size"
+        app:layout_constraintLeft_toRightOf="@id/pod"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/name_text_margin_left"
+        android:layout_marginLeft="@dimen/name_text_margin_left"
+        android:layout_marginTop="@dimen/name_text_margin_top"
+        android:layout_marginEnd="@dimen/name_text_margin_right"
+        android:layout_marginRight="@dimen/name_text_margin_right"
+        android:text="@string/name_zuper_cnt"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/hi_text_size"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@id/hi_text"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/inform_pod_location_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/inform_pod_location_margin"
+        android:text="@string/inform_pod_location_text"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/hi_text_size"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hi_text" />
+
+    <TextView
+        android:id="@+id/pod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/pod_margin_left"
+        android:layout_marginLeft="@dimen/pod_margin_left"
+        android:layout_marginTop="@dimen/pod_margin_top"
+        android:layout_marginEnd="@dimen/pod_margin_right"
+        android:layout_marginRight="@dimen/pod_margin_right"
+        android:text="@string/pod_txt"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/hi_text_size"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/inform_pod_location_text"
+        app:layout_constraintTop_toBottomOf="@+id/inform_pod_location_text" />
+
+    <Spinner
+        android:id="@+id/pod_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spinner_item_height"
+        android:layout_marginStart="@dimen/pod_spinner_margin_left"
+        android:layout_marginLeft="@dimen/pod_spinner_margin_left"
+        android:layout_marginTop="@dimen/pod_spinner_margin_top"
+        android:layout_marginEnd="@dimen/pod_spinner_margin_right"
+        android:layout_marginRight="@dimen/pod_spinner_margin_right"
+        android:background="@android:color/white"
+        android:spinnerMode="dialog"
+        android:textSize="@dimen/pod_spinner_text_size"
+        app:layout_constraintLeft_toLeftOf="@id/pod"
+        app:layout_constraintTop_toBottomOf="@+id/pod" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/location_margin_top"
+        android:text="@string/location_text"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/hi_text_size"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@+id/pod_spinner"
+        app:layout_constraintTop_toBottomOf="@+id/pod_spinner" />
+
+    <Spinner
+        android:id="@+id/location_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spinner_item_height"
+        android:layout_marginStart="@dimen/location_spinner_margin_left"
+        android:layout_marginLeft="@dimen/location_spinner_margin_left"
+        android:layout_marginTop="@dimen/location_spinner_margin_top"
+        android:layout_marginEnd="@dimen/location_spinner_margin_right"
+        android:layout_marginRight="@dimen/location_spinner_margin_right"
+        android:background="@android:color/white"
+        android:spinnerMode="dialog"
+        app:layout_constraintLeft_toLeftOf="@id/pod_spinner"
+        app:layout_constraintLeft_toRightOf="@id/inform_pod_location_text"
+        app:layout_constraintRight_toRightOf="@id/pod_spinner"
+        app:layout_constraintTop_toBottomOf="@id/location" />
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="@dimen/register_button_width"
+        android:layout_height="@dimen/register_button_height"
+        android:layout_marginTop="@dimen/register_button_margin_top"
+        android:background="@drawable/common_button_selector"
+        android:text="@string/register_button_text"
+        android:textColor="@android:color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/location_spinner" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

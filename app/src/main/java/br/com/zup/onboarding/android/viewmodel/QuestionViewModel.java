@@ -8,17 +8,18 @@ import br.com.zup.onboarding.android.model.UserRepository;
 import br.com.zup.onboarding.android.model.entity.Question;
 
 public class QuestionViewModel extends ViewModel {
-    private UserRepository repository;
+    private final UserRepository repository;
     private LiveData<Question> questionLiveData;
-    private MutableLiveData<Integer> questionNumberLiveData = new MutableLiveData<>();
+    private final MutableLiveData<Integer> questionNumberLiveData = new MutableLiveData<>();
     private int currentQuestion = 0;
     private int maxQuesitons = 0;
-    private LiveData<Integer> maxQuestionsLiveData;
-    private MutableLiveData<Boolean> isLoadingLiveData = new MutableLiveData<>();
+    private final LiveData<Integer> maxQuestionsLiveData;
+    private final MutableLiveData<Boolean> isLoadingLiveData = new MutableLiveData<>();
 
     public QuestionViewModel() {
         isLoadingLiveData.setValue(true);
         repository = new UserRepository();
+        repository.loadUser();
         questionNumberLiveData.setValue(currentQuestion + 1);
         maxQuestionsLiveData = repository.getMaxQuestionsLiveData();
     }

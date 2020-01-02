@@ -6,10 +6,11 @@ import br.com.zup.onboarding.android.model.UserRepository;
 import br.com.zup.onboarding.android.model.entity.User;
 
 public class HomeViewModel extends ViewModel {
-    private LiveData<User> userLiveData;
+    private final LiveData<User> userLiveData;
 
     public HomeViewModel() {
         UserRepository repository = new UserRepository();
+        repository.loadUser();
         userLiveData = repository.getUserLiveData();
     }
 

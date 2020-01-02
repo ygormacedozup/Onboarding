@@ -1,5 +1,5 @@
 package br.com.zup.onboarding.android.viewmodel.login;
 
 public enum LoginState {
-    SUCCESS, ERROR
+    SIGN_IN_SUCCESS, SIGN_IN_ERROR, REGISTER_SUCCESS
 }

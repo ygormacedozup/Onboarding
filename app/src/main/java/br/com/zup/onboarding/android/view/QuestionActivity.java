@@ -19,7 +19,7 @@ public class QuestionActivity extends AppCompatActivity {
     private QuestionViewModel viewModel;
     private ProgressBar loadingBar;
     private TextView questionNumber, questionName;
-    private List<Button> answerButtons = new ArrayList<>();
+    private final List<Button> answerButtons = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
