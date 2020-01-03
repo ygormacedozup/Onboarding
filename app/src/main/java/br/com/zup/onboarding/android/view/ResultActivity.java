@@ -47,8 +47,6 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     private void setSendAndFinalizeClickListener() {
-        btnSendAndFinalize.setOnClickListener(v -> {
-            Toast.makeText(this, "Resultado enviado!", Toast.LENGTH_LONG).show();
-        });
+        btnSendAndFinalize.setOnClickListener(v -> Toast.makeText(this, "Resultado enviado!", Toast.LENGTH_LONG).show());
     }
 }

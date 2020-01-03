@@ -12,15 +12,20 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
 import br.com.zup.onboarding.android.GoogleAuthentication;
+import br.com.zup.onboarding.android.model.UserRepository;
+import br.com.zup.onboarding.android.model.entity.Location;
+import br.com.zup.onboarding.android.model.entity.Pod;
 import br.com.zup.onboarding.android.model.entity.User;
 
 public class LoginViewModel extends ViewModel {
+    private final UserRepository repository;
     private GoogleAuthentication authentication;
-    private int RC_SIGN_IN = 0;
+    private final int RC_SIGN_IN = 0;
     private LoginResultEvent loginResultEvent;
-    private MutableLiveData<LoginState> stateLiveData = new MutableLiveData<>();
+    private final MutableLiveData<LoginState> stateLiveData = new MutableLiveData<>();
 
     public LoginViewModel() {
+        repository = new UserRepository();
     }
 
     public void setAuthentication(GoogleAuthentication authentication) {
@@ -46,17 +51,30 @@ public class LoginViewModel extends ViewModel {
         try {
             GoogleSignInAccount account = task.getResult(ApiException.class);
 
-            User user = new User();
-
             if (account != null) {
-                user.setId(1);
-                user.setName(account.getDisplayName());
-                user.setEmail(account.getEmail());
+                authentication.setAccount(account);
             }
 
-            stateLiveData.setValue(LoginState.SUCCESS);
+            stateLiveData.setValue(LoginState.SIGN_IN_SUCCESS);
         } catch (ApiException e) {
-            stateLiveData.setValue(LoginState.ERROR);
+            stateLiveData.setValue(LoginState.SIGN_IN_ERROR);
         }
+    }
+
+    public void saveUser(String podName, String locationName) {
+        User user = new User();
+
+        user.setName(authentication.getUserName());
+        user.setEmail(authentication.getUserEmail());
+
+        user.setPod(new Pod(podName));
+        user.setLocation(new Location(locationName));
+
+        repository.saveUser(user);
+        stateLiveData.setValue(LoginState.REGISTER_SUCCESS);
+    }
+
+    public String getUserName() {
+        return authentication.getUserName();
     }
 }

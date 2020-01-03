@@ -11,7 +11,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.Task;
 
 public class GoogleAuthentication {
-    private GoogleSignInOptions gso;
     private GoogleSignInClient client;
     private String userName;
     private String userEmail;
@@ -22,23 +21,19 @@ public class GoogleAuthentication {
     }
 
     private void start(Context context) {
-        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail().build();
         client = GoogleSignIn.getClient(context, gso);
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(context);
+    }
 
-        if (account != null) {
-            setUserData(account.getDisplayName(), account.getEmail(), account.getPhotoUrl());
-        }
+    public void setAccount(GoogleSignInAccount account) {
+        userName = account.getDisplayName();
+        userEmail = account.getEmail();
+        userPhoto = account.getPhotoUrl();
     }
 
     public Task<Void> signOut() {
         return client.signOut();
-    }
-
-    private void setUserData(String name, String email, Uri photo) {
-        userName = name;
-        userEmail = email;
-        userPhoto = photo;
     }
 
     public String getUserName() {

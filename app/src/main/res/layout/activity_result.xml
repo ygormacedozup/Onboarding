@@ -48,9 +48,9 @@
 
     <Button
         android:id="@+id/button_send_finalle_results"
-        android:layout_width="@dimen/result_buttons_width"
-        android:layout_height="@dimen/result_buttons_height"
-        android:background="@drawable/btn_send_and_finalize_selector"
+        android:layout_width="@dimen/register_button_width"
+        android:layout_height="@dimen/register_button_height"
+        android:background="@drawable/common_button_selector"
         android:text="@string/send_and_finalize_label"
         android:textColor="@color/white"
         android:layout_marginTop="@dimen/send_and_finalize_button_margin_top"

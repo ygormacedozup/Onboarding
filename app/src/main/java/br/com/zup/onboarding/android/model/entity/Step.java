@@ -2,7 +2,6 @@ package br.com.zup.onboarding.android.model.entity;
 
 import androidx.annotation.NonNull;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -10,26 +9,18 @@ import java.util.List;
 
 public class Step implements Serializable {
     @SerializedName("id")
-    @Expose
     private int id;
 
     @SerializedName("stepName")
-    @Expose
     private String name;
 
     @SerializedName("description")
-    @Expose
     private String description;
 
     @SerializedName("duration")
-    @Expose
     private String duration;
 
-    /*@SerializedName("questions")
-    @Expose
-    private List<Question> questions;*/
     @SerializedName("question")
-    @Expose
     private List<Question> questions;
 
     public int getId() {

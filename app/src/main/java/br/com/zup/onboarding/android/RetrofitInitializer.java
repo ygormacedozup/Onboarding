@@ -2,25 +2,36 @@ package br.com.zup.onboarding.android;
 
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitInitializer {
-    private Retrofit retrofit;
+    private final Retrofit retrofit;
     private final int TIMEOUT_IN_SECONDS = 60;
 
     public RetrofitInitializer() {
-        OkHttpClient client = getClient();
+        Interceptor interceptor = getInterceptor();
+        OkHttpClient client = getClient(interceptor);
         retrofit = getRetrofit(client);
     }
 
-    private OkHttpClient getClient() {
+    private Interceptor getInterceptor() {
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        return interceptor;
+    }
+
+    private OkHttpClient getClient(Interceptor interceptor) {
         return new OkHttpClient.Builder()
                 .writeTimeout(TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
                 .connectTimeout(TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
                 .readTimeout(TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+                .addInterceptor(interceptor)
                 .build();
     }
 

@@ -19,6 +19,12 @@ public class User implements Serializable {
     @SerializedName("step")
     private Step step;
 
+    @SerializedName("pod")
+    private Pod pod;
+
+    @SerializedName("location")
+    private Location location;
+
     public int getId() {
         return id;
     }
@@ -51,9 +57,26 @@ public class User implements Serializable {
         this.step = step;
     }
 
+    public Pod getPod() {
+        return pod;
+    }
+
+    public void setPod(Pod pod) {
+        this.pod = pod;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
     @NonNull
     @Override
     public String toString() {
-        return "id="+id+" name="+name+" email="+email+" step="+step;
+        return "id=" + id + " name=" + name + " email=" + email +
+                " step=" + step + " pod=" + pod.getNamePod() + " location=" + location.getNameLocation();
     }
 }
