@@ -11,8 +11,11 @@ import java.util.Objects;
 
 import br.com.zup.onboarding.android.RetrofitInitializer;
 import br.com.zup.onboarding.android.UserService;
+import br.com.zup.onboarding.android.model.entity.Alternative;
 import br.com.zup.onboarding.android.model.entity.Question;
 import br.com.zup.onboarding.android.model.entity.User;
+import br.com.zup.onboarding.android.model.entity.UserAlternative;
+import br.com.zup.onboarding.android.model.entity.UserAlternativeRequest;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -49,6 +52,25 @@ public class UserRepository {
                 .subscribe(this::onGetByEmailResponse, this::onError);
     }
 
+    public void saveAlternative(int id, User user) {
+        UserAlternativeRequest userAlternativeRequest = new UserAlternativeRequest(user.getId());
+        UserAlternative userAlternative = new UserAlternative(userAlternativeRequest, new Alternative(id));
+
+        Disposable disposable = service.saveAlternative(userAlternative)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::onSaveAlternativeResponse, this::onError);
+    }
+
+    public void finishStep(int id) {
+        User user = new User(id);
+
+        Disposable disposable = service.finishStep(user)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::onFinishStepResponse, this::onError);
+    }
+
     private void onSaveResponse(User response) {
         Log.e("User received", response.toString());
     }
@@ -56,6 +78,14 @@ public class UserRepository {
     private void onGetByEmailResponse(User response) {
         userLiveData.setValue(response);
         questionListLiveData.setValue(response.getStep().getQuestions());
+    }
+
+    private void onSaveAlternativeResponse(User response) {
+        Log.e("Alternative saved", response.toString());
+    }
+
+    private void onFinishStepResponse(Object response) {
+        Log.e("Step finished", response.toString());
     }
 
     private void onError(Throwable throwable) {

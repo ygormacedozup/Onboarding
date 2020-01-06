@@ -16,6 +16,13 @@ public class Alternative implements Serializable {
     @SerializedName("correct")
     private Boolean isCorrect;
 
+    public Alternative() {
+    }
+
+    public Alternative(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

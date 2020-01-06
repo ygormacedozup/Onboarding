@@ -18,6 +18,7 @@ import br.com.zup.onboarding.android.viewmodel.QuestionViewModel;
 
 public class QuestionActivity extends AppCompatActivity {
     private QuestionViewModel viewModel;
+    private Question question;
     private TextView questionNumber, questionName;
     private final List<Button> answerButtons = new ArrayList<>();
 
@@ -56,14 +57,26 @@ public class QuestionActivity extends AppCompatActivity {
     }
 
     private void setClickListeners() {
-        for (Button button : answerButtons) {
-            button.setOnClickListener(v -> {
+        for (int i = 0; i < answerButtons.size(); i++) {
+            final int index = i;
+            answerButtons.get(i).setOnClickListener(v -> {
                 if (viewModel.isFinalized()) {
-                    navigateToResult();
+                    int alternativeId = question.getAlternatives().get(index).getId();
+                    viewModel.saveAlternative(alternativeId);
+
+
+                    viewModel.finishStep();
+
+
+                    QuestionActivity.this.navigateToResult();
                 } else {
+                    int alternativeId = question.getAlternatives().get(index).getId();
+                    viewModel.saveAlternative(alternativeId);
+
+
                     viewModel.updateQuestion();
-                    viewModel.getQuestionLiveData().removeObservers(this);
-                    setViewModel();
+                    viewModel.getQuestionLiveData().removeObservers(QuestionActivity.this);
+                    QuestionActivity.this.setViewModel();
                 }
             });
         }
@@ -80,7 +93,8 @@ public class QuestionActivity extends AppCompatActivity {
         questionNumber.setText(template);
     }
 
-    private void showQuestion(Question question) {
+    private void showQuestion(Question questionResponse) {
+        this.question = questionResponse;
         questionName.setText(question.getDescription());
 
         for (int i = 0; i < answerButtons.size(); i++) {
