@@ -70,7 +70,9 @@
         android:src="@drawable/rocket_checked"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/db_rocket_two"
-        app:layout_constraintTop_toBottomOf="@id/home_text_onboarding" />
+        app:layout_constraintTop_toBottomOf="@id/home_text_onboarding"
+        android:contentDescription="@string/rocket_one_details"
+        />
 
     <ImageView
         android:id="@+id/db_rocket_two"
@@ -81,7 +83,7 @@
         app:layout_constraintLeft_toRightOf="@id/db_rocket_one"
         app:layout_constraintRight_toLeftOf="@id/db_rocket_three"
         app:layout_constraintTop_toBottomOf="@id/home_text_onboarding"
-
+        android:contentDescription="@string/rocket_two_details"
         />
 
     <ImageView

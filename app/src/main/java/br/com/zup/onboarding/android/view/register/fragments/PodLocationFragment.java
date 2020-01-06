@@ -16,8 +16,8 @@ import java.util.List;
 
 import br.com.zup.onboarding.android.R;
 import br.com.zup.onboarding.android.Utils;
-import br.com.zup.onboarding.android.view.register.fragments.listeners.OnPodLocationCompletedListener;
 import br.com.zup.onboarding.android.view.register.SpinnerAdapter;
+import br.com.zup.onboarding.android.view.register.fragments.listeners.OnPodLocationCompletedListener;
 
 public class PodLocationFragment extends Fragment {
     private Context context;

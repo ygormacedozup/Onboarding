@@ -19,7 +19,7 @@
     <string name="answer_quiz_label">Responder Quiz</string>
     <string name="signOut">Saindo do App</string>
     <string name="welcome_txt">Seja bem vindo !</string>
-    <string name="inform_pod_location_text">Antes de iniciarmos, pode me informar seu projeto e POD?</string>
+    <string name="inform_pod_location_text">Antes de iniciarmos, pode me informar sua POD e localização?</string>
     <string name="register_button_text">Cadastrar</string>
     <string name="project_cnt">Projeto</string>
     <string name="project_hint">Cliente/Projeto</string>
@@ -33,7 +33,7 @@
     <string name="estrutura_txt">Estrutura</string>
     <string name="location_text">Localização</string>
     <string name="msg_txt_result">Veja mais conteúdos pra ser mestre na nossa cultura Zup!</string>
-    <string name="txt_tks_results">Obrigado por responder, Gessica!</string>
+    <string name="txt_tks_results">Obrigado por responder,</string>
     <string name="txt_quest">Questão 1:</string>
     <string name="txt_quest_main">Qual é a melhor batata?</string>
     <string name="txt_receive_one">Doce</string>
@@ -79,5 +79,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="people_text_result">\"Pessoa\"</string>
+    <string name="rocket_one_details">foguete_um</string>
+    <string name="rocket_two_details">foguete dois</string>
+    <string name="radon_gif">imagem contendo uma gif aleatoria</string>
 
 </resources>
