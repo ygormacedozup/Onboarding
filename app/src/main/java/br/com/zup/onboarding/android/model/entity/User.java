@@ -25,12 +25,19 @@ public class User implements Serializable {
     @SerializedName("location")
     private Location location;
 
-    public int getId() {
-        return id;
+    public User() {
+    }
+
+    public User(int id) {
+        this.id = id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -76,7 +83,7 @@ public class User implements Serializable {
     @NonNull
     @Override
     public String toString() {
-        return "id=" + id + " name=" + name + " email=" + email +
+        return " name=" + name + " email=" + email +
                 " step=" + step + " pod=" + pod.getNamePod() + " location=" + location.getNameLocation();
     }
 }

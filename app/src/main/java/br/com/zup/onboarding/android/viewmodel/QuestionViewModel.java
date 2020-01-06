@@ -6,30 +6,27 @@ import androidx.lifecycle.ViewModel;
 
 import br.com.zup.onboarding.android.model.UserRepository;
 import br.com.zup.onboarding.android.model.entity.Question;
+import br.com.zup.onboarding.android.model.entity.User;
 
 public class QuestionViewModel extends ViewModel {
     private final UserRepository repository;
+    private User user;
+    private LiveData<User> userLiveData;
+
     private LiveData<Question> questionLiveData;
     private final MutableLiveData<Integer> questionNumberLiveData = new MutableLiveData<>();
     private int currentQuestion = 0;
     private int maxQuesitons = 0;
     private final LiveData<Integer> maxQuestionsLiveData;
-    private final MutableLiveData<Boolean> isLoadingLiveData = new MutableLiveData<>();
 
     public QuestionViewModel() {
-        isLoadingLiveData.setValue(true);
-        repository = new UserRepository();
-        repository.loadUser();
+        repository = UserRepository.getInstance();
+
+        userLiveData = repository.getUserLiveData();
+        user = userLiveData.getValue();
+
         questionNumberLiveData.setValue(currentQuestion + 1);
         maxQuestionsLiveData = repository.getMaxQuestionsLiveData();
-    }
-
-    public MutableLiveData<Boolean> getIsLoadingLiveData() {
-        return isLoadingLiveData;
-    }
-
-    public void stopLoading() {
-        isLoadingLiveData.setValue(false);
     }
 
     public LiveData<Integer> getMaxQuestionsLiveData() {
@@ -50,6 +47,14 @@ public class QuestionViewModel extends ViewModel {
         questionLiveData = repository.getQuestionLiveData(currentQuestion);
     }
 
+    public void saveAlternative(int alternativeId) {
+        repository.saveAlternative(alternativeId, user);
+    }
+
+    public void finishStep() {
+        repository.finishStep(user.getId());
+    }
+
     public void updateQuestion() {
         currentQuestion++;
         setCurrentQuestion();
@@ -62,5 +67,4 @@ public class QuestionViewModel extends ViewModel {
     public boolean isFinalized() {
         return currentQuestion == maxQuesitons - 1;
     }
-
 }
