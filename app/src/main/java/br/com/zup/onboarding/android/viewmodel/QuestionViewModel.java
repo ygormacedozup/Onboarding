@@ -12,7 +12,6 @@ public class QuestionViewModel extends ViewModel {
     private final UserRepository repository;
     private User user;
     private LiveData<User> userLiveData;
-
     private LiveData<Question> questionLiveData;
     private final MutableLiveData<Integer> questionNumberLiveData = new MutableLiveData<>();
     private int currentQuestion = 0;

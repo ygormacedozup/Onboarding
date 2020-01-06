@@ -84,7 +84,7 @@ public class UserRepository {
         Log.e("Alternative saved", response.toString());
     }
 
-    private void onFinishStepResponse(User response) {
+    private void onFinishStepResponse(Object response) {
         Log.e("Step finished", response.toString());
     }
 

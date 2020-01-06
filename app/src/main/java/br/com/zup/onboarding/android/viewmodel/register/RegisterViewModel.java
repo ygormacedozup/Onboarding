@@ -1,6 +1,7 @@
-package br.com.zup.onboarding.android.viewmodel.login;
+package br.com.zup.onboarding.android.viewmodel.register;
 
 import android.content.Intent;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -11,28 +12,30 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
+import java.util.Objects;
+
 import br.com.zup.onboarding.android.GoogleAuthentication;
 import br.com.zup.onboarding.android.model.UserRepository;
 import br.com.zup.onboarding.android.model.entity.Location;
 import br.com.zup.onboarding.android.model.entity.Pod;
 import br.com.zup.onboarding.android.model.entity.User;
 
-public class LoginViewModel extends ViewModel {
+public class RegisterViewModel extends ViewModel {
     private final UserRepository repository;
     private GoogleAuthentication authentication;
     private final int RC_SIGN_IN = 0;
     private LoginResultEvent loginResultEvent;
-    private final MutableLiveData<LoginState> stateLiveData = new MutableLiveData<>();
+    private final MutableLiveData<RegisterState> stateLiveData = new MutableLiveData<>();
 
-    public LoginViewModel() {
-        repository = new UserRepository();
+    public RegisterViewModel() {
+        repository = UserRepository.getInstance();
     }
 
     public void setAuthentication(GoogleAuthentication authentication) {
         this.authentication = authentication;
     }
 
-    public LiveData<LoginState> getStateLiveData() {
+    public LiveData<RegisterState> getStateLiveData() {
         return stateLiveData;
     }
 
@@ -52,12 +55,13 @@ public class LoginViewModel extends ViewModel {
             GoogleSignInAccount account = task.getResult(ApiException.class);
 
             if (account != null) {
+                Log.e("Sign In Account", Objects.requireNonNull(account.getEmail()));
                 authentication.setAccount(account);
             }
 
-            stateLiveData.setValue(LoginState.SIGN_IN_SUCCESS);
+            stateLiveData.setValue(RegisterState.SIGN_IN_SUCCESS);
         } catch (ApiException e) {
-            stateLiveData.setValue(LoginState.SIGN_IN_ERROR);
+            stateLiveData.setValue(RegisterState.SIGN_IN_ERROR);
         }
     }
 
@@ -71,7 +75,7 @@ public class LoginViewModel extends ViewModel {
         user.setLocation(new Location(locationName));
 
         repository.saveUser(user);
-        stateLiveData.setValue(LoginState.REGISTER_SUCCESS);
+        stateLiveData.setValue(RegisterState.REGISTER_SUCCESS);
     }
 
     public String getUserName() {

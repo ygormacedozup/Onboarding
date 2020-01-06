@@ -19,5 +19,5 @@ public interface UserService {
     Observable<User> saveAlternative(@Body UserAlternative userAlternative);
 
     @POST("/zupper/finish")
-    Observable<User> finishStep(@Body User user);
+    Observable<Object> finishStep(@Body User user);
 }

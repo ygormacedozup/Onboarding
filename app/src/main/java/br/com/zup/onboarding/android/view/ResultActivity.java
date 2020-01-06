@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat;
 import com.bumptech.glide.Glide;
 import br.com.zup.onboarding.android.R;
 import br.com.zup.onboarding.android.Utils;
+import br.com.zup.onboarding.android.model.UserRepository;
 
 public class ResultActivity extends AppCompatActivity {
     private Button btnSendAndFinalize;

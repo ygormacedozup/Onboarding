@@ -1,4 +1,4 @@
-package br.com.zup.onboarding.android.viewmodel.login;
+package br.com.zup.onboarding.android.viewmodel.register;
 
 import android.content.Intent;
 

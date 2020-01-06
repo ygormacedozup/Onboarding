@@ -65,18 +65,11 @@ public class QuestionActivity extends AppCompatActivity {
                     viewModel.saveAlternative(alternativeId);
 
 
-
-
-
                     viewModel.finishStep();
 
 
-
-                    
                     QuestionActivity.this.navigateToResult();
                 } else {
-
-
                     int alternativeId = question.getAlternatives().get(index).getId();
                     viewModel.saveAlternative(alternativeId);
 
