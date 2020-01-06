@@ -7,8 +7,8 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    @SerializedName("id")
-    private int id;
+//    @SerializedName("id")
+//    private int id;
 
     @SerializedName("name")
     private String name;
@@ -25,13 +25,13 @@ public class User implements Serializable {
     @SerializedName("location")
     private Location location;
 
-    public int getId() {
-        return id;
-    }
+//    public int getId() {
+//        return id;
+//    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
     public String getName() {
         return name;
@@ -76,7 +76,7 @@ public class User implements Serializable {
     @NonNull
     @Override
     public String toString() {
-        return "id=" + id + " name=" + name + " email=" + email +
+        return "id=" + " name=" + name + " email=" + email +
                 " step=" + step + " pod=" + pod.getNamePod() + " location=" + location.getNameLocation();
     }
 }
