@@ -8,8 +8,8 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface UserService {
-    @GET("/zupper/caique.silva@zup.com.br")
-    Observable<User> getUser();
+    /*@GET("/zupper/caique.silva@zup.com.br")
+    Observable<User> getUser();*/
 
     @GET("/zupper/{email}")
     Observable<User> getUserByEmail(@Path("email") String email);
