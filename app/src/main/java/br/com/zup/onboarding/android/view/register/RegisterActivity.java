@@ -16,12 +16,12 @@ import br.com.zup.onboarding.android.view.register.fragments.LoginFragment;
 import br.com.zup.onboarding.android.view.register.fragments.PodLocationFragment;
 import br.com.zup.onboarding.android.view.register.fragments.listeners.OnLoginCompletedListener;
 import br.com.zup.onboarding.android.view.register.fragments.listeners.OnPodLocationCompletedListener;
-import br.com.zup.onboarding.android.viewmodel.login.LoginResultEvent;
-import br.com.zup.onboarding.android.viewmodel.login.LoginState;
-import br.com.zup.onboarding.android.viewmodel.login.LoginViewModel;
+import br.com.zup.onboarding.android.viewmodel.register.LoginResultEvent;
+import br.com.zup.onboarding.android.viewmodel.register.RegisterState;
+import br.com.zup.onboarding.android.viewmodel.register.RegisterViewModel;
 
 public class RegisterActivity extends AppCompatActivity {
-    private LoginViewModel viewModel;
+    private RegisterViewModel viewModel;
     private OnLoginCompletedListener loginListener;
     private OnPodLocationCompletedListener podLocationListener;
 
@@ -58,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void setViewModel() {
-        viewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(RegisterViewModel.class);
 
         GoogleAuthentication authentication = new GoogleAuthentication(this);
         viewModel.setAuthentication(authentication);
@@ -69,9 +69,9 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void observeViewModel() {
         viewModel.getStateLiveData().observe(this, state -> {
-            if (state == LoginState.SIGN_IN_SUCCESS) showPodLocationFragment(viewModel.getUserName());
-            if (state == LoginState.SIGN_IN_ERROR) showErrorMessage();
-            if (state == LoginState.REGISTER_SUCCESS) navigateToHome();
+            if (state == RegisterState.SIGN_IN_SUCCESS) showPodLocationFragment(viewModel.getUserName());
+            if (state == RegisterState.SIGN_IN_ERROR) showErrorMessage();
+            if (state == RegisterState.REGISTER_SUCCESS) navigateToHome();
         });
     }
 

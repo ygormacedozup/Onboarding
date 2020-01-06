@@ -11,16 +11,20 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.Task;
 
 public class GoogleAuthentication {
+    private Context context;
     private GoogleSignInClient client;
     private String userName;
     private String userEmail;
     private Uri userPhoto;
 
     public GoogleAuthentication(Context context) {
-        start(context);
+        //start(context);
+        this.context = context;
+        start();
     }
 
-    private void start(Context context) {
+    //private void start(Context context) {
+    private void start() {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail().build();
         client = GoogleSignIn.getClient(context, gso);
@@ -30,6 +34,11 @@ public class GoogleAuthentication {
         userName = account.getDisplayName();
         userEmail = account.getEmail();
         userPhoto = account.getPhotoUrl();
+    }
+
+    //public GoogleSignInAccount getLastSignedInAccount(Context context) {
+    public GoogleSignInAccount getLastSignedInAccount() {
+        return GoogleSignIn.getLastSignedInAccount(context);
     }
 
     public Task<Void> signOut() {

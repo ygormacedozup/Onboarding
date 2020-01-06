@@ -18,19 +18,21 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class UserRepository {
+    private static UserRepository INSTANCE;
     private final UserService service;
     private final MutableLiveData<User> userLiveData = new MutableLiveData<>();
     private final MutableLiveData<List<Question>> questionListLiveData = new MutableLiveData<>();
 
-    public UserRepository() {
+    private UserRepository() {
         service = new RetrofitInitializer().getUserService();
     }
 
-    public void loadUser() {
-        Disposable disposable = service.getUser()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::onLoadResponse, this::onError);
+    public static UserRepository getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new UserRepository();
+        }
+
+        return INSTANCE;
     }
 
     public void saveUser(User user) {
@@ -47,18 +49,13 @@ public class UserRepository {
                 .subscribe(this::onGetByEmailResponse, this::onError);
     }
 
-    private void onLoadResponse(User response) {
-        userLiveData.setValue(response);
-        questionListLiveData.setValue(response.getStep().getQuestions());
-    }
-
     private void onSaveResponse(User response) {
         Log.e("User received", response.toString());
     }
 
     private void onGetByEmailResponse(User response) {
-        Log.e("User with email", response.toString());
         userLiveData.setValue(response);
+        questionListLiveData.setValue(response.getStep().getQuestions());
     }
 
     private void onError(Throwable throwable) {
