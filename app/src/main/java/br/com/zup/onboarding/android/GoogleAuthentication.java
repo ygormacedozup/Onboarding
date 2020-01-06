@@ -1,10 +1,7 @@
 package br.com.zup.onboarding.android;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.util.Log;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -13,39 +10,33 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.Task;
 
 public class GoogleAuthentication {
-    private GoogleAuthentication instance;
-    private Activity activity;
-    private GoogleSignInOptions gso;
+    private Context context;
     private GoogleSignInClient client;
-    //private GoogleSignInAccount account;
     private String userName;
     private String userEmail;
-    private Uri userPhoto;
 
-    public GoogleAuthentication(Activity activity/*, GoogleSignInAccount account*/) {
-        this.activity = activity;
-        //this.account = account;
+    public GoogleAuthentication(Context context) {
+        this.context = context;
         start();
     }
 
     private void start() {
-        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-        client = GoogleSignIn.getClient(activity, gso);
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(activity);
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail().build();
+        client = GoogleSignIn.getClient(context, gso);
+    }
 
-        if (account != null ) {
-            setUserData(account.getDisplayName(), account.getEmail(), account.getPhotoUrl());
-        }
+    public void setAccount(GoogleSignInAccount account) {
+        userName = account.getDisplayName();
+        userEmail = account.getEmail();
+    }
+
+    public GoogleSignInAccount getLastSignedInAccount() {
+        return GoogleSignIn.getLastSignedInAccount(context);
     }
 
     public Task<Void> signOut() {
         return client.signOut();
-    }
-
-    private void setUserData(String name, String email, Uri photo) {
-        userName = name;
-        userEmail = email;
-        userPhoto = photo;
     }
 
     public String getUserName() {
@@ -54,10 +45,6 @@ public class GoogleAuthentication {
 
     public String getUserEmail() {
         return userEmail;
-    }
-
-    public Uri getUserPhoto() {
-        return userPhoto;
     }
 
     public Intent getSignInIntent() {

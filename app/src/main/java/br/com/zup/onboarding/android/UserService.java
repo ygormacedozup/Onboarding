@@ -1,21 +1,23 @@
 package br.com.zup.onboarding.android;
 
 import br.com.zup.onboarding.android.model.entity.User;
-import io.reactivex.Flowable;
+import br.com.zup.onboarding.android.model.entity.UserAlternative;
 import io.reactivex.Observable;
-import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface UserService {
-    /*@GET("/zupper/thalles.freitas@zup.com.br")
-    Call<User> getUserLiveData();*/
+    @GET("/zupper/{email}")
+    Observable<User> getUserByEmail(@Path("email") String email);
 
-    /*@GET("/zupper/thalles.freitas@zup.com.br")
-    Flowable<User> getUserLiveData();*/
+    @POST("/zupper")
+    Observable<User> saveUser(@Body User user);
 
-    @GET("/zupper/thalles.freitas@zup.com.br")
-    Observable<User> getUser();
+    @POST("/answer")
+    Observable<User> saveAlternative(@Body UserAlternative userAlternative);
 
-//    @GET("/podandproject")
-//    Observable<> getUserPodProject();
+    @POST("/zupper/finish")
+    Observable<Object> finishStep(@Body User user);
 }

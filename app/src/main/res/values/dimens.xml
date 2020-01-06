@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="text_login_onboarding">25sp</dimen>
+    <dimen name="onboarding_text_size">25sp</dimen>
     <dimen name="text_dashboard">25sp</dimen>
-    <dimen name="margin_top_default">16dp</dimen>
+    <dimen name="onboarding_margin_top">16dp</dimen>
     <dimen name="margin_default">16dp</dimen>
     <dimen name="progress_container_items_margin_top">40dp</dimen>
     <dimen name="question_margin_top">50dp</dimen>
@@ -19,9 +19,9 @@
     <dimen name="result_number_margin_top">50dp</dimen>
     <dimen name="correct_answers_label_margin_top">50dp</dimen>
     <dimen name="result_buttons_margin_top">70dp</dimen>
-    <dimen name="result_buttons_width">175dp</dimen>
+    <dimen name="register_button_width">175dp</dimen>
     <dimen name="answer_quiz_button_width">175dp</dimen>
-    <dimen name="result_buttons_height">60dp</dimen>
+    <dimen name="register_button_height">60dp</dimen>
     <dimen name="answer_quiz_button_height">60dp</dimen>
     <dimen name="content_link_zupnet_margin_top">150dp</dimen>
     <dimen name="answer_quiz_button_margin_top">150dp</dimen>
@@ -32,15 +32,39 @@
     <dimen name="progress_bar_side_margin">5dp</dimen>
     <dimen name="ball_default">50dp</dimen>
     <dimen name="frame_default_top">62dp</dimen>
-    <dimen name="ac_top_margintop">150dp</dimen>
+    <dimen name="sign_in_button_margin_top">150dp</dimen>
     <dimen name="welcome_size">100dp</dimen>
-    <dimen name="content_text">23sp</dimen>
+    <dimen name="hi_text_size">23sp</dimen>
     <dimen name="last_answer_margin_bottom">210dp</dimen>
     <dimen name="answer_margin_bottom">20dp</dimen>
     <dimen name="send_and_finalize_button_margin_top">25dp</dimen>
-    <dimen name="keep_studying_margin_top">50dp</dimen>
+    <dimen name="keep_studying_margin_top">25dp</dimen>
     <dimen name="keep_studying_margin_side">40dp</dimen>
     <dimen name="keep_studying_text_size">20sp</dimen>
     <dimen name="result_gif_margin_side">30dp</dimen>
-    <dimen name="result_gif_margin_top">50dp</dimen>
+    <dimen name="result_gif_margin_top">25dp</dimen>
+    <dimen name="loading_progress_bar_elevation">3dp</dimen>
+    <dimen name="progressbar_margin">100dp</dimen>
+    <dimen name="zup_logo_width">300dp</dimen>
+    <dimen name="zup_logo_height">150dp</dimen>
+    <dimen name="hi_text_margin_top">50dp</dimen>
+    <dimen name="name_text_margin_left">10dp</dimen>
+    <dimen name="name_text_margin_top">50dp</dimen>
+    <dimen name="name_text_margin_right">10dp</dimen>
+    <dimen name="inform_pod_location_margin">16dp</dimen>
+    <dimen name="pod_margin_left">35dp</dimen>
+    <dimen name="pod_margin_right">35dp</dimen>
+    <dimen name="pod_margin_top">64dp</dimen>
+    <dimen name="pod_spinner_margin_left">51dp</dimen>
+    <dimen name="pod_spinner_margin_right">51dp</dimen>
+    <dimen name="pod_spinner_margin_top">16dp</dimen>
+    <dimen name="pod_spinner_text_size">23sp</dimen>
+    <dimen name="location_margin_top">16dp</dimen>
+    <dimen name="location_spinner_margin_left">51dp</dimen>
+    <dimen name="location_spinner_margin_top">16dp</dimen>
+    <dimen name="location_spinner_margin_right">51dp</dimen>
+    <dimen name="register_button_margin_top">45dp</dimen>
+    <dimen name="spinner_item_height">54dp</dimen>
+    <dimen name="spinner_item_padding_left">15dp</dimen>
+    <dimen name="spinner_item_text_size">18sp</dimen>
 </resources>

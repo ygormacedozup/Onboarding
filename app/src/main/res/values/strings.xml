@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Onboarding</string>
     <string name="logo_zup">logo</string>
-    <string name="ac_main_onboarding">Onboarding</string>
-    <string name="txt_hi">Olá,</string>
+    <string name="onboarding_text">Onboarding</string>
+    <string name="hi_text">Olá,</string>
     <string name="txt_default">Zezinho das Bolacha</string>
     <string name="name_txt">\"Nome\"</string>
     <string name="db_email_receive">email@zup.com.br</string>
@@ -19,8 +19,8 @@
     <string name="answer_quiz_label">Responder Quiz</string>
     <string name="signOut">Saindo do App</string>
     <string name="welcome_txt">Seja bem vindo !</string>
-    <string name="welcome_project_txt">Antes de iniciarmos, pode me informar seu projeto e POD?</string>
-    <string name="cadastro_content">Cadastrar</string>
+    <string name="inform_pod_location_text">Antes de iniciarmos, pode me informar sua POD e localização?</string>
+    <string name="register_button_text">Cadastrar</string>
     <string name="project_cnt">Projeto</string>
     <string name="project_hint">Cliente/Projeto</string>
     <string name="pod_txt">POD</string>
@@ -31,10 +31,19 @@
     <string name="cultura_txt">Cultura</string>
     <string name="tecnologia_txt">Tecnologia</string>
     <string name="estrutura_txt">Estrutura</string>
-    <string name="localizao_txt">Localização:</string>
+    <string name="location_text">Localização</string>
+    <string name="msg_txt_result">Veja mais conteúdos pra ser mestre na nossa cultura Zup!</string>
+    <string name="txt_tks_results">Obrigado por responder,</string>
+    <string name="txt_quest">Questão 1:</string>
+    <string name="txt_quest_main">Qual é a melhor batata?</string>
+    <string name="txt_receive_one">Doce</string>
+    <string name="txt_receive_two">Recheada</string>
+    <string name="txt_receive_three">Frita</string>
+    <string name="txt_receive_four">Cozida</string>
+    <string name="exit_app_home">sair</string>
 
 
-    <string-array name="offices_zup">
+    <string-array name="locations_zup">
         <item> DF: Brasília </item>
         <item> MG: Uberlândia</item>
         <item> MG: Belo Horizonte</item>
@@ -43,7 +52,7 @@
         <item> SP: São Paulo </item>
         <item> SC: Joinville </item>
     </string-array>
-    <string-array name="pod_zup">
+    <string-array name="pods_zup">
         <item>Acelera</item>
         <item>Alpha</item>
         <item>Customer Flow</item>
@@ -55,7 +64,7 @@
         <item>MSI</item>
         <item>MVPod</item>
         <item>Next</item>
-        <item>No Limit</item>
+        <item>No Limits</item>
         <item>RedRocket</item>
         <item>Uai Pod</item>
         <item>Zup Experience</item>
@@ -67,5 +76,12 @@
         <item> ROBERVAL</item>
         <item> GERISCLEITON</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="people_text_result">\"Pessoa\"</string>
+    <string name="rocket_one_details">foguete_um</string>
+    <string name="rocket_two_details">foguete dois</string>
+    <string name="radon_gif">imagem contendo uma gif aleatoria</string>
 
 </resources>

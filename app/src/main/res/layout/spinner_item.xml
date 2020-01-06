@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/spinner_item"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/spinner_item_height"
+    android:ellipsize="marquee"
+    android:gravity="start|center"
+    android:paddingStart="@dimen/spinner_item_padding_left"
+    android:paddingLeft="@dimen/spinner_item_padding_left"
+    android:singleLine="true"
+    android:textColor="@android:color/black"
+    android:textSize="@dimen/spinner_item_text_size"
+    tools:ignore="RtlSymmetry"
+    tools:text="Placeholder" />
