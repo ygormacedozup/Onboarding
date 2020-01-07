@@ -6,11 +6,14 @@ import androidx.lifecycle.ViewModel;
 
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
+import java.util.IdentityHashMap;
+
 import br.com.zup.onboarding.android.GoogleAuthentication;
 import br.com.zup.onboarding.android.model.UserRepository;
 import br.com.zup.onboarding.android.model.entity.User;
 
 public class ResultViewModel extends ViewModel {
+    private User user;
     private UserRepository repository;
     private GoogleAuthentication authentication;
     private LiveData<User> userLiveData;
@@ -24,6 +27,9 @@ public class ResultViewModel extends ViewModel {
     public void setAuthentication(GoogleAuthentication authentication) {
         this.authentication = authentication;
         loadUser();
+    }
+        public void finishStep() {
+        repository.finishStep(user.getId());
     }
 
     private void loadUser() {

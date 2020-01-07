@@ -49,7 +49,7 @@ public class QuestionViewModel extends ViewModel {
         Log.e("Alternative id", String.valueOf(alternativeId));
         repository.saveAlternative(alternativeId, user);
     }
-
+  
     public void updateQuestion() {
         currentQuestion++;
         setCurrentQuestion();
