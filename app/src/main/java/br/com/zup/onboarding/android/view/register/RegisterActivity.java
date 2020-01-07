@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import br.com.zup.onboarding.android.GoogleAuthentication;
 import br.com.zup.onboarding.android.R;
+import br.com.zup.onboarding.android.model.UserSessionManager;
 import br.com.zup.onboarding.android.view.HomeActivity;
 import br.com.zup.onboarding.android.view.register.fragments.LoginFragment;
 import br.com.zup.onboarding.android.view.register.fragments.PodLocationFragment;
@@ -63,14 +64,17 @@ public class RegisterActivity extends AppCompatActivity {
         GoogleAuthentication authentication = new GoogleAuthentication(this);
         viewModel.setAuthentication(authentication);
 
+        UserSessionManager manager = new UserSessionManager(this);
+        viewModel.setUserSessionManager(manager);
+
         LoginResultEvent loginResultEvent = this::startActivityForResult;
         viewModel.setLoginResultEvent(loginResultEvent);
     }
 
     private void observeViewModel() {
         viewModel.getStateLiveData().observe(this, state -> {
-            if (state == RegisterState.SIGN_IN_SUCCESS)
-                showPodLocationFragment(viewModel.getUserName());
+            if (state == RegisterState.ALREADY_LOGGED) navigateToHome();
+            if (state == RegisterState.SIGN_IN_SUCCESS) showPodLocationFragment(viewModel.getUserName());
             if (state == RegisterState.SIGN_IN_ERROR) showErrorMessage();
             if (state == RegisterState.REGISTER_SUCCESS) navigateToHome();
         });

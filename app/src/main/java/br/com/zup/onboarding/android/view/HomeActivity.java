@@ -18,15 +18,16 @@ import com.bumptech.glide.Glide;
 import br.com.zup.onboarding.android.GoogleAuthentication;
 import br.com.zup.onboarding.android.R;
 import br.com.zup.onboarding.android.Utils;
+import br.com.zup.onboarding.android.model.UserSessionManager;
 import br.com.zup.onboarding.android.model.entity.User;
 import br.com.zup.onboarding.android.view.register.RegisterActivity;
-import br.com.zup.onboarding.android.viewmodel.HomeViewModel;
+import br.com.zup.onboarding.android.viewmodel.home.HomeViewModel;
 
 public class HomeActivity extends AppCompatActivity {
     private HomeViewModel viewModel;
     private ProgressBar loadingBar;
     private ImageView photoZupper;
-    private Button btnBack, btnConfirm;
+    private Button btnExit, btnConfirm;
     private TextView textOnboarding, nameZupper, hiZupper, structureZup, cultureZup, technologyZup;
     private ImageView rocketOne, rocketTwo, rocketThree;
     private ImageView ballOne, ballTwo, ballThree;
@@ -84,7 +85,7 @@ public class HomeActivity extends AppCompatActivity {
         loadingBar = findViewById(R.id.loading_progress_bar);
         photoZupper = findViewById(R.id.home_logo_rocket);
         nameZupper = findViewById(R.id.home_txt_receive);
-        btnBack = findViewById(R.id.home_button_exit);
+        btnExit = findViewById(R.id.home_button_exit);
         textOnboarding = findViewById(R.id.home_text_onboarding);
         hiZupper = findViewById(R.id.home_txt_hello);
         structureZup = findViewById(R.id.home_structure_txt);
@@ -114,7 +115,7 @@ public class HomeActivity extends AppCompatActivity {
         structureZup.setVisibility(informationVisibility);
         cultureZup.setVisibility(informationVisibility);
         technologyZup.setVisibility(informationVisibility);
-        btnBack.setVisibility(informationVisibility);
+        btnExit.setVisibility(informationVisibility);
         btnConfirm.setVisibility(informationVisibility);
         rocketOne.setVisibility(informationVisibility);
         rocketTwo.setVisibility(informationVisibility);
@@ -127,8 +128,9 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void setBackButtonClickListener() {
-        btnBack.setOnClickListener(v -> {
+        btnExit.setOnClickListener(v -> {
             if (v.getId() == R.id.home_button_exit) {
+                UserSessionManager manager = new UserSessionManager(this);
                 authentication.signOut().addOnCompleteListener(this, task -> navigateToLogin());
             }
         });
@@ -150,7 +152,7 @@ public class HomeActivity extends AppCompatActivity {
         nameZupper.setTypeface(Utils.getFont(this));
         hiZupper.setTypeface(Utils.getFont(this));
         textOnboarding.setTypeface(Utils.getFont(this));
-        btnBack.setTypeface(Utils.getFont(this));
+        btnExit.setTypeface(Utils.getFont(this));
         structureZup.setTypeface(Utils.getFont(this));
         cultureZup.setTypeface(Utils.getFont(this));
         technologyZup.setTypeface(Utils.getFont(this));

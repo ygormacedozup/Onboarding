@@ -52,9 +52,9 @@ public class UserRepository {
                 .subscribe(this::onGetByEmailResponse, this::onError);
     }
 
-    public void saveAlternative(int id, User user) {
+    public void saveAlternative(int alternativeId, User user) {
         UserAlternativeRequest userAlternativeRequest = new UserAlternativeRequest(user.getId());
-        UserAlternative userAlternative = new UserAlternative(userAlternativeRequest, new Alternative(id));
+        UserAlternative userAlternative = new UserAlternative(userAlternativeRequest, new Alternative(alternativeId));
 
         Disposable disposable = service.saveAlternative(userAlternative)
                 .subscribeOn(Schedulers.io())
