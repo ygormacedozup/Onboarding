@@ -16,6 +16,4 @@ public class Utils {
 
         return font;
     }
-
-    // go
 }

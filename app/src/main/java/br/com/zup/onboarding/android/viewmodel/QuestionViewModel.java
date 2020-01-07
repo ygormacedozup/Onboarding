@@ -1,5 +1,7 @@
 package br.com.zup.onboarding.android.viewmodel;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -11,7 +13,6 @@ import br.com.zup.onboarding.android.model.entity.User;
 public class QuestionViewModel extends ViewModel {
     private final UserRepository repository;
     private User user;
-    private LiveData<User> userLiveData;
     private LiveData<Question> questionLiveData;
     private final MutableLiveData<Integer> questionNumberLiveData = new MutableLiveData<>();
     private int currentQuestion = 0;
@@ -20,9 +21,7 @@ public class QuestionViewModel extends ViewModel {
 
     public QuestionViewModel() {
         repository = UserRepository.getInstance();
-
-        userLiveData = repository.getUserLiveData();
-        user = userLiveData.getValue();
+        user = repository.getUserLiveData().getValue();
 
         questionNumberLiveData.setValue(currentQuestion + 1);
         maxQuestionsLiveData = repository.getMaxQuestionsLiveData();
@@ -47,13 +46,10 @@ public class QuestionViewModel extends ViewModel {
     }
 
     public void saveAlternative(int alternativeId) {
+        Log.e("Alternative id", String.valueOf(alternativeId));
         repository.saveAlternative(alternativeId, user);
     }
-
-//    public void finishStep() {
-//        repository.finishStep(user.getId());
-//    }
-
+  
     public void updateQuestion() {
         currentQuestion++;
         setCurrentQuestion();
