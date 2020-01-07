@@ -19,6 +19,9 @@ public class User implements Serializable {
     @SerializedName("step")
     private Step step;
 
+    @SerializedName("completedAll")
+    private boolean hasCompletedAllSteps;
+
     @SerializedName("pod")
     private Pod pod;
 
@@ -62,6 +65,10 @@ public class User implements Serializable {
 
     public void setStep(Step step) {
         this.step = step;
+    }
+
+    public boolean hasCompletedAllSteps() {
+        return hasCompletedAllSteps;
     }
 
     public Pod getPod() {
