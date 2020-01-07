@@ -25,6 +25,13 @@ public class User implements Serializable {
     @SerializedName("location")
     private Location location;
 
+    public User() {
+    }
+
+    public User(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

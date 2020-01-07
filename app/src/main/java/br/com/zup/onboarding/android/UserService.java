@@ -21,4 +21,3 @@ public interface UserService {
     @POST("/zupper/finish")
     Observable<Object> finishStep(@Body User user);
 }
-// git test
