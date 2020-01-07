@@ -50,9 +50,9 @@ public class QuestionViewModel extends ViewModel {
         repository.saveAlternative(alternativeId, user);
     }
 
-    public void finishStep() {
-        repository.finishStep(user.getId());
-    }
+//    public void finishStep() {
+//        repository.finishStep(user.getId());
+//    }
 
     public void updateQuestion() {
         currentQuestion++;
