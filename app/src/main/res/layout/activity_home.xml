@@ -67,24 +67,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:contentDescription="@string/rocket_one_details"
         android:src="@drawable/rocket_checked"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/db_rocket_two"
-        app:layout_constraintTop_toBottomOf="@id/home_text_onboarding"
-        android:contentDescription="@string/rocket_one_details"
-        />
+        app:layout_constraintTop_toBottomOf="@id/home_text_onboarding" />
 
     <ImageView
         android:id="@+id/db_rocket_two"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:contentDescription="@string/rocket_two_details"
         android:src="@drawable/rocket_unchecked"
         app:layout_constraintLeft_toRightOf="@id/db_rocket_one"
         app:layout_constraintRight_toLeftOf="@id/db_rocket_three"
-        app:layout_constraintTop_toBottomOf="@id/home_text_onboarding"
-        android:contentDescription="@string/rocket_two_details"
-        />
+        app:layout_constraintTop_toBottomOf="@id/home_text_onboarding" />
 
     <ImageView
         android:id="@+id/db_rocket_three"
@@ -94,9 +92,7 @@
         android:src="@drawable/rocket_unchecked"
         app:layout_constraintLeft_toRightOf="@id/db_rocket_two"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/home_text_onboarding"
-
-        />
+        app:layout_constraintTop_toBottomOf="@id/home_text_onboarding" />
 
     <ImageView
         android:id="@+id/db_ball_one"
@@ -201,7 +197,7 @@
         app:layout_constraintRight_toLeftOf="@+id/db_ball_three"
         app:layout_constraintTop_toBottomOf="@id/db_ball_two" />
 
-    <Button
+    <!-- <Button
         android:id="@+id/home_button_exit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -210,8 +206,6 @@
         android:text="@string/exit_app_home"
         app:layout_constraintLeft_toRightOf="@id/db_ball_one"
         app:layout_constraintRight_toLeftOf="@+id/db_ball_three"
-        app:layout_constraintTop_toBottomOf="@id/home_confirm_button"
-
-        />
+        app:layout_constraintTop_toBottomOf="@id/home_confirm_button" /> -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

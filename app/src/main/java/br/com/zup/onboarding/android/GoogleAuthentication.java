@@ -35,10 +35,6 @@ public class GoogleAuthentication {
         return GoogleSignIn.getLastSignedInAccount(context);
     }
 
-    public Task<Void> signOut() {
-        return client.signOut();
-    }
-
     public String getUserName() {
         return userName;
     }

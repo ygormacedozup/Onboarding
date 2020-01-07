@@ -70,7 +70,6 @@ public class RegisterViewModel extends ViewModel {
             GoogleSignInAccount account = task.getResult(ApiException.class);
 
             if (account != null) {
-                Log.e("Sign In Account", Objects.requireNonNull(account.getEmail()));
                 authentication.setAccount(account);
             }
 
