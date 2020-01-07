@@ -86,6 +86,6 @@ public class ResultActivity extends AppCompatActivity {
                     "Resultado enviado!", Toast.LENGTH_LONG).show();
             startActivity(new Intent(ResultActivity.this,HomeActivity.class));
         });
-
+//        resultViewModel.finishStep();
     }
 }
