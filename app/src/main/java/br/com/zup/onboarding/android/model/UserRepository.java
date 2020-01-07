@@ -64,7 +64,6 @@ public class UserRepository {
 
     public void finishStep(int id) {
         User user = new User(id);
-
         Disposable disposable = service.finishStep(user)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
