@@ -46,6 +46,6 @@ public class Step implements Serializable {
     @NonNull
     @Override
     public String toString() {
-        return "questions=\n" + questions;
+        return "id= " + id + " questions=\n" + questions;
     }
 }

@@ -1,4 +1,4 @@
-package br.com.zup.onboarding.android.viewmodel;
+package br.com.zup.onboarding.android.viewmodel.home;
 
 import android.net.Uri;
 

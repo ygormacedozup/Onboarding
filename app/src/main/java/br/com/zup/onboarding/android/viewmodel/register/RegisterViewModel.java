@@ -16,6 +16,7 @@ import java.util.Objects;
 
 import br.com.zup.onboarding.android.GoogleAuthentication;
 import br.com.zup.onboarding.android.model.UserRepository;
+import br.com.zup.onboarding.android.model.UserSessionManager;
 import br.com.zup.onboarding.android.model.entity.Location;
 import br.com.zup.onboarding.android.model.entity.Pod;
 import br.com.zup.onboarding.android.model.entity.User;
@@ -23,6 +24,7 @@ import br.com.zup.onboarding.android.model.entity.User;
 public class RegisterViewModel extends ViewModel {
     private final UserRepository repository;
     private GoogleAuthentication authentication;
+    private UserSessionManager manager;
     private final int RC_SIGN_IN = 0;
     private LoginResultEvent loginResultEvent;
     private final MutableLiveData<RegisterState> stateLiveData = new MutableLiveData<>();
@@ -33,6 +35,19 @@ public class RegisterViewModel extends ViewModel {
 
     public void setAuthentication(GoogleAuthentication authentication) {
         this.authentication = authentication;
+    }
+
+    public void setUserSessionManager(UserSessionManager manager) {
+        this.manager = manager;
+        verifySessionSaved();
+    }
+
+    private void verifySessionSaved() {
+        String email = manager.getEmail();
+
+        if (email != null) {
+            stateLiveData.setValue(RegisterState.ALREADY_LOGGED);
+        }
     }
 
     public LiveData<RegisterState> getStateLiveData() {
@@ -70,6 +85,8 @@ public class RegisterViewModel extends ViewModel {
 
         user.setName(authentication.getUserName());
         user.setEmail(authentication.getUserEmail());
+
+        manager.setEmail(user.getEmail());
 
         user.setPod(new Pod(podName));
         user.setLocation(new Location(locationName));

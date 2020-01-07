@@ -72,8 +72,6 @@ public class QuestionActivity extends AppCompatActivity {
                 } else {
                     int alternativeId = question.getAlternatives().get(index).getId();
                     viewModel.saveAlternative(alternativeId);
-
-
                     viewModel.updateQuestion();
                     viewModel.getQuestionLiveData().removeObservers(QuestionActivity.this);
                     QuestionActivity.this.setViewModel();
