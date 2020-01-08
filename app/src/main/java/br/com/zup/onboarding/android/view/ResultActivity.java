@@ -23,7 +23,7 @@ import br.com.zup.onboarding.android.viewmodel.ResultViewModel;
 public class ResultActivity extends AppCompatActivity {
     private Button btnSendAndFinalize;
     private ImageView gif;
-    private TextView thanksForResults, moreInfo, peopleResult, porcentScoreResult, textResultOne, textResultTwo ;
+    private TextView thanksForResults, moreInfo, peopleResult, porcentScoreResult, textResultOne, textResultTwo;
     private ResultViewModel resultViewModel;
     private GoogleAuthentication authentication;
     private User user;
@@ -54,12 +54,12 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     private void observeViewModel() {
-        //        resultViewModel.finishStep();
-        resultViewModel.getUserLiveData().observe(this, userResponse -> {
-            user = userResponse;
+        resultViewModel.getFinishedStepLiveData().observe(this, finishedStep -> {
             peopleResult.setText(user.getName());
-            porcentScoreResult.setText("20");
+            user = finishedStep.getZupper();
+            porcentScoreResult.setText((int) finishedStep.getPercentageScore());
         });
+        resultViewModel.finishStep();
     }
 
     private void setFonts() {
@@ -71,8 +71,6 @@ public class ResultActivity extends AppCompatActivity {
         textResultOne.setTypeface(Utils.getFont(this));
         textResultTwo.setTypeface(Utils.getFont(this));
     }
-
-    // yes
 
     private void setViews() {
         btnSendAndFinalize = findViewById(R.id.button_send_finalle_results);
@@ -86,7 +84,7 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     private void setGif() {
-        Drawable gifDrawable = ContextCompat.getDrawable(this, R.drawable.pontuacao_ruim);
+        Drawable gifDrawable = ContextCompat.getDrawable(this, R.drawable.pontuacao_boa);
         Glide.with(this).load(gifDrawable).into(gif);
     }
 
@@ -94,7 +92,7 @@ public class ResultActivity extends AppCompatActivity {
         btnSendAndFinalize.setOnClickListener(v -> {
             Toast.makeText(this,
                     "Resultado enviado!", Toast.LENGTH_LONG).show();
-            startActivity(new Intent(ResultActivity.this,HomeActivity.class));
+            startActivity(new Intent(ResultActivity.this, HomeActivity.class));
         });
     }
 }
