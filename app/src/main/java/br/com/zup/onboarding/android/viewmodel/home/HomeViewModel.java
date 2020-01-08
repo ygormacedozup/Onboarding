@@ -51,4 +51,6 @@ public class HomeViewModel extends ViewModel {
     public LiveData<Uri> getUserPhotoLiveData() {
         return userPhotoLiveData;
     }
+
+    //code clear
 }
