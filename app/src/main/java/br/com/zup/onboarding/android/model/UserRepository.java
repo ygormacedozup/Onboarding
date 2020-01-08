@@ -12,6 +12,7 @@ import java.util.Objects;
 import br.com.zup.onboarding.android.RetrofitInitializer;
 import br.com.zup.onboarding.android.UserService;
 import br.com.zup.onboarding.android.model.entity.Alternative;
+import br.com.zup.onboarding.android.model.entity.FinishedStep;
 import br.com.zup.onboarding.android.model.entity.Question;
 import br.com.zup.onboarding.android.model.entity.User;
 import br.com.zup.onboarding.android.model.entity.UserAlternative;
@@ -25,6 +26,7 @@ public class UserRepository {
     private final UserService service;
     private final MutableLiveData<User> userLiveData = new MutableLiveData<>();
     private final MutableLiveData<List<Question>> questionListLiveData = new MutableLiveData<>();
+    private final MutableLiveData<FinishedStep> finishedStepMutableLiveData = new MutableLiveData<>();
 
     private UserRepository() {
         service = new RetrofitInitializer().getUserService();
@@ -80,11 +82,11 @@ public class UserRepository {
     }
 
     private void onSaveAlternativeResponse(User response) {
-        Log.e("Alternative saved", response.toString());
+        //Log.e("Alternative saved", response.toString());
     }
 
-    private void onFinishStepResponse(Object response) {
-        Log.e("Step finished", response.toString());
+    private void onFinishStepResponse(FinishedStep response) {
+        finishedStepMutableLiveData.setValue(response);
     }
 
     private void onError(Throwable throwable) {
@@ -102,5 +104,9 @@ public class UserRepository {
 
     public LiveData<Integer> getMaxQuestionsLiveData() {
         return Transformations.map(questionListLiveData, List::size);
+    }
+
+    public LiveData<FinishedStep> getFinishedStepLiveData() {
+        return finishedStepMutableLiveData;
     }
 }

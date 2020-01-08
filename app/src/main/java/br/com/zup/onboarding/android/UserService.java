@@ -1,5 +1,6 @@
 package br.com.zup.onboarding.android;
 
+import br.com.zup.onboarding.android.model.entity.FinishedStep;
 import br.com.zup.onboarding.android.model.entity.User;
 import br.com.zup.onboarding.android.model.entity.UserAlternative;
 import io.reactivex.Observable;
@@ -18,6 +19,9 @@ public interface UserService {
     @POST("/answer")
     Observable<User> saveAlternative(@Body UserAlternative userAlternative);
 
+    /*@POST("/zupper/finish")
+    Observable<Object> finishStep(@Body User user);*/
+
     @POST("/zupper/finish")
-    Observable<Object> finishStep(@Body User user);
+    Observable<FinishedStep> finishStep(@Body User user);
 }
