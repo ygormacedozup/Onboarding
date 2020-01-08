@@ -177,7 +177,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/onboarding_margin_top"
-        android:text="@string/estrutura_txt"
+        android:text="ética"
         android:textColor="@android:color/white"
         app:layout_constraintLeft_toLeftOf="@id/db_ball_three"
         app:layout_constraintRight_toRightOf="@id/db_ball_three"

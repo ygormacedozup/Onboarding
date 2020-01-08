@@ -15,7 +15,8 @@
         android:text="@string/txt_tks_results"
         android:textColor="@color/white"
         android:textSize="@dimen/question_text_size"
-        app:layout_constraintLeft_toLeftOf="@id/result_gif"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
 
@@ -24,12 +25,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/people_text_result"
-        android:textSize="@dimen/question_text_size"
+        android:textSize="@dimen/size_text_results"
         android:textColor="@android:color/white"
-        android:layout_marginTop="@dimen/result_label_margin_top"
-        app:layout_constraintRight_toRightOf="@id/result_gif"
-        app:layout_constraintLeft_toRightOf="@id/thanks_for_result"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/thanks_for_result"
+
         />
 
     <TextView
@@ -37,37 +39,47 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/score_text_results_one"
-        android:textSize="@dimen/score_size_text"
+        android:textSize="20sp"
         android:textColor="@android:color/white"
         app:layout_constraintLeft_toLeftOf="@id/result_gif"
-        app:layout_constraintTop_toBottomOf="@id/thanks_for_result"
-        app:layout_constraintLeft_toRightOf="@id/score_text_result_two"
+        app:layout_constraintTop_toBottomOf="@id/people_for_result"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="0dp"
+        />
 
+    <TextView
+        android:id="@+id/score_result_porcent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/score_number_results"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/people_for_result"
+        app:layout_constraintLeft_toRightOf="@id/score_text_result_one"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="10dp"
         />
 
     <TextView
         android:id="@+id/score_text_result_two"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/score_number_results"
-        android:textSize="@dimen/score_size_text"
-        android:textColor="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@id/thanks_for_result"
-        app:layout_constraintLeft_toRightOf="@id/score_text_result_one"
-        app:layout_constraintRight_toLeftOf="@id/score_text_result_three"
-        />
-
-    <TextView
-        android:id="@+id/score_text_result_three"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/score_text_results_two"
-        android:textSize="@dimen/score_size_text"
+        android:textSize="20sp"
         android:textColor="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@id/thanks_for_result"
-        app:layout_constraintLeft_toRightOf="@id/score_text_result_two"
-        app:layout_constraintRight_toRightOf="@id/people_for_result"
-
+        app:layout_constraintTop_toBottomOf="@id/people_for_result"
+        app:layout_constraintLeft_toRightOf="@id/score_result_porcent"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="10dp"
         />
 
     <ImageView
@@ -77,11 +89,11 @@
         android:layout_marginLeft="@dimen/result_gif_margin_side"
         android:layout_marginRight="@dimen/result_gif_margin_side"
         android:adjustViewBounds="true"
-        android:layout_marginTop="@dimen/result_gif_margin_top"
+        android:layout_marginTop="100dp"
         android:scaleType="fitCenter"
         app:layout_constraintLeft_toLeftOf="@id/score_text_result_one"
         app:layout_constraintRight_toRightOf="@id/people_for_result"
-        app:layout_constraintTop_toBottomOf="@id/thanks_for_result"
+        app:layout_constraintTop_toBottomOf="@id/score_text_result_one"
         android:contentDescription="@string/radon_gif"
         />
 
@@ -95,7 +107,9 @@
         android:gravity="center"
         android:paddingLeft="@dimen/keep_studying_margin_side"
         android:paddingRight="@dimen/keep_studying_margin_side"
-        android:layout_margin="25dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         app:layout_constraintLeft_toLeftOf="@id/result_gif"
         app:layout_constraintRight_toRightOf="@id/result_gif"
         app:layout_constraintTop_toBottomOf="@id/result_gif"
@@ -109,7 +123,9 @@
         android:background="@drawable/common_button_selector"
         android:text="@string/send_and_finalize_label"
         android:textColor="@color/white"
-        android:layout_marginTop="@dimen/send_and_finalize_button_margin_top"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         app:layout_constraintLeft_toLeftOf="@id/more_info_results"
         app:layout_constraintRight_toRightOf="@id/more_info_results"
         app:layout_constraintTop_toBottomOf="@id/more_info_results"
