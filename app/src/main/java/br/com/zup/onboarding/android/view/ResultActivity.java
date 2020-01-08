@@ -35,8 +35,8 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
 
         authentication = new GoogleAuthentication(this);
-        setViews();
-        setLayout();
+        //setViews();
+        //setLayout();
         setViewModel();
         observeViewModel();
 
@@ -54,10 +54,12 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     private void observeViewModel() {
-        resultViewModel.getUserLiveData().observe(this, userResponse -> {
+        /*resultViewModel.getUserLiveData().observe(this, userResponse -> {
             user = userResponse;
             peopleResults.setText(user.getName());
-        });
+        });*/
+
+        resultViewModel.finishStep();
     }
 
     private void setFonts() {

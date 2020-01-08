@@ -6,10 +6,9 @@ import androidx.lifecycle.ViewModel;
 
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
-import java.util.IdentityHashMap;
-
 import br.com.zup.onboarding.android.GoogleAuthentication;
 import br.com.zup.onboarding.android.model.UserRepository;
+import br.com.zup.onboarding.android.model.entity.FinishedStep;
 import br.com.zup.onboarding.android.model.entity.User;
 
 public class ResultViewModel extends ViewModel {
@@ -17,6 +16,9 @@ public class ResultViewModel extends ViewModel {
     private UserRepository repository;
     private GoogleAuthentication authentication;
     private LiveData<User> userLiveData;
+
+
+    private LiveData<FinishedStep> finishedStepLiveData;
 
     public ResultViewModel() {
         repository = UserRepository.getInstance();
@@ -26,19 +28,30 @@ public class ResultViewModel extends ViewModel {
 
     public void setAuthentication(GoogleAuthentication authentication) {
         this.authentication = authentication;
-        loadUser();
+        //loadUser();
+        loadFinishedStep();
     }
-        public void finishStep() {
+
+    public void finishStep() {
         repository.finishStep(user.getId());
     }
 
     private void loadUser() {
         GoogleSignInAccount account = authentication.getLastSignedInAccount();
         repository.getUserByEmail(account.getEmail());
-        userLiveData = repository.getUserLiveData();
+        //userLiveData = repository.getUserLiveData();
+        user = repository.getUserLiveData().getValue();
     }
 
-    public LiveData<User> getUserLiveData() {
-        return userLiveData;
+    private void loadFinishedStep() {
+        finishedStepLiveData = repository.getFinishedStepLiveData();
     }
+
+    public LiveData<FinishedStep> getFinishedStepLiveData() {
+        return finishedStepLiveData;
+    }
+
+    /*public LiveData<User> getUserLiveData() {
+        return userLiveData;
+    }*/
 }
