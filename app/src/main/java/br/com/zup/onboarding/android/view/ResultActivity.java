@@ -69,9 +69,9 @@ public class ResultActivity extends AppCompatActivity {
         thanksForResults = findViewById(R.id.thanks_for_result);
         moreInfo = findViewById(R.id.more_info_results);
         peopleResult = findViewById(R.id.people_for_result);
-        porcentScoreResult = findViewById(R.id.score_result_porcent);
+        porcentScoreResult = findViewById(R.id.score_text_result_two);
         textResultOne = findViewById(R.id.score_text_result_one);
-        textResultTwo = findViewById(R.id.score_text_result_two);
+        textResultTwo = findViewById(R.id.score_text_result_three);
     }
 
     private void setGif() {
