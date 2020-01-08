@@ -16,6 +16,8 @@ public class ResultViewModel extends ViewModel {
     private UserRepository repository;
     private GoogleAuthentication authentication;
     private LiveData<User> userLiveData;
+    private LiveData<FinishedStep> finishedStepLiveData;
+
 
 
     private LiveData<FinishedStep> finishedStepLiveData;
@@ -54,4 +56,5 @@ public class ResultViewModel extends ViewModel {
     /*public LiveData<User> getUserLiveData() {
         return userLiveData;
     }*/
+
 }
