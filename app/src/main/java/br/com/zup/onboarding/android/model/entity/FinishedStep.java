@@ -50,7 +50,7 @@ public class FinishedStep {
     }
 
 
-    public Object getZupper() {
+    public User getZupper() {
         return zupper;
     }
 

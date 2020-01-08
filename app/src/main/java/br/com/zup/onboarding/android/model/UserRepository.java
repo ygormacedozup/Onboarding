@@ -26,7 +26,6 @@ public class UserRepository {
     private final UserService service;
     private final MutableLiveData<User> userLiveData = new MutableLiveData<>();
     private final MutableLiveData<List<Question>> questionListLiveData = new MutableLiveData<>();
-
     private final MutableLiveData<FinishedStep> finishedStepMutableLiveData = new MutableLiveData<>();
 
     private UserRepository() {
@@ -83,11 +82,10 @@ public class UserRepository {
     }
 
     private void onSaveAlternativeResponse(User response) {
-        Log.e("Alternative saved", response.toString());
+        //Log.e("Alternative saved", response.toString());
     }
 
     private void onFinishStepResponse(FinishedStep response) {
-        Log.e("Step finished", response.toString());
         finishedStepMutableLiveData.setValue(response);
     }
 
