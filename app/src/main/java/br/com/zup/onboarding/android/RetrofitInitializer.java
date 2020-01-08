@@ -2,8 +2,6 @@ package br.com.zup.onboarding.android;
 
 import java.util.concurrent.TimeUnit;
 
-import br.com.zup.onboarding.android.model.UserRepository;
-import br.com.zup.onboarding.android.model.entity.User;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -14,7 +12,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitInitializer {
     private final Retrofit retrofit;
     private final int TIMEOUT_IN_SECONDS = 60;
-    private UserRepository repository;
 
     public RetrofitInitializer() {
         Interceptor interceptor = getInterceptor();

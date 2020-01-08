@@ -2,6 +2,7 @@ package br.com.zup.onboarding.android.model;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import androidx.preference.PreferenceManager;
 
@@ -16,9 +17,12 @@ public class UserSessionManager {
 
     public void setEmail(String email) {
         preferences.edit().putString(EMAIL_KEY, email).apply();
+        Log.e("Session set", email);
     }
 
     public String getEmail() {
-        return preferences.getString(EMAIL_KEY, EMPTY_EMAIL);
+        String email = preferences.getString(EMAIL_KEY, EMPTY_EMAIL);
+        Log.e("Session get", email);
+        return email;
     }
 }

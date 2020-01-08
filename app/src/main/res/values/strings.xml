@@ -85,6 +85,6 @@
     <string name="radon_gif">imagem contendo uma gif aleatoria</string>
     <string name="score_text_results_one">Você marcou</string>
     <string name="score_number_results">\"000\"</string>
-    <string name="score_text_results_two">pontos!</string>
+    <string name="score_text_results_two">pontos</string>
 
 </resources>
