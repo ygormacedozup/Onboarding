@@ -67,6 +67,8 @@ public class ResultActivity extends AppCompatActivity {
         peopleResults.setTypeface(Utils.getFont(this));
     }
 
+    // yes
+
     private void setViews() {
         btnSendAndFinalize = findViewById(R.id.button_send_finalle_results);
         gif = findViewById(R.id.result_gif);
