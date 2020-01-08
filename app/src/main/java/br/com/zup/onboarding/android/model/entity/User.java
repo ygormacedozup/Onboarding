@@ -19,7 +19,7 @@ public class User implements Serializable {
     @SerializedName("step")
     private Step step;
 
-    @SerializedName("completedAll")
+    @SerializedName("stepCompleted")
     private boolean hasCompletedAllSteps;
 
     @SerializedName("pod")
@@ -87,10 +87,16 @@ public class User implements Serializable {
         this.location = location;
     }
 
-    @NonNull
+    /*@NonNull
     @Override
     public String toString() {
         return "id=" + id + " name=" + name + " email=" + email +
                 " step=" + step + " pod=" + pod.getNamePod() + " location=" + location.getNameLocation();
+    }*/
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "hasCompletedAllSteps=" + hasCompletedAllSteps;
     }
 }

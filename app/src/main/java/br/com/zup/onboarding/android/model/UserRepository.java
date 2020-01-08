@@ -82,7 +82,7 @@ public class UserRepository {
     }
 
     private void onSaveAlternativeResponse(User response) {
-        //Log.e("Alternative saved", response.toString());
+        Log.e("Alternative saved", response.toString());
     }
 
     private void onFinishStepResponse(FinishedStep response) {

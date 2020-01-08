@@ -21,7 +21,7 @@ import br.com.zup.onboarding.android.viewmodel.ResultViewModel;
 public class ResultActivity extends AppCompatActivity {
     private Button btnSendAndFinalize;
     private ImageView gif;
-    private TextView thanksForResults, moreInfo, peopleResults;
+    private TextView thanksForResults, moreInfo, peopleResults, scoreResults;
     private ResultViewModel resultViewModel;
 
     @Override
@@ -50,6 +50,8 @@ public class ResultActivity extends AppCompatActivity {
     private void observeViewModel() {
         resultViewModel.getFinishedStepLiveData().observe(this, finishedStep -> {
             Log.e("finishedStep", finishedStep.toString());
+            peopleResults.setText(finishedStep.getZupper().getName());
+            scoreResults.setText(String.valueOf(finishedStep.getPercentageScore()));
         });
     }
 
@@ -66,6 +68,7 @@ public class ResultActivity extends AppCompatActivity {
         thanksForResults = findViewById(R.id.thanks_for_result);
         moreInfo = findViewById(R.id.more_info_results);
         peopleResults = findViewById(R.id.people_for_result);
+        scoreResults = findViewById(R.id.score_text_result_two);
     }
 
     private void setGif() {

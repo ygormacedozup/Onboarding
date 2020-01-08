@@ -4,6 +4,7 @@ import android.net.Uri;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -20,7 +21,7 @@ public class HomeViewModel extends ViewModel {
     private LiveData<User> userLiveData;
     private MutableLiveData<Uri> userPhotoLiveData = new MutableLiveData<>();
     private MutableLiveData<Boolean> isLoadingLiveData = new MutableLiveData<>();
-    private MutableLiveData<HomeState> stateLiveData = new MutableLiveData<>();
+    private LiveData<HomeState> stateLiveData;
 
     public HomeViewModel() {
         repository = UserRepository.getInstance();
@@ -61,6 +62,33 @@ public class HomeViewModel extends ViewModel {
         repository.getUserByEmail(email);
         userLiveData = repository.getUserLiveData();
         userPhotoLiveData.setValue(account.getPhotoUrl());
+
+        stateLiveData = setState();
+    }
+
+    private LiveData<HomeState> setState() {
+
+        return Transformations.map(userLiveData, input -> {
+            int stepId = input.getStep().getId();
+            HomeState homeState = HomeState.DEFAULT;
+
+            switch (stepId) {
+                case 1:
+                    homeState = HomeState.FIRST_STEP_COMPLETED;
+                    break;
+                case 2:
+                    homeState = HomeState.SECOND_STEP_COMPLETED;
+                    break;
+                case 3:
+                    if (input.hasCompletedAllSteps()) {
+                        homeState = HomeState.ALL_STEPS_COMPLETED;
+                    }
+
+                    break;
+            }
+
+            return homeState;
+        });
     }
 
     public LiveData<User> getUserLiveData() {
@@ -70,6 +98,4 @@ public class HomeViewModel extends ViewModel {
     public LiveData<Uri> getUserPhotoLiveData() {
         return userPhotoLiveData;
     }
-
-    //code clear
 }
