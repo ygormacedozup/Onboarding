@@ -21,7 +21,7 @@ import br.com.zup.onboarding.android.viewmodel.ResultViewModel;
 public class ResultActivity extends AppCompatActivity {
     private Button btnSendAndFinalize;
     private ImageView gif;
-    private TextView thanksForResults, moreInfo, peopleResults;
+    private TextView thanksForResults, moreInfo, peopleResult, porcentScoreResult, textResultOne, textResultTwo;
     private ResultViewModel resultViewModel;
 
     @Override
@@ -57,7 +57,10 @@ public class ResultActivity extends AppCompatActivity {
         thanksForResults.setTypeface(Utils.getFont(this));
         btnSendAndFinalize.setTypeface(Utils.getFont(this));
         moreInfo.setTypeface(Utils.getFont(this));
-        peopleResults.setTypeface(Utils.getFont(this));
+        peopleResult.setTypeface(Utils.getFont(this));
+        porcentScoreResult.setTypeface(Utils.getFont(this));
+        textResultOne.setTypeface(Utils.getFont(this));
+        textResultTwo.setTypeface(Utils.getFont(this));
     }
 
     private void setViews() {
@@ -65,11 +68,14 @@ public class ResultActivity extends AppCompatActivity {
         gif = findViewById(R.id.result_gif);
         thanksForResults = findViewById(R.id.thanks_for_result);
         moreInfo = findViewById(R.id.more_info_results);
-        peopleResults = findViewById(R.id.people_for_result);
+        peopleResult = findViewById(R.id.people_for_result);
+        porcentScoreResult = findViewById(R.id.score_result_porcent);
+        textResultOne = findViewById(R.id.score_text_result_one);
+        textResultTwo = findViewById(R.id.score_text_result_two);
     }
 
     private void setGif() {
-        Drawable gifDrawable = ContextCompat.getDrawable(this, R.drawable.result);
+        Drawable gifDrawable = ContextCompat.getDrawable(this, R.drawable.pontuacao_boa);
         Glide.with(this).load(gifDrawable).into(gif);
     }
 }
