@@ -68,4 +68,5 @@
     <dimen name="spinner_item_padding_left">15dp</dimen>
     <dimen name="spinner_item_text_size">18sp</dimen>
     <dimen name="score_size_text">15sp</dimen>
+    <dimen name="size_text_results">20sp</dimen>
 </resources>

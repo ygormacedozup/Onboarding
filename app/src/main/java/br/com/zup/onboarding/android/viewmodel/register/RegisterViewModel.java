@@ -1,7 +1,6 @@
 package br.com.zup.onboarding.android.viewmodel.register;
 
 import android.content.Intent;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -11,8 +10,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
-
-import java.util.Objects;
 
 import br.com.zup.onboarding.android.GoogleAuthentication;
 import br.com.zup.onboarding.android.model.UserRepository;
@@ -46,7 +43,9 @@ public class RegisterViewModel extends ViewModel {
         String email = manager.getEmail();
 
         if (email != null) {
-            stateLiveData.setValue(RegisterState.ALREADY_LOGGED);
+            if (authentication.getLastSignedInAccount() != null) {
+                stateLiveData.setValue(RegisterState.ALREADY_LOGGED);
+            }
         }
     }
 
@@ -70,7 +69,6 @@ public class RegisterViewModel extends ViewModel {
             GoogleSignInAccount account = task.getResult(ApiException.class);
 
             if (account != null) {
-                Log.e("Sign In Account", Objects.requireNonNull(account.getEmail()));
                 authentication.setAccount(account);
             }
 
