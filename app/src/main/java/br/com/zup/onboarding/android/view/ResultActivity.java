@@ -1,12 +1,11 @@
 package br.com.zup.onboarding.android.view;
 
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -14,10 +13,9 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.bumptech.glide.Glide;
 
-import br.com.zup.onboarding.android.GoogleAuthentication;
 import br.com.zup.onboarding.android.R;
 import br.com.zup.onboarding.android.Utils;
-import br.com.zup.onboarding.android.model.entity.User;
+import br.com.zup.onboarding.android.model.UserSessionManager;
 import br.com.zup.onboarding.android.viewmodel.ResultViewModel;
 
 public class ResultActivity extends AppCompatActivity {
@@ -25,41 +23,34 @@ public class ResultActivity extends AppCompatActivity {
     private ImageView gif;
     private TextView thanksForResults, moreInfo, peopleResults;
     private ResultViewModel resultViewModel;
-    private GoogleAuthentication authentication;
-    private User user;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        authentication = new GoogleAuthentication(this);
-        //setViews();
-        //setLayout();
+        setViews();
+        setLayout();
         setViewModel();
         observeViewModel();
-
     }
 
     private void setLayout() {
         setFonts();
         setGif();
-        setFinalizeListenner();
     }
 
     private void setViewModel() {
         resultViewModel = ViewModelProviders.of(this).get(ResultViewModel.class);
-        resultViewModel.setAuthentication(authentication);
+
+        UserSessionManager manager = new UserSessionManager(this);
+        resultViewModel.setUserSessionManager(manager);
     }
 
     private void observeViewModel() {
-        /*resultViewModel.getUserLiveData().observe(this, userResponse -> {
-            user = userResponse;
-            peopleResults.setText(user.getName());
-        });*/
-
-        resultViewModel.finishStep();
+        resultViewModel.getFinishedStepLiveData().observe(this, finishedStep -> {
+            Log.e("finishedStep", finishedStep.toString());
+        });
     }
 
     private void setFonts() {
@@ -80,14 +71,5 @@ public class ResultActivity extends AppCompatActivity {
     private void setGif() {
         Drawable gifDrawable = ContextCompat.getDrawable(this, R.drawable.result);
         Glide.with(this).load(gifDrawable).into(gif);
-    }
-
-    private void setFinalizeListenner() {
-        btnSendAndFinalize.setOnClickListener(v -> {
-            Toast.makeText(this,
-                    "Resultado enviado!", Toast.LENGTH_LONG).show();
-            startActivity(new Intent(ResultActivity.this,HomeActivity.class));
-        });
-//        resultViewModel.finishStep();
     }
 }

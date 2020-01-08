@@ -4,20 +4,15 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-
-import br.com.zup.onboarding.android.GoogleAuthentication;
 import br.com.zup.onboarding.android.model.UserRepository;
+import br.com.zup.onboarding.android.model.UserSessionManager;
 import br.com.zup.onboarding.android.model.entity.FinishedStep;
 import br.com.zup.onboarding.android.model.entity.User;
 
 public class ResultViewModel extends ViewModel {
     private User user;
     private UserRepository repository;
-    private GoogleAuthentication authentication;
-    private LiveData<User> userLiveData;
-
-
+    private UserSessionManager manager;
     private LiveData<FinishedStep> finishedStepLiveData;
 
     public ResultViewModel() {
@@ -26,32 +21,23 @@ public class ResultViewModel extends ViewModel {
         isLoadingLiveData.setValue(true);
     }
 
-    public void setAuthentication(GoogleAuthentication authentication) {
-        this.authentication = authentication;
-        //loadUser();
+    public void setUserSessionManager(UserSessionManager manager) {
+        this.manager = manager;
+        loadUser();
         loadFinishedStep();
     }
 
-    public void finishStep() {
-        repository.finishStep(user.getId());
-    }
-
     private void loadUser() {
-        GoogleSignInAccount account = authentication.getLastSignedInAccount();
-        repository.getUserByEmail(account.getEmail());
-        //userLiveData = repository.getUserLiveData();
+        repository.getUserByEmail(manager.getEmail());
         user = repository.getUserLiveData().getValue();
     }
 
     private void loadFinishedStep() {
+        repository.finishStep(user.getId());
         finishedStepLiveData = repository.getFinishedStepLiveData();
     }
 
     public LiveData<FinishedStep> getFinishedStepLiveData() {
         return finishedStepLiveData;
     }
-
-    /*public LiveData<User> getUserLiveData() {
-        return userLiveData;
-    }*/
 }

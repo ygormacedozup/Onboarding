@@ -49,7 +49,7 @@ public class FinishedStep {
         isLicensed = licensed;
     }
 
-    public Object getZupper() {
+    public User getZupper() {
         return zupper;
     }
 
