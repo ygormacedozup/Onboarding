@@ -1,7 +1,6 @@
 package br.com.zup.onboarding.android.viewmodel.home;
 
 import android.net.Uri;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -13,7 +12,6 @@ import br.com.zup.onboarding.android.GoogleAuthentication;
 import br.com.zup.onboarding.android.model.UserRepository;
 import br.com.zup.onboarding.android.model.UserSessionManager;
 import br.com.zup.onboarding.android.model.entity.User;
-import br.com.zup.onboarding.android.viewmodel.register.RegisterState;
 
 public class HomeViewModel extends ViewModel {
     private UserRepository repository;
@@ -72,4 +70,6 @@ public class HomeViewModel extends ViewModel {
     public LiveData<Uri> getUserPhotoLiveData() {
         return userPhotoLiveData;
     }
+
+    //code clear
 }
