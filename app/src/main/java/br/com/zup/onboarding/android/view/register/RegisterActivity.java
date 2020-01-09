@@ -2,6 +2,7 @@ package br.com.zup.onboarding.android.view.register;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -74,11 +75,17 @@ public class RegisterActivity extends AppCompatActivity {
     private void observeViewModel() {
         viewModel.getStateLiveData().observe(this, state -> {
             if (state == RegisterState.ALREADY_LOGGED) navigateToHome();
-            if (state == RegisterState.SIGN_IN_SUCCESS)
-                showPodLocationFragment(viewModel.getUserName());
+            if (state == RegisterState.SIGN_IN_SUCCESS) showPodLocationFragment(viewModel.getUserName());
             if (state == RegisterState.SIGN_IN_ERROR) showErrorMessage();
             if (state == RegisterState.REGISTER_SUCCESS) navigateToHome();
         });
+
+        /*viewModel.getStateLiveData().observe(this, state -> {
+            if (state == RegisterState.ALREADY_LOGGED) Log.e("RegisterState", "ALREADY_LOGGED");
+            if (state == RegisterState.SIGN_IN_SUCCESS) Log.e("RegisterState", "SIGN_IN_SUCCESS");
+            if (state == RegisterState.SIGN_IN_ERROR) Log.e("RegisterState", "SIGN_IN_ERROR");
+            if (state == RegisterState.REGISTER_SUCCESS) Log.e("RegisterState", "REGISTER_SUCCESS");
+        });*/
     }
 
     private void navigateToHome() {

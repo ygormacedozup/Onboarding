@@ -156,9 +156,20 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void setStateFirstStepCompleted() {
+        rocketOne.setImageResource(R.drawable.rocket_checked);
+        ballOne.setBackgroundResource(R.drawable.ball_checked);
+        lineOne.setBackgroundResource(R.drawable.line_checked);
     }
 
     private void setStateSecondStepCompleted() {
+        rocketOne.setImageResource(R.drawable.rocket_checked);
+        rocketTwo.setImageResource(R.drawable.rocket_checked);
+
+        ballOne.setBackgroundResource(R.drawable.ball_checked);
+        ballTwo.setBackgroundResource(R.drawable.ball_checked);
+
+        lineOne.setBackgroundResource(R.drawable.line_checked);
+        lineTwo.setBackgroundResource(R.drawable.line_checked);
     }
 
     private void setStateAllStepsCompleted() {
@@ -166,12 +177,12 @@ public class HomeActivity extends AppCompatActivity {
         rocketTwo.setImageResource(R.drawable.rocket_checked);
         rocketThree.setImageResource(R.drawable.rocket_checked);
 
-        ballOne.setImageResource(R.drawable.ball_checked);
-        ballTwo.setImageResource(R.drawable.ball_checked);
-        ballThree.setImageResource(R.drawable.ball_checked);
+        ballOne.setBackgroundResource(R.drawable.ball_checked);
+        ballTwo.setBackgroundResource(R.drawable.ball_checked);
+        ballThree.setBackgroundResource(R.drawable.ball_checked);
 
-        lineOne.setImageResource(R.drawable.line_checked);
-        lineTwo.setImageResource(R.drawable.line_checked);
+        lineOne.setBackgroundResource(R.drawable.line_checked);
+        lineTwo.setBackgroundResource(R.drawable.line_checked);
     }
 
     @Override

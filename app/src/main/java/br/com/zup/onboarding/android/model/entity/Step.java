@@ -20,6 +20,9 @@ public class Step implements Serializable {
     @SerializedName("duration")
     private String duration;
 
+    @SerializedName("completed")
+    private boolean isCompleted;
+
     @SerializedName("question")
     private List<Question> questions;
 
@@ -37,6 +40,10 @@ public class Step implements Serializable {
 
     public String getDuration() {
         return duration;
+    }
+
+    public boolean isCompleted() {
+        return isCompleted;
     }
 
     public List<Question> getQuestions() {

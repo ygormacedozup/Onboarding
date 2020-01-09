@@ -45,7 +45,7 @@ public class RegisterViewModel extends ViewModel {
     private void verifySessionSaved() {
         String email = manager.getEmail();
 
-        if (email != null) {
+        if (email != null && !email.isEmpty()) {
             stateLiveData.setValue(RegisterState.ALREADY_LOGGED);
         }
     }

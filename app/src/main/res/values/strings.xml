@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Onboarding Zup</string>
+    <string name="app_name">Onboarding</string>
     <string name="logo_zup">logo</string>
     <string name="onboarding_text">Onboarding</string>
     <string name="hi_text">Olá,</string>

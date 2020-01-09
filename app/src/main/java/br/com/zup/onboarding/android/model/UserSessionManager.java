@@ -17,7 +17,6 @@ public class UserSessionManager {
 
     public void setEmail(String email) {
         preferences.edit().putString(EMAIL_KEY, email).apply();
-        Log.e("Session set", email);
     }
 
     public String getEmail() {

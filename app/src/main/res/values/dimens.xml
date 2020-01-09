@@ -5,7 +5,7 @@
     <dimen name="onboarding_margin_top">16dp</dimen>
     <dimen name="margin_default">16dp</dimen>
     <dimen name="progress_container_items_margin_top">40dp</dimen>
-    <dimen name="question_margin_top">50dp</dimen>
+    <dimen name="question_margin_top">75dp</dimen>
     <dimen name="subject_title_margin_top">125dp</dimen>
     <dimen name="btn_answer_width">275dp</dimen>
     <dimen name="btn_answer_height">64dp</dimen>
@@ -14,7 +14,7 @@
     <dimen name="subject_title_text_size">20sp</dimen>
     <dimen name="answer_text_size">20sp</dimen>
     <dimen name="btn_answer_corner_radius">10dp</dimen>
-    <dimen name="result_label_margin_top">50dp</dimen>
+    <dimen name="result_label_margin_top">35dp</dimen>
     <dimen name="result_number_text_size">80sp</dimen>
     <dimen name="result_number_margin_top">50dp</dimen>
     <dimen name="correct_answers_label_margin_top">50dp</dimen>

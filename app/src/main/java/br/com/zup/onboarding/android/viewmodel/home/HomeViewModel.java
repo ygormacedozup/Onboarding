@@ -66,23 +66,20 @@ public class HomeViewModel extends ViewModel {
     }
 
     private LiveData<HomeState> setState() {
-
         return Transformations.map(userLiveData, input -> {
             int stepId = input.getStep().getId();
-            HomeState homeState = HomeState.DEFAULT;
+            boolean isCompleted = input.getStep().isCompleted();
+            HomeState homeState = HomeState.NO_STEPS_COMPLETED;
 
             switch (stepId) {
                 case 1:
-                    homeState = HomeState.FIRST_STEP_COMPLETED;
+                    homeState = isCompleted ? HomeState.FIRST_STEP_COMPLETED : HomeState.NO_STEPS_COMPLETED;
                     break;
                 case 2:
-                    homeState = HomeState.SECOND_STEP_COMPLETED;
+                    homeState = isCompleted ? HomeState.SECOND_STEP_COMPLETED : HomeState.FIRST_STEP_COMPLETED;
                     break;
                 case 3:
-                    if (input.hasCompletedAllSteps()) {
-                        homeState = HomeState.ALL_STEPS_COMPLETED;
-                    }
-
+                    homeState = isCompleted ? HomeState.ALL_STEPS_COMPLETED : HomeState.SECOND_STEP_COMPLETED;
                     break;
             }
 
