@@ -3,7 +3,6 @@ package br.com.zup.onboarding.android.view;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -55,9 +54,10 @@ public class HomeActivity extends AppCompatActivity {
 
     private void observeViewModel() {
         viewModel.getStateLiveData().observe(this, state -> {
-            if (state == HomeState.FIRST_STEP_COMPLETED) Log.e("step", "first ");
-            if (state == HomeState.SECOND_STEP_COMPLETED) Log.e("step", "second: ");
-            if (state == HomeState.ALL_STEPS_COMPLETED) Log.e("step", "final: ");
+            if (state == HomeState.FIRST_STEP_COMPLETED) setStateFirstStepCompleted();
+            if (state == HomeState.SECOND_STEP_COMPLETED) setStateSecondStepCompleted();
+            if (state == HomeState.ALL_STEPS_COMPLETED) setStateAllStepsCompleted();
+
         });
 
         viewModel.getUserLiveData().observe(this, userResponse -> {
@@ -153,6 +153,25 @@ public class HomeActivity extends AppCompatActivity {
     private void navigateToQuestions() {
         Intent intent = new Intent(HomeActivity.this, QuestionActivity.class);
         startActivity(intent);
+    }
+
+    private void setStateFirstStepCompleted() {
+    }
+
+    private void setStateSecondStepCompleted() {
+    }
+
+    private void setStateAllStepsCompleted() {
+        rocketOne.setImageResource(R.drawable.rocket_checked);
+        rocketTwo.setImageResource(R.drawable.rocket_checked);
+        rocketThree.setImageResource(R.drawable.rocket_checked);
+
+        ballOne.setImageResource(R.drawable.ball_checked);
+        ballTwo.setImageResource(R.drawable.ball_checked);
+        ballThree.setImageResource(R.drawable.ball_checked);
+
+        lineOne.setImageResource(R.drawable.line_checked);
+        lineTwo.setImageResource(R.drawable.line_checked);
     }
 
     @Override

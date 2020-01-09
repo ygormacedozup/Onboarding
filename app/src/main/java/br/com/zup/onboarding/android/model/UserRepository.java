@@ -85,7 +85,6 @@ public class UserRepository {
     }
 
     private void onFinishStepResponse(FinishedStep response) {
-        Log.e("Step finished", response.toString());
         finishedStepMutableLiveData.setValue(response);
     }
 

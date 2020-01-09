@@ -1,12 +1,11 @@
 package br.com.zup.onboarding.android.view;
 
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -28,6 +27,7 @@ public class ResultActivity extends AppCompatActivity {
     private User user;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +42,6 @@ public class ResultActivity extends AppCompatActivity {
     private void setLayout() {
         setFonts();
         setGif();
-        setFinalizeListenner();
     }
 
     private void setViewModel() {
@@ -54,8 +53,10 @@ public class ResultActivity extends AppCompatActivity {
 
     private void observeViewModel() {
         resultViewModel.getFinishedStepLiveData().observe(this, finishedStep -> {
+
+            Log.e("finishedStep", finishedStep.toString());
+            peopleResults.setText(finishedStep.getZupper().getName());
             user = finishedStep.getZupper();
-            peopleResults.setText(user.getName());
             resultScore.setText(String.valueOf(finishedStep.getPercentageScore()));
         });
     }
@@ -76,7 +77,7 @@ public class ResultActivity extends AppCompatActivity {
         thanksForResults = findViewById(R.id.thanks_for_result);
         moreInfo = findViewById(R.id.more_info_results);
         peopleResults = findViewById(R.id.people_for_result);
-        resultScore = findViewById(R.id.score_result);
+        scoreResults = findViewById(R.id.score_text_result_two);
         textResultOne = findViewById(R.id.score_text_result_one);
         textResultTwo = findViewById(R.id.score_text_result_two);
     }
@@ -84,13 +85,5 @@ public class ResultActivity extends AppCompatActivity {
     private void setGif() {
         Drawable gifDrawable = ContextCompat.getDrawable(this, R.drawable.result);
         Glide.with(this).load(gifDrawable).into(gif);
-    }
-
-    private void setFinalizeListenner() {
-        btnSendAndFinalize.setOnClickListener(v -> {
-            Toast.makeText(this,
-                    "Resultado enviado!", Toast.LENGTH_LONG).show();
-            startActivity(new Intent(ResultActivity.this, HomeActivity.class));
-        });
     }
 }
