@@ -16,13 +16,17 @@ import com.bumptech.glide.Glide;
 import br.com.zup.onboarding.android.R;
 import br.com.zup.onboarding.android.Utils;
 import br.com.zup.onboarding.android.model.UserSessionManager;
+import br.com.zup.onboarding.android.model.entity.User;
 import br.com.zup.onboarding.android.viewmodel.ResultViewModel;
 
 public class ResultActivity extends AppCompatActivity {
     private Button btnSendAndFinalize;
     private ImageView gif;
-    private TextView thanksForResults, moreInfo, peopleResults, scoreResults;
+    private TextView thanksForResults, moreInfo, peopleResults, textResultOne, textResultTwo, resultScore;
     private ResultViewModel resultViewModel;
+    private User user;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +53,11 @@ public class ResultActivity extends AppCompatActivity {
 
     private void observeViewModel() {
         resultViewModel.getFinishedStepLiveData().observe(this, finishedStep -> {
+
             Log.e("finishedStep", finishedStep.toString());
             peopleResults.setText(finishedStep.getZupper().getName());
-            scoreResults.setText(String.valueOf(finishedStep.getPercentageScore()));
+            user = finishedStep.getZupper();
+            resultScore.setText(String.valueOf(finishedStep.getPercentageScore()));
         });
     }
 
@@ -60,6 +66,9 @@ public class ResultActivity extends AppCompatActivity {
         btnSendAndFinalize.setTypeface(Utils.getFont(this));
         moreInfo.setTypeface(Utils.getFont(this));
         peopleResults.setTypeface(Utils.getFont(this));
+        resultScore.setTypeface(Utils.getFont(this));
+        textResultOne.setTypeface(Utils.getFont(this));
+        textResultTwo.setTypeface(Utils.getFont(this));
     }
 
     private void setViews() {
@@ -69,6 +78,8 @@ public class ResultActivity extends AppCompatActivity {
         moreInfo = findViewById(R.id.more_info_results);
         peopleResults = findViewById(R.id.people_for_result);
         scoreResults = findViewById(R.id.score_text_result_two);
+        textResultOne = findViewById(R.id.score_text_result_one);
+        textResultTwo = findViewById(R.id.score_text_result_two);
     }
 
     private void setGif() {

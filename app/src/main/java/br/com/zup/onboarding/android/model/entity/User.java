@@ -67,10 +67,6 @@ public class User implements Serializable {
         this.step = step;
     }
 
-    public boolean hasCompletedAllSteps() {
-        return hasCompletedAllSteps;
-    }
-
     public Pod getPod() {
         return pod;
     }

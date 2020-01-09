@@ -25,12 +25,9 @@ import br.com.zup.onboarding.android.viewmodel.home.HomeViewModel;
 public class HomeActivity extends AppCompatActivity {
     private HomeViewModel viewModel;
     private ProgressBar loadingBar;
-    private ImageView photoZupper;
     private Button btnConfirm;
     private TextView textOnboarding, nameZupper, hiZupper, structureZup, cultureZup, technologyZup;
-    private ImageView rocketOne, rocketTwo, rocketThree;
-    private ImageView ballOne, ballTwo, ballThree;
-    private ImageView lineOne, lineTwo;
+    private ImageView rocketOne, rocketTwo, rocketThree, ballOne, ballTwo, ballThree, lineOne, lineTwo, photoZupper;
     private User user;
     private Uri userPhoto;
     private GoogleAuthentication authentication;
@@ -60,12 +57,12 @@ public class HomeActivity extends AppCompatActivity {
             if (state == HomeState.FIRST_STEP_COMPLETED) setStateFirstStepCompleted();
             if (state == HomeState.SECOND_STEP_COMPLETED) setStateSecondStepCompleted();
             if (state == HomeState.ALL_STEPS_COMPLETED) setStateAllStepsCompleted();
+
         });
 
         viewModel.getUserLiveData().observe(this, userResponse -> {
             user = userResponse;
             setLayout();
-
             if (userPhoto != null) {
                 viewModel.stopLoading();
             }
@@ -73,7 +70,6 @@ public class HomeActivity extends AppCompatActivity {
 
         viewModel.getUserPhotoLiveData().observe(this, photoResponse -> {
             userPhoto = photoResponse;
-
             if (user != null) {
                 viewModel.stopLoading();
             }

@@ -34,16 +34,15 @@ public class HomeViewModel extends ViewModel {
 
     public void setUserSessionManager(UserSessionManager manager) {
         this.manager = manager;
-        verifySessionSaved();
+        verySessionSaved();
     }
 
     public LiveData<HomeState> getStateLiveData() {
         return stateLiveData;
     }
 
-    private void verifySessionSaved() {
+    private void verySessionSaved() {
         String email = manager.getEmail();
-
         if (email != null) {
             loadUser(email);
         }

@@ -1,7 +1,5 @@
 package br.com.zup.onboarding.android.viewmodel;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -22,7 +20,6 @@ public class QuestionViewModel extends ViewModel {
     public QuestionViewModel() {
         repository = UserRepository.getInstance();
         user = repository.getUserLiveData().getValue();
-
         questionNumberLiveData.setValue(currentQuestion + 1);
         maxQuestionsLiveData = repository.getMaxQuestionsLiveData();
     }
@@ -46,10 +43,9 @@ public class QuestionViewModel extends ViewModel {
     }
 
     public void saveAlternative(int alternativeId) {
-        Log.e("Alternative id", String.valueOf(alternativeId));
         repository.saveAlternative(alternativeId, user);
     }
-  
+
     public void updateQuestion() {
         currentQuestion++;
         setCurrentQuestion();

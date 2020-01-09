@@ -57,7 +57,6 @@ public class UserRepository {
     public void saveAlternative(int alternativeId, User user) {
         UserAlternativeRequest userAlternativeRequest = new UserAlternativeRequest(user.getId());
         UserAlternative userAlternative = new UserAlternative(userAlternativeRequest, new Alternative(alternativeId));
-
         Disposable disposable = service.saveAlternative(userAlternative)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
