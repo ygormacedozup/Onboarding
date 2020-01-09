@@ -20,6 +20,7 @@ import br.com.zup.onboarding.android.model.entity.UserAlternativeRequest;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import retrofit2.Response;
 
 public class UserRepository {
     private static UserRepository INSTANCE;
@@ -75,9 +76,11 @@ public class UserRepository {
         Log.e("User received", response.toString());
     }
 
-    private void onGetByEmailResponse(User response) {
-        userLiveData.setValue(response);
-        questionListLiveData.setValue(response.getStep().getQuestions());
+    //private void onGetByEmailResponse(User response) {
+    private void onGetByEmailResponse(Response<User> response) {
+        Log.e("UserResponse Code", String.valueOf(response.code()));
+        userLiveData.setValue(response.body());
+        questionListLiveData.setValue(response.body().getStep().getQuestions());
     }
 
     private void onSaveAlternativeResponse(User response) {
