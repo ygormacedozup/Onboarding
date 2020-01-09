@@ -37,64 +37,65 @@
 
     <Button
         android:id="@+id/btn_first_answer"
+        android:layout_marginTop="@dimen/question_margin_top"
         android:layout_width="@dimen/btn_answer_width"
-        android:layout_height="@dimen/btn_answer_height"
-        android:layout_marginBottom="@dimen/answer_margin_bottom"
+        android:layout_height="wrap_content"
         android:background="@drawable/btn_answer_selector"
         android:text="@string/txt_receive_one"
         android:textAllCaps="false"
         android:textColor="@android:color/black"
         android:textSize="@dimen/answer_text_size"
+        app:layout_constraintTop_toBottomOf="@+id/question_name"
         app:layout_constraintBottom_toTopOf="@id/btn_second_answer"
-        app:layout_constraintLeft_toLeftOf="@id/btn_second_answer"
-        app:layout_constraintRight_toRightOf="@id/btn_second_answer"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         tools:text="First Answer" />
 
     <Button
         android:id="@+id/btn_second_answer"
         android:layout_width="@dimen/btn_answer_width"
-        android:layout_height="@dimen/btn_answer_height"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/answer_margin_bottom"
         android:background="@drawable/btn_answer_selector"
         android:text="@string/txt_receive_two"
+        android:layout_marginTop="@dimen/margin_top_25"
         android:textAllCaps="false"
         android:textColor="@android:color/black"
         android:textSize="@dimen/answer_text_size"
-        app:layout_constraintBottom_toTopOf="@id/btn_third_answer"
-        app:layout_constraintLeft_toLeftOf="@id/btn_third_answer"
-        app:layout_constraintRight_toRightOf="@id/btn_third_answer"
+        app:layout_constraintTop_toBottomOf="@+id/btn_first_answer"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         tools:text="Second Answer" />
 
     <Button
         android:id="@+id/btn_third_answer"
         android:layout_width="@dimen/btn_answer_width"
-        android:layout_height="@dimen/btn_answer_height"
-        android:layout_marginTop="@dimen/answer_margin_top"
-        android:layout_marginBottom="@dimen/answer_margin_bottom"
+        android:layout_height="wrap_content"
         android:background="@drawable/btn_answer_selector"
         android:text="@string/txt_receive_three"
         android:textAllCaps="false"
         android:textColor="@android:color/black"
         android:textSize="@dimen/answer_text_size"
-        app:layout_constraintBottom_toTopOf="@id/btn_fourth_answer"
-        app:layout_constraintLeft_toLeftOf="@id/btn_fourth_answer"
-        app:layout_constraintRight_toRightOf="@id/btn_fourth_answer"
+        android:layout_marginTop="@dimen/margin_top_25"
+        app:layout_constraintTop_toBottomOf="@id/btn_second_answer"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         tools:text="Third Answer" />
 
     <Button
         android:id="@+id/btn_fourth_answer"
         android:layout_width="@dimen/btn_answer_width"
-        android:layout_height="@dimen/btn_answer_height"
-        android:layout_marginTop="@dimen/answer_margin_top"
-        android:layout_marginBottom="@dimen/last_answer_margin_bottom"
+        android:layout_height="wrap_content"
         android:background="@drawable/btn_answer_selector"
         android:text="@string/txt_receive_four"
         android:textAllCaps="false"
         android:textColor="@android:color/black"
         android:textSize="@dimen/answer_text_size"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/margin_top_25"
+        app:layout_constraintTop_toBottomOf="@id/btn_third_answer"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+
         tools:text="Fourth Answer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

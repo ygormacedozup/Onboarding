@@ -26,7 +26,6 @@ public class UserRepository {
     private final UserService service;
     private final MutableLiveData<User> userLiveData = new MutableLiveData<>();
     private final MutableLiveData<List<Question>> questionListLiveData = new MutableLiveData<>();
-
     private final MutableLiveData<FinishedStep> finishedStepMutableLiveData = new MutableLiveData<>();
 
     private UserRepository() {
@@ -58,7 +57,6 @@ public class UserRepository {
     public void saveAlternative(int alternativeId, User user) {
         UserAlternativeRequest userAlternativeRequest = new UserAlternativeRequest(user.getId());
         UserAlternative userAlternative = new UserAlternative(userAlternativeRequest, new Alternative(alternativeId));
-
         Disposable disposable = service.saveAlternative(userAlternative)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

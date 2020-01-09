@@ -201,17 +201,4 @@
         app:layout_constraintRight_toLeftOf="@+id/db_ball_three"
         app:layout_constraintTop_toBottomOf="@id/db_ball_two" />
 
-    <Button
-        android:id="@+id/home_button_exit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_default"
-        android:background="@drawable/common_button_selector"
-        android:text="@string/exit_app_home"
-        app:layout_constraintLeft_toRightOf="@id/db_ball_one"
-        app:layout_constraintRight_toLeftOf="@+id/db_ball_three"
-        app:layout_constraintTop_toBottomOf="@id/home_confirm_button"
-
-        />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

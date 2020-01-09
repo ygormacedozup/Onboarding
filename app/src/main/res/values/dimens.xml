@@ -42,7 +42,7 @@
     <dimen name="keep_studying_margin_side">40dp</dimen>
     <dimen name="keep_studying_text_size">20sp</dimen>
     <dimen name="result_gif_margin_side">30dp</dimen>
-    <dimen name="result_gif_margin_top">25dp</dimen>
+    <dimen name="margin_top_25">25dp</dimen>
     <dimen name="loading_progress_bar_elevation">3dp</dimen>
     <dimen name="progressbar_margin">100dp</dimen>
     <dimen name="zup_logo_width">300dp</dimen>

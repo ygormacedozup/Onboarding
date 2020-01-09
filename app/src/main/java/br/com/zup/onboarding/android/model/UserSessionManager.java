@@ -21,8 +21,6 @@ public class UserSessionManager {
     }
 
     public String getEmail() {
-        String email = preferences.getString(EMAIL_KEY, EMPTY_EMAIL);
-        Log.e("Session get", email);
-        return email;
+        return preferences.getString(EMAIL_KEY, EMPTY_EMAIL);
     }
 }

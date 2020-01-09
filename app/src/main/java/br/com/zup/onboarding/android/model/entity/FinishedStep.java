@@ -49,7 +49,7 @@ public class FinishedStep {
         isLicensed = licensed;
     }
 
-    public Object getZupper() {
+    public User getZupper() {
         return zupper;
     }
 
@@ -77,7 +77,7 @@ public class FinishedStep {
     @Override
     public String toString() {
         return "id=" + id + " scoreBoard=" + scoreBoard + " isLicensed=" + isLicensed
-                     + " zupper=" + zupper + " question=" + questions
-                     + " percentageScore=" + percentageScore;
+                + " zupper=" + zupper + " question=" + questions
+                + " percentageScore=" + percentageScore;
     }
 }
