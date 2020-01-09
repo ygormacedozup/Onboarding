@@ -37,7 +37,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         setViewModel();
         observeViewModel();
-
     }
 
     private void setFragmentListeners() {

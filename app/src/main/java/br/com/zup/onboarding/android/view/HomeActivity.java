@@ -3,6 +3,7 @@ package br.com.zup.onboarding.android.view;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -26,7 +27,7 @@ public class HomeActivity extends AppCompatActivity {
     private HomeViewModel viewModel;
     private ProgressBar loadingBar;
     private Button btnConfirm;
-    private TextView textOnboarding, nameZupper, hiZupper, structureZup, cultureZup, technologyZup;
+    private TextView textOnboarding, nameZupper, hiZupper, structureZup, cultureZup, technologyZup, textFinish;
     private ImageView rocketOne, rocketTwo, rocketThree, ballOne, ballTwo, ballThree, lineOne, lineTwo, photoZupper;
     private User user;
     private Uri userPhoto;
@@ -36,6 +37,8 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        Log.e("HomeActivity", "HomeActivity");
 
         authentication = new GoogleAuthentication(this);
 
@@ -102,6 +105,7 @@ public class HomeActivity extends AppCompatActivity {
         ballThree = findViewById(R.id.db_ball_three);
         lineOne = findViewById(R.id.db_line_green);
         lineTwo = findViewById(R.id.db_line_grey);
+        textFinish = findViewById(R.id.text_finish);
     }
 
     private void setLoading(boolean isLoading) {
@@ -126,6 +130,7 @@ public class HomeActivity extends AppCompatActivity {
         ballThree.setVisibility(informationVisibility);
         lineOne.setVisibility(informationVisibility);
         lineTwo.setVisibility(informationVisibility);
+        textFinish.setVisibility(informationVisibility);
     }
 
     private void setContinueButtonClickListener() {
@@ -148,6 +153,7 @@ public class HomeActivity extends AppCompatActivity {
         cultureZup.setTypeface(Utils.getFont(this));
         technologyZup.setTypeface(Utils.getFont(this));
         btnConfirm.setTypeface(Utils.getFont(this));
+        textFinish.setTypeface(Utils.getFont(this));
     }
 
     private void navigateToQuestions() {
@@ -183,6 +189,8 @@ public class HomeActivity extends AppCompatActivity {
 
         lineOne.setBackgroundResource(R.drawable.line_checked);
         lineTwo.setBackgroundResource(R.drawable.line_checked);
+
+        btnConfirm.setVisibility(View.GONE);
     }
 
     @Override

@@ -33,7 +33,8 @@
         android:text="@string/hi_text"
         android:textColor="@android:color/white"
         android:textSize="@dimen/text_dashboard"
-        app:layout_constraintRight_toLeftOf="@id/home_logo_rocket"
+        app:layout_constraintLeft_toLeftOf="@id/home_logo_rocket"
+        app:layout_constraintRight_toRightOf="@id/home_logo_rocket"
         app:layout_constraintTop_toBottomOf="@id/home_logo_rocket" />
 
     <TextView
@@ -47,8 +48,9 @@
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/white"
         android:textSize="@dimen/text_dashboard"
-        app:layout_constraintLeft_toRightOf="@id/home_txt_hello"
-        app:layout_constraintTop_toBottomOf="@id/home_logo_rocket" />
+        app:layout_constraintLeft_toLeftOf="@id/home_txt_hello"
+        app:layout_constraintRight_toRightOf="@id/home_txt_hello"
+        app:layout_constraintTop_toBottomOf="@id/home_txt_hello" />
 
     <TextView
         android:id="@+id/home_text_onboarding"
@@ -60,7 +62,7 @@
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/home_txt_hello" />
+        app:layout_constraintTop_toBottomOf="@id/home_txt_receive" />
 
     <ImageView
         android:id="@+id/db_rocket_one"
@@ -185,9 +187,7 @@
         android:textColor="@android:color/white"
         app:layout_constraintLeft_toLeftOf="@id/db_ball_three"
         app:layout_constraintRight_toRightOf="@id/db_ball_three"
-        app:layout_constraintTop_toBottomOf="@id/db_ball_three"
-
-        />
+        app:layout_constraintTop_toBottomOf="@id/db_ball_three" />
 
     <Button
         android:id="@+id/home_confirm_button"
@@ -200,5 +200,22 @@
         app:layout_constraintLeft_toRightOf="@id/db_ball_one"
         app:layout_constraintRight_toLeftOf="@+id/db_ball_three"
         app:layout_constraintTop_toBottomOf="@id/db_ball_two" />
+
+    <TextView
+        android:id="@+id/text_finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:paddingStart="20dp"
+        android:paddingLeft="20dp"
+        android:paddingEnd="15dp"
+        android:paddingRight="15dp"
+        android:text="@string/onboarding_finished_text"
+        android:textColor="@color/white"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_confirm_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package br.com.zup.onboarding.android.viewmodel.home;
 
 import android.net.Uri;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -66,9 +67,9 @@ public class HomeViewModel extends ViewModel {
     }
 
     private LiveData<HomeState> setState() {
-        return Transformations.map(userLiveData, input -> {
-            int stepId = input.getStep().getId();
-            boolean isCompleted = input.getStep().isCompleted();
+        return Transformations.map(userLiveData, user -> {
+            int stepId = user.getStep().getId();
+            boolean isCompleted = user.getStep().isCompleted();
             HomeState homeState = HomeState.NO_STEPS_COMPLETED;
 
             switch (stepId) {
@@ -81,7 +82,13 @@ public class HomeViewModel extends ViewModel {
                 case 3:
                     homeState = isCompleted ? HomeState.ALL_STEPS_COMPLETED : HomeState.SECOND_STEP_COMPLETED;
                     break;
+                case 4:
+                    homeState = HomeState.ALL_STEPS_COMPLETED;
+                    break;
             }
+
+            Log.e("stepId", String.valueOf(stepId));
+            Log.e("HomeState", homeState.name());
 
             return homeState;
         });

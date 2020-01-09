@@ -22,6 +22,9 @@ public class User implements Serializable {
     @SerializedName("stepCompleted")
     private boolean hasCompletedAllSteps;
 
+    @SerializedName("fullPercentage")
+    private double fullPercentage;
+
     @SerializedName("pod")
     private Pod pod;
 
@@ -77,6 +80,10 @@ public class User implements Serializable {
 
     public Location getLocation() {
         return location;
+    }
+
+    public double getFullPercentage() {
+        return fullPercentage;
     }
 
     public void setLocation(Location location) {

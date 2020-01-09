@@ -86,5 +86,6 @@
     <string name="score_text_results_one">Você marcou</string>
     <string name="score_number_results">\"000\"</string>
     <string name="score_text_results_two">pontos</string>
+    <string name="onboarding_finished_text">Obrigado por completar o onboarding e conte com a gente em toda sua jornada! Att, Time de Employee Experience</string>
 
 </resources>
