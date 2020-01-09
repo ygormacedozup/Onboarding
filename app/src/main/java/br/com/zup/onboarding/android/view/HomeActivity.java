@@ -165,6 +165,8 @@ public class HomeActivity extends AppCompatActivity {
         rocketOne.setImageResource(R.drawable.rocket_checked);
         ballOne.setBackgroundResource(R.drawable.ball_checked);
         lineOne.setBackgroundResource(R.drawable.line_checked);
+
+        textFinish.setVisibility(View.GONE);
     }
 
     private void setStateSecondStepCompleted() {
@@ -176,6 +178,8 @@ public class HomeActivity extends AppCompatActivity {
 
         lineOne.setBackgroundResource(R.drawable.line_checked);
         lineTwo.setBackgroundResource(R.drawable.line_checked);
+
+        textFinish.setVisibility(View.GONE);
     }
 
     private void setStateAllStepsCompleted() {

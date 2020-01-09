@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,7 +27,7 @@ public class ResultActivity extends AppCompatActivity {
     private ImageView gif;
     private TextView thanksForResults, moreInfo, peopleResults, textResultOne, textResultTwo, scoreResults;
     private ResultViewModel resultViewModel;
-    private FinishedStep finishedStep;
+    //private FinishedStep finishedStep;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +56,15 @@ public class ResultActivity extends AppCompatActivity {
     private void observeViewModel() {
         resultViewModel.getFinishedStepLiveData().observe(this, finishedStepResponse -> {
             Log.e("finishedStep", finishedStepResponse.toString());
-            showResult(finishedStepResponse);
+            //showResult(finishedStepResponse);
         });
+
+        resultViewModel.getUserLiveData().observe(this, this::showResult);
     }
 
-    private void showResult(FinishedStep finishedStep) {
-        peopleResults.setText(finishedStep.getZupper().getName());
-        scoreResults.setText(String.valueOf(finishedStep.getPercentageScore()));
+    private void showResult(User user) {
+        peopleResults.setText(user.getName());
+        scoreResults.setText(String.valueOf(user.getFullPercentage()));
     }
 
     private void setFonts() {

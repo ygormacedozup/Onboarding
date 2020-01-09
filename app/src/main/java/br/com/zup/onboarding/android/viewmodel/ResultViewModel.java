@@ -15,6 +15,8 @@ public class ResultViewModel extends ViewModel {
     private UserSessionManager manager;
     private LiveData<FinishedStep> finishedStepLiveData;
 
+    private LiveData<User> userLiveData;
+
     public ResultViewModel() {
         repository = UserRepository.getInstance();
         MutableLiveData<Boolean> isLoadingLiveData = new MutableLiveData<>();
@@ -30,6 +32,8 @@ public class ResultViewModel extends ViewModel {
     private void loadUser() {
         repository.getUserByEmail(manager.getEmail());
         user = repository.getUserLiveData().getValue();
+
+        userLiveData = repository.getUserLiveData();
     }
 
     private void loadFinishedStep() {
@@ -39,5 +43,9 @@ public class ResultViewModel extends ViewModel {
 
     public LiveData<FinishedStep> getFinishedStepLiveData() {
         return finishedStepLiveData;
+    }
+
+    public LiveData<User> getUserLiveData() {
+        return userLiveData;
     }
 }
