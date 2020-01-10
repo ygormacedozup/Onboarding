@@ -17,6 +17,7 @@ import br.com.zup.onboarding.android.model.entity.Question;
 import br.com.zup.onboarding.android.model.entity.User;
 import br.com.zup.onboarding.android.model.entity.UserAlternative;
 import br.com.zup.onboarding.android.model.entity.UserAlternativeRequest;
+import br.com.zup.onboarding.android.model.entity.ZupperExists;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -27,7 +28,8 @@ public class UserRepository {
     private final UserService service;
     private final MutableLiveData<User> userLiveData = new MutableLiveData<>();
     private final MutableLiveData<List<Question>> questionListLiveData = new MutableLiveData<>();
-    private final MutableLiveData<FinishedStep> finishedStepMutableLiveData = new MutableLiveData<>();
+    private final MutableLiveData<FinishedStep> finishedStepLiveData = new MutableLiveData<>();
+    private final MutableLiveData<ZupperExists> zupperExistsLiveData = new MutableLiveData<>();
 
     private UserRepository() {
         service = new RetrofitInitializer().getUserService();
@@ -39,6 +41,13 @@ public class UserRepository {
         }
 
         return INSTANCE;
+    }
+
+    public void checkUserExists(ZupperExists zupperExists) {
+        Disposable disposable = service.zupperExists(zupperExists)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::onZupperExistsResponse, this::onError);
     }
 
     public void saveUser(User user) {
@@ -72,13 +81,15 @@ public class UserRepository {
                 .subscribe(this::onFinishStepResponse, this::onError);
     }
 
+    private void onZupperExistsResponse(Response<ZupperExists> response) {
+        zupperExistsLiveData.setValue(response.body());
+    }
+
     private void onSaveResponse(User response) {
         Log.e("User received", response.toString());
     }
 
-    //private void onGetByEmailResponse(User response) {
     private void onGetByEmailResponse(Response<User> response) {
-        Log.e("UserResponse Code", String.valueOf(response.code()));
         userLiveData.setValue(response.body());
         questionListLiveData.setValue(response.body().getStep().getQuestions());
     }
@@ -88,11 +99,10 @@ public class UserRepository {
     }
 
     private void onFinishStepResponse(FinishedStep response) {
-        finishedStepMutableLiveData.setValue(response);
+        finishedStepLiveData.setValue(response);
     }
 
     private void onError(Throwable throwable) {
-        throwable.printStackTrace();
         Log.e("Throwable", Objects.requireNonNull(throwable.getMessage()));
     }
 
@@ -109,6 +119,10 @@ public class UserRepository {
     }
 
     public LiveData<FinishedStep> getFinishedStepLiveData() {
-        return finishedStepMutableLiveData;
+        return finishedStepLiveData;
+    }
+
+    public MutableLiveData<ZupperExists> getZupperExistsLiveData() {
+        return zupperExistsLiveData;
     }
 }

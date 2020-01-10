@@ -38,8 +38,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Log.e("HomeActivity", "HomeActivity");
-
         authentication = new GoogleAuthentication(this);
 
         setViews();

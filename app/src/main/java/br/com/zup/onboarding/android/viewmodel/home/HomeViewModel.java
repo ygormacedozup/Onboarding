@@ -35,14 +35,14 @@ public class HomeViewModel extends ViewModel {
 
     public void setUserSessionManager(UserSessionManager manager) {
         this.manager = manager;
-        verySessionSaved();
+        verifySessionSaved();
     }
 
     public LiveData<HomeState> getStateLiveData() {
         return stateLiveData;
     }
 
-    private void verySessionSaved() {
+    private void verifySessionSaved() {
         String email = manager.getEmail();
         if (email != null) {
             loadUser(email);
@@ -59,7 +59,13 @@ public class HomeViewModel extends ViewModel {
 
     private void loadUser(String email) {
         GoogleSignInAccount account = authentication.getLastSignedInAccount();
-        repository.getUserByEmail(email);
+
+        if (account.getEmail() != null && account.getEmail().isEmpty()) {
+            repository.getUserByEmail(account.getEmail());
+        } else {
+            repository.getUserByEmail(email);
+        }
+
         userLiveData = repository.getUserLiveData();
         userPhotoLiveData.setValue(account.getPhotoUrl());
 
@@ -86,9 +92,6 @@ public class HomeViewModel extends ViewModel {
                     homeState = HomeState.ALL_STEPS_COMPLETED;
                     break;
             }
-
-            Log.e("stepId", String.valueOf(stepId));
-            Log.e("HomeState", homeState.name());
 
             return homeState;
         });

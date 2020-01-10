@@ -72,9 +72,17 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void observeViewModel() {
+        viewModel.getZupperExistsLiveData().observe(this, zupper -> {
+            if (zupper.exists()) {
+                new UserSessionManager(this).setEmail(zupper.getEmail());
+                viewModel.setState(RegisterState.ALREADY_LOGGED);
+            }
+        });
+
         viewModel.getStateLiveData().observe(this, state -> {
             if (state == RegisterState.ALREADY_LOGGED) navigateToHome();
-            if (state == RegisterState.SIGN_IN_SUCCESS) showPodLocationFragment(viewModel.getUserName());
+            if (state == RegisterState.SIGN_IN_SUCCESS)
+                showPodLocationFragment(viewModel.getUserName());
             if (state == RegisterState.SIGN_IN_ERROR) showErrorMessage();
             if (state == RegisterState.REGISTER_SUCCESS) navigateToHome();
         });
